@@ -144,10 +144,10 @@ install -p -d -m 0755 %{buildroot}%{nginx_moduleconfdir}
 install -p -d -m 0755 %{buildroot}%{nginx_moduledir}
 
 # install sysusers file
-install -p -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/nginx.conf
+install -p -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 %pre
-%sysusers_create_compat %{SOURCE3}
+%sysusers_create_package %{name} %{SOURCE3}
 
 %post
 %systemd_post nginx.service
@@ -172,7 +172,7 @@ install -p -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/nginx.conf
 %config(noreplace) %{_sysconfdir}/nginx/uwsgi_params
 %config(noreplace) %{_sysconfdir}/nginx/win-utf
 %config(noreplace) %{_sysconfdir}/logrotate.d/nginx
-%{_sysusersdir}/nginx.conf
+%{_sysusersdir}/%{name}.conf
 %dir %{_libdir}/nginx
 %dir %{_libdir}/nginx/modules
 %{_unitdir}/nginx.service
