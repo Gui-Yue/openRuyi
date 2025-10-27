@@ -16,8 +16,7 @@ repos:
     -   id: check-merge-conflict
     -   id: check-case-conflict
     -   id: check-toml
-# TODO:
-# -   repo: https://github.com/fsfe/reuse-tool
-#     rev: v6.1.0
-#     hooks:
-#       - id: reuse
+-   repo: https://github.com/fsfe/reuse-tool
+    rev: v6.1.0
+    hooks:
+      - id: reuse-lint-file
