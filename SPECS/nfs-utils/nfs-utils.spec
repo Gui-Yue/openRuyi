@@ -101,7 +101,6 @@ mkdir -p -m 755 %{buildroot}%{_sysconfdir}/nfsmount.conf.d
 chmod 644 `grep -l -r '^#!/usr/bin/python' %{buildroot}%{_sbindir}` || :
 
 %pre -n nfs-client -f statd.pre
-%service_add_pre auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %post -n nfs-client
 chown root:root %{_localstatedir}/lib/nfs > /dev/null 2>&1 || :
@@ -119,23 +118,17 @@ if [ -f %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd ]; then
 	mv %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd /run/nfs
 fi
 /sbin/ldconfig
-%service_add_post auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
+%systemd_post auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %preun -n nfs-client
-%service_del_preun auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
+%systemd_preun auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %postun -n nfs-client
 /sbin/ldconfig
-%service_del_postun auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
-
-%verifyscript -n nfs-client
-%verify_permissions -e %{_sbindir}/mount.nfs
-
-%pre -n nfs-kernel-server
-%service_add_pre nfs-svcgssd.service nfs-mountd.service nfs-server.service
+%systemd_postun auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %preun -n nfs-kernel-server
-%service_del_preun nfs-svcgssd.service nfs-mountd.service nfs-server.service
+%systemd_preun nfs-svcgssd.service nfs-mountd.service nfs-server.service
 
 %post -n nfs-kernel-server
 [ -d /run/nfs ] || mkdir /run/nfs
@@ -145,17 +138,13 @@ fi
 if [ -f %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd ]; then
 	mv %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd /run/nfs
 fi
-%service_add_post nfs-mountd.service nfs-server.service nfsdcld.service
-%tmpfiles_create nfs-kernel-server.conf
-%set_permissions /var/lib/nfs/rmtab
+%systemd_post nfs-mountd.service nfs-server.service nfsdcld.service
+%tmpfiles_create_package nfs-kernel-server %{SOURCE5}
 
 %postun -n nfs-kernel-server
-%service_del_postun nfs-mountd.service nfs-server.service nfsdcld.service
+%systemd_postun nfs-mountd.service nfs-server.service nfsdcld.service
 
 %ldconfig_scriptlets -n libnfsidmap1
-
-%verifyscript -n nfs-kernel-server
-%verify_permissions -e /var/lib/nfs/rmtab
 
 %files
 %license COPYING
