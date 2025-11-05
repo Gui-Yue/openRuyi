@@ -304,7 +304,7 @@ BuildRequires:  binutils
 Requires:       %{name} = %{version}-%{release}
 Requires:       systemd-boot
 Requires:       python3dist(pefile)
-Requires:       python3dist(zstandard)
+Recommends:     python3dist(zstandard)
 Requires:       python3dist(cryptography)
 Recommends:     python3dist(pillow)
 BuildArch:      noarch
