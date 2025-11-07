@@ -5,7 +5,10 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
+%ifarch riscv64
 #!BuildConstraint: hardware:jobs 32
+%endif
+
 %{!?_debugdir: %global _debugdir %{_prefix}/lib/debug}
 
 %global signmodules 1
