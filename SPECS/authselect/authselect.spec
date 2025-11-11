@@ -24,7 +24,7 @@ BuildOption(conf): --disable-nls
 BuildRequires: autoconf automake libtool popt-devel cmocka-devel
 BuildRequires: m4  python3-devel libselinux-devel chrpath
 Requires:      grep sed systemd gawk coreutils findutils pam >= 1.3.1
-
+Requires:      libpwquality
 %description
 Authselect is a tool to configure system authentication and identity sources
 from a list of supported profiles. It replaces the legacy authconfig tool.
