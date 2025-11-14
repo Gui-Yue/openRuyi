@@ -47,3 +47,6 @@ SPDX-License-Identifier = "GPL-3.0-only"
 path = "SPECS/python-rpm-generators/*"
 SPDX-FileCopyrightText = "RPM <rpm-maint@lists.rpm.org>"
 SPDX-License-Identifier = "GPL-2.0-or-later AND LGPL-2.1-or-later"
+[[annotations]]
+path = "SPECS/xz/xznew"
+SPDX-License-Identifier = "GPL-2.0-or-later"
