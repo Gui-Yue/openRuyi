@@ -22,6 +22,7 @@ BuildSystem:    autotools
 BuildRequires:  glibc-static
 BuildRequires:  pkgconfig
 BuildRequires:  binutils
+BuildRequires:  pam-devel
 
 %global buildvariables RAISE_SETFCAP=no prefix=%{_prefix} lib=%{_lib} SHARED=yes LIBDIR=%{_libdir} SBINDIR=%{_sbindir} PKGCONFIGDIR=%{_libdir}/pkgconfig/ INCDIR=%{_includedir} MANDIR=%{_mandir} SHARED=yes COPTS="%{optflags} %{_lto_cflags} -ffat-lto-objects"
 
