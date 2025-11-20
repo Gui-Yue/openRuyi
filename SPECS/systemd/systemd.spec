@@ -18,7 +18,7 @@
 # When bootstrap, libcryptsetup is disabled
 # but auto-features causes many options to be turned on
 # that depend on libcryptsetup (e.g. libcryptsetup-plugins, homed)
-%bcond bootstrap 1
+%bcond bootstrap 0
 %if %{with bootstrap}
 %global __meson_auto_features disabled
 %endif
