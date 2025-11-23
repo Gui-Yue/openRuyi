@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ee48f6c..dc8e280 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -226,11 +226,18 @@ endif ()
+ 
+ # Installation configuration:
+ 
++if (UNIX)
++	include(GNUInstallDirs)
++	set (BIN_INSTALL_DIR ${CMAKE_INSTALL_FULL_BINDIR})
++	set (LIB_INSTALL_DIR ${CMAKE_INSTALL_FULL_LIBDIR})
++	set (INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
++endif()
++
+ if (NOT DEFINED BIN_INSTALL_DIR)
+   set (BIN_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/bin")
+ endif ()
+ if (NOT DEFINED LIB_INSTALL_DIR)
+-  set (LIB_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
++  set (LIB_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib}")
+ endif ()
+ if (NOT DEFINED INCLUDE_INSTALL_DIR)
+   set (INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include")
