@@ -133,8 +133,8 @@ cp -a api bin pkg src misc test VERSION %{buildroot}%{_libdir}/%{name}/
 cp -a doc %{buildroot}%{_datadir}/
 
 # Link the main binaries into /usr/bin
-ln -sf ../lib/go/bin/go %{buildroot}%{_bindir}/go
-ln -sf ../lib/go/bin/gofmt %{buildroot}%{_bindir}/gofmt
+ln -sf %{_libdir}/%{name}/bin/go %{buildroot}%{_bindir}/go
+ln -sf %{_libdir}/%{name}/bin/gofmt %{buildroot}%{_bindir}/gofmt
 
 # Remove unnecessary bootstrap artifacts
 rm -rf %{buildroot}%{_libdir}/%{name}/pkg/bootstrap
