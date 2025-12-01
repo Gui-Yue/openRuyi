@@ -65,8 +65,6 @@ pushd $RPM_BUILD_ROOT%{_mandir}/man5
 ln -s modprobe.d.5.gz modprobe.conf.5.gz
 popd
 
-find %{buildroot} -type f -name "*.la" -delete
-
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/depmod.d
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/modprobe.d

@@ -57,7 +57,6 @@ autoreconf -fi -I%{_datadir}/gettext/m4
 %install -a
 rm -rf %{buildroot}/%{_sysconfdir}/init.d
 install -m644 -D %{SOURCE1} %{buildroot}/%{_sysconfdir}/fuse.conf
-find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}/%{_libdir}/libfuse.a
 rm -f %{buildroot}/%{_libdir}/libulockmgr.a
 

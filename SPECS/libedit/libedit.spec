@@ -35,10 +35,6 @@ Requires:       glibc-devel
 This package contains the header files, symbolic links, and documentation
 needed to develop applications that use the libedit library.
 
-
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING
 %doc ChangeLog

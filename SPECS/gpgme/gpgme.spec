@@ -40,7 +40,6 @@ This package contains the libraries, header files, documentation, and tools
 needed for developing applications that use GPGME.
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
 rm -fv %{buildroot}%{_infodir}/dir
 
 %files

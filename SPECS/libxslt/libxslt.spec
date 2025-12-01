@@ -43,7 +43,6 @@ needed to develop applications that use the libxslt libraries.
 %install -a
 rm -fr %{buildroot}%{_datadir}/doc
 install -D -m0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/xslt-config.1
-find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_datadir}
 
 %files

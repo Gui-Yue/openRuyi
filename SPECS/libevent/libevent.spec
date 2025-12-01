@@ -67,9 +67,6 @@ This package holds the static libraries for libevent2.
 ./autogen.sh
 export ac_cv_func_select=no
 
-%install -a
-find %{buildroot}%{_libdir} -type f -name "*.la" -delete -print
-
 %files
 %defattr(-,root,root,-)
 %license LICENSE

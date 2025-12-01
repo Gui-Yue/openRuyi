@@ -43,8 +43,6 @@ The conntrack-tools are a set of userspace tools that allow system
 administrators to interact with the Connection Tracking System.
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 install -d      %{buildroot}%{_sysconfdir}/conntrackd
 install -m644   %{SOURCE2} %{buildroot}%{_sysconfdir}/conntrackd/
 %if %{with systemd}

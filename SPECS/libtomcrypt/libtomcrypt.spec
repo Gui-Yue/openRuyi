@@ -50,7 +50,6 @@ developing applications that use %{name}.
 %conf
 
 %install -a
-find %{buildroot} -name '*.la' -delete
 find %{buildroot} -name '*.a' -delete
 sed -i \
     -e 's|^prefix=.*|prefix=%{_prefix}|g' \

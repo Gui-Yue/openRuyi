@@ -39,7 +39,6 @@ developing applications that use the José library.
 
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_licensedir}/%{name}/COPYING
 
 %files

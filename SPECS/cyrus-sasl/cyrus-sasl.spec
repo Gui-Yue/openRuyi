@@ -50,7 +50,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -std=gnu17"
 
 %install -a
 mkdir -p %{buildroot}%{_sysconfdir}/sasl2
-find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING

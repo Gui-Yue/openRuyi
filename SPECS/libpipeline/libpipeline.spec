@@ -31,10 +31,6 @@ Requires:       %{name} = %{version}
 This package contains the header files, libraries, pkg-config file, and
 API documentation needed for development with libpipeline.
 
-
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING
 %doc ChangeLog

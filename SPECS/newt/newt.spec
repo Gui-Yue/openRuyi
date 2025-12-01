@@ -40,8 +40,6 @@ needed to build applications that use the newt library.
 
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete
-
 rm -rf %{buildroot}%{_datadir}/locale
 
 %files

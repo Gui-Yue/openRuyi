@@ -26,9 +26,6 @@ Requires:       %{name} = %{version}-%{release}
 %description    devel
 files for jansson development
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license LICENSE
 %{_libdir}/libjansson.so.*

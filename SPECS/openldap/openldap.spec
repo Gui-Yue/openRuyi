@@ -316,10 +316,6 @@ rm -f %{buildroot}/usr/share/man/man5/slapd-null.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-passwd.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-shell.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-tcl.5
-# Remove *.la files, libtool does not handle this correct
-# Keep .la files for modules in the openldap subdirectory, which are consumed
-# in this form.
-rm -f  %{buildroot}%{_libdir}/*.la
 
 # Provide a libldap_r for backwards-compatibility with OpenLDAP < 2.5.
 ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"

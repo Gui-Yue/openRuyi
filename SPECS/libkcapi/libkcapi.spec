@@ -64,8 +64,6 @@ EOF
 autoreconf -fiv
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %if %{with systemd}
 install -D -m 0644 -t %{buildroot}%{_sysctldir} 50-%{name}-optmem_max.conf
 %endif

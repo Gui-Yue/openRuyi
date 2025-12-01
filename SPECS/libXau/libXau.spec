@@ -39,9 +39,6 @@ BuildRequires:  xorgproto
 %description    devel
 X.Org X11 libXau development package
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %doc AUTHORS COPYING README ChangeLog
 %{_libdir}/libXau.so.*

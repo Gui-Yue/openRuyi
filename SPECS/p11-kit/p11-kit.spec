@@ -46,7 +46,6 @@ develop applications that use p11-kit.
 
 %install -a
 install -d -m 755 %{buildroot}%{_sysconfdir}/pkcs11/modules
-find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/locale
 rm -f %{buildroot}%{_sysconfdir}/pkcs11/pkcs11.conf.example
 

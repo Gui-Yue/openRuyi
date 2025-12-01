@@ -37,9 +37,6 @@ Requires:       pkgconfig
 This package includes header files and libraries for developing applications
 that use the libnetfilter_queue library.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING
 %{_libdir}/*.so.*

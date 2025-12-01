@@ -83,9 +83,6 @@ Development files for the OpenSSL crypto backend for ngtcp2.
 %conf -p
 autoreconf -fsi
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING
 %doc AUTHORS

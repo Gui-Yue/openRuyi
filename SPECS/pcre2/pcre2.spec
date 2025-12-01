@@ -53,9 +53,6 @@ for compiling applications that use the PCRE2 library.
 %conf -p
 autoreconf -fiv
 
-%install -a
-rm -f %{buildroot}%{_libdir}/*.la
-
 %files
 %license LICENCE.md
 %doc AUTHORS.md ChangeLog NEWS README

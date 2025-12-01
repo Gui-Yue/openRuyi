@@ -31,9 +31,6 @@ Requires:       pkgconfig
 %description devel
 This package contains the header files and development library for libpciaccess.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING
 %doc AUTHORS

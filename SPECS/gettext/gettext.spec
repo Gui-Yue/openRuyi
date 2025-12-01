@@ -114,7 +114,6 @@ autoreconf -fiv
 
 %install -a
 rm -f %{buildroot}%{_infodir}/dir
-rm -f %{buildroot}%{_libdir}/*.la
 rm -f %{buildroot}%{_libdir}/*.a
 
 %if %{with nls}

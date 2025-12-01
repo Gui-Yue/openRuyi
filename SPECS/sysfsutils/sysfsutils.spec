@@ -48,9 +48,6 @@ to build programs using the libsysfs API.
 %conf -p
 autoreconf -fiv
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete
-
 %files
 %license COPYING cmd/GPL
 %doc AUTHORS README CREDITS docs/libsysfs.txt

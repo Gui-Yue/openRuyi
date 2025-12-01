@@ -34,9 +34,6 @@ Requires:       %{name} = %{version}-%{release}
 The libndp-devel package contains the header files and libraries
 necessary for developing programs using libndp.
 
-%install -a
-find $RPM_BUILD_ROOT -name \*.la -delete
-
 %files
 %doc COPYING
 %{_libdir}/*so.*

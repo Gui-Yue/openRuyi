@@ -144,7 +144,6 @@ install -D examplesh %{buildroot}%{_libexecdir}/%{name}/testsuite
 # Install minizip
 cd contrib/minizip
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libz1
 %license LICENSE

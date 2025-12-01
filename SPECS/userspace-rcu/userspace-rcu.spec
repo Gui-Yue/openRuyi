@@ -34,9 +34,6 @@ needed to develop applications that use the userspace-rcu library.
 %conf -p
 autoreconf -vif
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %doc ChangeLog README.md
 %{_libdir}/lib*.so.*

@@ -35,9 +35,6 @@ Requires:       linux-headers
 This package contains libraries and header files for developing applications
 that use the libnetfilter_cthelper library.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING
 %doc README

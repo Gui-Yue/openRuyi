@@ -65,7 +65,6 @@ libcap.
 %conf
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
 rm %{buildroot}%{_libdir}/libcap.a
 
 %files

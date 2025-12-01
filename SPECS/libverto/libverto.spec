@@ -109,9 +109,6 @@ and signal.
 %conf -p
 autoreconf -fiv
 
-%install -a
-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
-
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README

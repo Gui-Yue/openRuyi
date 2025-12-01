@@ -51,7 +51,6 @@ sed -i \
 %conf
 
 %install -a
-find %{buildroot} -name '*.la' -delete
 find %{buildroot} -name '*.a' -delete
 
 %files

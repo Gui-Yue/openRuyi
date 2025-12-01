@@ -33,9 +33,6 @@ Requires:       %{name} = %{version}
 This package contains the libraries, header files, and examples for developing
 applications that use the CppUnit framework.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING AUTHORS
 %doc NEWS README THANKS TODO BUGS

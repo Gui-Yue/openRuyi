@@ -38,9 +38,6 @@ Requires:       %{name}-devel = %{version}
 %description static
 Static library for the %{name} library
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING*
 %{_libdir}/libunistring.so.*

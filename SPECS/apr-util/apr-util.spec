@@ -131,7 +131,6 @@ export ac_cv_ldap_set_rebind_proc_style=three
 install -d -m 755 %{buildroot}%{_datadir}/aclocal
 install -m 644 build/find_apu.m4 %{buildroot}%{_datadir}/aclocal
 rm -f %{buildroot}%{_libdir}/libapr*.a
-sed -ri '/^dependency_libs/{s,-l(pq|sqlite[0-9]|rt|dl|uuid) ,,g}' %{buildroot}%{_libdir}/libapr*.la
 rm -f %{buildroot}%{_libdir}/apr-util-1/*.*a
 
 %files

@@ -43,9 +43,6 @@ X.Org X11 libXft development package
 %conf -p
 autoconf -fiv
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %doc AUTHORS COPYING README.md ChangeLog
 %{_libdir}/libXft.so.2*

@@ -71,8 +71,6 @@ touch %{name}-%{version}-%{release}.soc
 ln -s %{name}-%{version}-%{release}.soc %{name}.soc
 popd
 
-rm -f %{buildroot}%{_libdir}/*.so %{buildroot}%{_libdir}/*.la
-
 %post
 %{_bindir}/install-catalog --add %{_sysconfdir}/sgml/%{name}-%{version}-%{release}.soc \
     %{_datadir}/sgml/%{name}-%{version}/catalog >/dev/null 2>/dev/null || :

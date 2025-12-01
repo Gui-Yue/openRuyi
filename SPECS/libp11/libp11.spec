@@ -51,10 +51,6 @@ developing applications that use libp11.
 %conf -p
 autoreconf -fvi
 
-%install -a
-# Remove .la files
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING
 %doc NEWS

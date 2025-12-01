@@ -44,7 +44,6 @@ for programs using the liblognorm library.
 autoreconf -vfi
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -type f -name "*.a" -delete -print
 
 %files

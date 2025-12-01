@@ -62,7 +62,6 @@ autoreconf -fi
 %configure
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
 install -D -m 644 src/util/ac_check_krb5.m4 %{buildroot}%{_datadir}/aclocal/ac_check_krb5.m4
 install -d -m 755 %{buildroot}%{_sysconfdir}/krb5.conf.d
 

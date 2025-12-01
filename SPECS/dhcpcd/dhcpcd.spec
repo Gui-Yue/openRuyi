@@ -32,8 +32,6 @@ The dhcpcd package provides a minimalistic network configuration daemon
 that supports IPv4, rdisc, and DHCPv6 protocols.
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}@.service
 install -D -m 644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}.conf

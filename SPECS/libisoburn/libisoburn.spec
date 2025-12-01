@@ -52,7 +52,6 @@ allows session-wise manipulation of such filesystems.
 autoreconf -fiv
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete
 rm -f %{buildroot}%{_bindir}/xorriso-tcltk*
 touch %{buildroot}%{_bindir}/cdrecord
 touch %{buildroot}%{_bindir}/mkisofs

@@ -251,8 +251,6 @@ to send syslog messages as SNMPv1 and SNMPv2c traps.
 autoreconf -fiv
 
 %install -a
-rm -f %{buildroot}%{_libdir}/rsyslog/*.la
-
 install -d -m 755 %{buildroot}%{_sysconfdir}/sysconfig
 install -d -m 755 %{buildroot}%{_sysconfdir}/logrotate.d
 install -d -m 755 %{buildroot}%{_unitdir}

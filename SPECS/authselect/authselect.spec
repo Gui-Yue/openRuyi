@@ -45,7 +45,6 @@ autoreconf -ivf
 # fix error  0001: file '/usr/bin/authselect' contains a standard runpath '/usr/lib64' in [/usr/lib64]
 chrpath -d %{buildroot}%{_bindir}/authselect
 
-find %{buildroot} -type f -name "*.la" -delete -print
 rm -fr %{buildroot}%{_datadir}/doc/%{name}
 
 %preun

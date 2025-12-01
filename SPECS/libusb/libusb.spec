@@ -46,9 +46,6 @@ developing applications that use %{name}.
 %conf -p
 autoreconf -fiv
 
-%install -a
-rm %{buildroot}%{_libdir}/*.la
-
 %files
 %license COPYING
 %doc AUTHORS README ChangeLog

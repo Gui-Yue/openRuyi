@@ -58,8 +58,6 @@ install -D -m 0644 ./m4/audit.m4  %{buildroot}%{_datadir}/aclocal/audit.m4
 
 install -d -m 750 %{buildroot}%{_sysconfdir}/audisp/plugins.d
 
-find %{buildroot} -type f -name "*.la" -delete -print
-
 # TODO: make test pass.
 %check
 

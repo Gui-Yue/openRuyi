@@ -42,10 +42,6 @@ to develop applications that use the libksba library.
 %conf -p
 autoreconf -vfi
 
-
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING*
 %doc README AUTHORS ChangeLog NEWS THANKS TODO

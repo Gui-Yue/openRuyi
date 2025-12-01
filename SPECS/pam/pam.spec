@@ -163,8 +163,6 @@ done
 for lib in libpam libpamc libpam_misc ; do
   rm -f %{buildroot}%{_pam_libdir}/${lib}.la
 done
-rm -f %{buildroot}%{_pam_moduledir}/*.la
-
 %if "%{_pam_libdir}" != "%{_libdir}"
 install -d -m 755 %{buildroot}%{_libdir}
 for lib in libpam libpamc libpam_misc ; do

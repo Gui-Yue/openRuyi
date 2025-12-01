@@ -67,7 +67,6 @@ popd
 
 %install -a
 rm -rf %{buildroot}%{_datadir}/doc/libpaper/README.md
-rm $RPM_BUILD_ROOT%{_libdir}/*.la
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}
 
 mkdir %{buildroot}%{_libexecdir}

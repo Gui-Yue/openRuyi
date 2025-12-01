@@ -150,8 +150,6 @@ autoreconf -fiv
 
 %install -a
 
-find %{buildroot} -type f -name "*.la" -delete
-
 install -Dm644 %{SOURCE10} %{buildroot}%{_sysconfdir}/pam.d/login
 install -Dm644 %{SOURCE12} %{buildroot}%{_sysconfdir}/pam.d/su-l
 install -Dm644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/runuser

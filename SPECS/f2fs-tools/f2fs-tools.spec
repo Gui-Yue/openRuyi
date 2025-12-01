@@ -45,8 +45,6 @@ autoreconf -fiv
 %install -a
 install -m 644 mkfs/f2fs_format_utils.h %{buildroot}%{_includedir}
 
-find %{buildroot} -type f -name "*.la" -delete
-
 %files
 %license COPYING
 %doc AUTHORS ChangeLog

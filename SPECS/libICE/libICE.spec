@@ -37,9 +37,6 @@ Requires:       %{name} = %{version}-%{release}
 %description    devel
 The X.Org X11 ICE (Inter-Client Exchange) development package.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %{_libdir}/libICE.so.*
 %doc AUTHORS ChangeLog COPYING

@@ -39,9 +39,6 @@ for the libthai package.
 Install libthai-devel if you want to develop programs which will use
 libthai.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %doc README AUTHORS COPYING ChangeLog
 %{_libdir}/lib*.so.*

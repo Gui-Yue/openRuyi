@@ -33,10 +33,6 @@ Requires:       %{name} = %{version}
 This package contains all necessary include files and libraries needed
 to compile and develop applications that use libsodium.
 
-
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license LICENSE
 %{_libdir}/%{name}.so.26*

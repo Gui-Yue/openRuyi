@@ -40,7 +40,6 @@ that use the GNU SASL library.
 
 
 %install -a
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %find_lang %{name} --generate-subpackages
 
 %files

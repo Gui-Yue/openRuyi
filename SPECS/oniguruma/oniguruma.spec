@@ -42,9 +42,6 @@ files for the oniguruma library.
 %conf -p
 autoreconf -fiv
 
-%install -a
-find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
-
 %files
 %doc        AUTHORS
 %license    COPYING

@@ -50,7 +50,6 @@ needed for developing applications that use the json-c library.
 export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}-build/%{_lib}
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
 (cd %{buildroot}%{_libdir}/pkgconfig && ln -s json-c.pc json.pc)
 mkdir -p "%{buildroot}%{_docdir}/%{name}"
 cp -R doc/html "%{buildroot}%{_docdir}/%{name}/"

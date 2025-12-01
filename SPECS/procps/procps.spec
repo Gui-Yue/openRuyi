@@ -49,7 +49,6 @@ autoreconf -fiv
 
 %install -a
 # Cleanup unnecessary files.
-rm -f %{buildroot}%{_libdir}/*.la
 # kill and uptime are provided by other core packages (util-linux).
 rm -f %{buildroot}%{_bindir}/kill
 rm -f %{buildroot}%{_bindir}/uptime

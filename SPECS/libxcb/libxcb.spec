@@ -62,7 +62,6 @@ export LC_ALL=C
 autoreconf -ivf
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_libdir}/pkgconfig
 sed 's,@libdir@,%{_libdir},;s,@prefix@,%{_prefix},;s,@exec_prefix@,%{_exec_prefix},' %{S:1} \
     > %{buildroot}%{_libdir}/pkgconfig/pthread-stubs.pc

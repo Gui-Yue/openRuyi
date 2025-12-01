@@ -115,7 +115,6 @@ echo $(ls)
 mkdir -p $RPM_BUILD_ROOT/%{includesubiddir}
 install -m 644 libsubid/subid.h $RPM_BUILD_ROOT/%{includesubiddir}/
 
-rm -f %{buildroot}%{_libdir}/*.la
 rm -f %{buildroot}%{_libdir}/*.a
 
 install -Dm644 %{SOURCE3} %{buildroot}%{_unitdir}/shadow.timer

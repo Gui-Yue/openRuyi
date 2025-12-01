@@ -122,7 +122,7 @@ pushd perl
 popd
 
 %install -a
-rm -f %{buildroot}%{_libdir}/*.la %{buildroot}%{_libdir}/*.a
+rm -f %{buildroot}%{_libdir}/*.a
 chmod 755 %{buildroot}%{_libdir}/*.so.*.*.*
 
 pushd perl

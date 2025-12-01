@@ -94,9 +94,6 @@ This package provides the files to develop tests using the ATF shell bindings.
 %conf -p
 autoreconf -is
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %doc %{_docdir}/atf
 

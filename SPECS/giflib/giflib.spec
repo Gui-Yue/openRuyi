@@ -41,8 +41,6 @@ applications that use the giflib library.
 %conf
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 install -d -m 755 %{buildroot}%{_mandir}/man1
 for i in doc/*.1; do
   install -pm 0644 ${i} %{buildroot}%{_mandir}/man1/

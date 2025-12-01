@@ -57,8 +57,6 @@ install -m 644 scripts/58-scsi-sg3_symlink.rules %{buildroot}/%{_udevrulesdir}
 install -m 644 scripts/59-fc-wwpn-id.rules %{buildroot}/%{_udevrulesdir}
 install -p -m 755 scripts/fc_wwpn_id %{buildroot}%{_udevrulesdir}/..
 
-rm -rf %{buildroot}%{_libdir}/*.la
-
 %files
 %license BSD_LICENSE COPYING
 %doc AUTHORS COVERAGE CREDITS ChangeLog README README.sg_start

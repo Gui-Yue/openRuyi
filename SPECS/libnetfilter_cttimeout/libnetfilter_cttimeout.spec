@@ -33,9 +33,6 @@ Requires:       linux-headers
 This package includes header files and libraries necessary for developing
 applications that use the libnetfilter_cttimeout library.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %doc COPYING README
 %{_libdir}/*.so.*

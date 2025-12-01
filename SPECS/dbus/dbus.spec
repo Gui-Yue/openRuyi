@@ -105,7 +105,6 @@ mv -f %{buildroot}%{_bindir}/dbus-launch %{buildroot}%{_bindir}/dbus-launch.nox1
 install -d %{buildroot}/run/dbus
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 (cd %{buildroot}%{_bindir} && ln -sf ../../etc/alternatives/dbus-launch dbus-launch)
-find %{buildroot} -type f -name "*.la" -delete
 
 %verifyscript
 %{_sbindir}/update-alternatives --install %{_bindir}/dbus-launch dbus-launch %{_bindir}/dbus-launch.nox11 10

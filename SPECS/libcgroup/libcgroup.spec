@@ -67,9 +67,6 @@ rm -rf %{buildroot}%{_sysconfdir}/cgsnapshot_blacklist.conf
 rm -rf %{buildroot}%{_unitdir}/cgconfig.service
 rm -rf %{buildroot}%{_unitdir}/cgrules.service
 
-# Remove libtool archives.
-find %{buildroot} -type f -name "*.la" -delete
-
 %files
 %license COPYING
 %{_libdir}/libcgroup.so.*

@@ -34,10 +34,6 @@ Requires:       %{name} = %{version}
 This package contains the header files, libraries, and a test utility for
 developing applications that use the mtdev library.
 
-
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %doc README
 %license COPYING

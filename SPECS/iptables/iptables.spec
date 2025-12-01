@@ -151,9 +151,6 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 rm -f include/linux/types.h
 
 %install -a
-# remove la file(s)
-rm -f %{buildroot}%{_libdir}/*.la
-
 # install systemd service files
 install -d -m 755 %{buildroot}/%{_unitdir}
 install -c -m 644 %{SOURCE2} %{SOURCE3} %{SOURCE4} %{buildroot}/%{_unitdir}

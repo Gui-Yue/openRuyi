@@ -44,9 +44,6 @@ interface (API) to the in-kernel connection tracking state table.
 %conf -p
 autoreconf -fiv
 
-%install -a
-find $RPM_BUILD_ROOT -type f -name "*.la" -delete
-
 %files
 %license COPYING
 %{_libdir}/*.so.*

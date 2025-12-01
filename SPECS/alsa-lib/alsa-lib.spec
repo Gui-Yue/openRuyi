@@ -80,9 +80,6 @@ install -p -m 644 %{SOURCE2} %{buildroot}%{_prefix}/lib/modprobe.d/dist-alsa.con
 # bug#926973, place this file to the doc directory
 install -p -m 644 %{SOURCE3} .
 
-# Remove libtool archives
-find %{buildroot} -name '*.la' -delete
-
 # Remove /usr/include/asoundlib.h
 rm -f %{buildroot}%{_includedir}/asoundlib.h
 

@@ -60,11 +60,9 @@ BuildArch:      noarch
 Contains detailed user and developer documentation for fontconfig.
 
 %install -a
-# Clean up unnecessary .la files, create required config and cache directories,
-# and add a symbolic link.
+# Create required config and cache directories, and add a symbolic link.
 # This keeps system-wide configuration consistent with upstream fontconfig layout,
 # ensuring all applications reference the same canonical fonts.conf location.
-rm -f %{buildroot}%{_libdir}/*.la
 install -d -m 755 %{buildroot}%{_sysconfdir}/fonts
 install -d -m 755 %{buildroot}%{_localstatedir}/cache/fontconfig
 ln -sf ../../usr/share/fonts/fonts.conf %{buildroot}%{_sysconfdir}/fonts/fonts.conf

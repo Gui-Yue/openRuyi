@@ -51,7 +51,6 @@ autoreconf -fiv
 
 %install -a
 rm -rf %{buildroot}%{_datadir}/doc
-find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license LICENSES.txt COPYING

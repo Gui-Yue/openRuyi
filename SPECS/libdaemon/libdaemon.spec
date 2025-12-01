@@ -36,9 +36,6 @@ to develop applications that use the libdaemon framework.
 %conf -p
 autoreconf -fiv
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %doc README
 %license LICENSE

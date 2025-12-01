@@ -50,7 +50,6 @@ autoreconf -fiv
 install -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/
 mkdir -p %{buildroot}%{_libdir}/%{name}
 find %{buildroot} -type f -name "*.a" -delete
-find %{buildroot} -type f -name "*.la" -delete
 rm -f %{buildroot}%{_libdir}/libltdl.*
 rm -rf %{buildroot}%{_datadir}/libtool
 

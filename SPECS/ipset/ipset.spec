@@ -66,8 +66,6 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 install -d -m 755 %{buildroot}%{_unitdir}
 install -c -m 644 %{SOURCE1} %{buildroot}%{_unitdir}
 
-find %{buildroot} -name '*.la' -exec rm -f '{}' \;
-
 %post
 %systemd_post ipset.service
 

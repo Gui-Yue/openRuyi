@@ -47,9 +47,6 @@ developing applications that use %{name}.
 %conf -p
 autoconf -fiv
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING
 %{_libdir}/libdatrie.so.*

@@ -32,9 +32,6 @@ Requires:       linux-headers
 This package contains libraries and header files for developing applications
 that use the libnfnetlink library.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING
 %doc README

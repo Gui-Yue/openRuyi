@@ -52,9 +52,6 @@ lets you set the filesystem-based capabilities.
 %conf -p
 export LDFLAGS="$LDFLAGS -lpthread"
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING.LIB
 %{_libdir}/%{name}.so.0

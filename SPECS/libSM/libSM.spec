@@ -35,9 +35,6 @@ Requires:       %{name} = %{version}-%{release}
 %description    devel
 The X.Org X11 SM (Session Management) development package.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %{_libdir}/libSM.so.6*
 %doc %{_docdir}/%{name}

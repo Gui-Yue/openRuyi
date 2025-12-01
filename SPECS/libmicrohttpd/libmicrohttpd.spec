@@ -46,7 +46,6 @@ This package contains the header files, pkg-config files, documentation,
 and other files needed to develop applications that use libmicrohttpd.
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
 rm -v %{buildroot}%{_infodir}/%{name}_performance_data.png
 
 %files

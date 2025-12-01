@@ -37,8 +37,6 @@ for the source-highlight library.
 
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 echo -e "\ncxx = cpp.lang" >> %{buildroot}%{_datadir}/source-highlight/lang.map
 
 %files

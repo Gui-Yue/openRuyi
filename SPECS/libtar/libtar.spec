@@ -39,9 +39,6 @@ sed -i 's/-rpath $(libdir)/-rpath $(libdir) -version-number %{ltversion}/' \
 %conf -p
 autoreconf -fi
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %doc TODO README ChangeLog*
 %license COPYRIGHT

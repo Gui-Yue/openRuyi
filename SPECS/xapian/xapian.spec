@@ -40,7 +40,6 @@ developing applications that use the Xapian library.
 
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
 # Remove the dev docs, we pick them up below
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 

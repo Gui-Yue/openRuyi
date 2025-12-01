@@ -38,9 +38,6 @@ needed to develop applications and tests that use the Check framework.
 %conf -p
 autoreconf -fi
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING.LESSER
 %{_libdir}/libcheck.so.*

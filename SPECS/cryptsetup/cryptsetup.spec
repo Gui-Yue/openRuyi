@@ -100,10 +100,6 @@ disk integrity protection using dm-integrity kernel module.
 
 %install -a
 %find_lang %{name} --generate-subpackages
-# Don't want these - 251
-rm -rf %{buildroot}%{_libdir}/*.la
-rm -rf %{buildroot}%{_libdir}/%{name}/*.la
-
 
 %files
 %license COPYING

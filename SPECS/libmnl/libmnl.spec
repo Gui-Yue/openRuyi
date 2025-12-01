@@ -33,10 +33,6 @@ Requires:       %{name} = %{version}
 This package contains the header files, libraries, and examples for
 developing applications that use libmnl.
 
-
-%install -a
-find %{buildroot} -name '*.la' -delete
-
 %files
 %doc README
 %license COPYING

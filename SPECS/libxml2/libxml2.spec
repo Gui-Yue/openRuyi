@@ -53,7 +53,6 @@ This subpackage contains header files for developing applications that
 want to make use of libxml2.
 
 %install -a
-find %{buildroot} -type f -name "*.la" -delete -print
 ln -s libxml2/libxml %{buildroot}%{_includedir}/libxml
 rm -f %{buildroot}%{_docdir}/%{name}/Copyright
 %fdupes %{buildroot}%{_datadir}

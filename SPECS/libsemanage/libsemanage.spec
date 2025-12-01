@@ -52,8 +52,6 @@ grep /usr/libexec . -rl | xargs sed -i "s|/usr/libexec|%{_libexecdir}|g"
 install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/selinux/semanage.conf
 install -d -m 755 %{buildroot}%{_localstatedir}/lib/selinux
 
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license LICENSE
 %{_libdir}/libsemanage.so.*

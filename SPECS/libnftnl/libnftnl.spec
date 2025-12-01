@@ -35,9 +35,6 @@ Requires:       %{name}%{_isa} = %{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%install -a
-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
-
 %files
 %doc COPYING
 %{_libdir}/*.so.*

@@ -47,9 +47,6 @@ Requires:       %{name} = %{version}-%{release}
 This package contains headers and libraries required to build applications that
 use tpm2-tss.
 
-%install -a
-find %{buildroot}%{_libdir} -type f -name \*.la -delete
-
 %files
 %doc README.md CHANGELOG.md
 %license LICENSE

@@ -79,7 +79,6 @@ install -m 644 source/data/out/icudt*.dat %{buildroot}%{_datadir}/icu/%{version}
 install -d -m 755 %{buildroot}%{_docdir}/%{name}
 cp -a html/* %{buildroot}%{_docdir}/%{name}/
 cp -a license.html readme.html %{buildroot}%{_docdir}/%{name}/
-find %{buildroot} -type f -name "*.la" -delete
 chmod a+rx %{buildroot}%{_libdir}/lib*.so.*
 rm -f %{buildroot}%{_libdir}/icu/%{version}/{Makefile.inc,pkgdata.inc}
 

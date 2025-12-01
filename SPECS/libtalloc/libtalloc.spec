@@ -53,9 +53,6 @@ Requires:       python3-talloc = %{version}
 %description -n python3-talloc-devel
 Development files for the python3-talloc bindings.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license LICENSE
 %{_libdir}/libtalloc.so.*

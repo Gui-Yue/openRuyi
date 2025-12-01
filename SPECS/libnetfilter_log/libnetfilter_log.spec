@@ -37,9 +37,6 @@ Requires:       libnfnetlink-devel
 This package contains the header files and development library for
 libnetfilter_log.
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %license COPYING
 %{_libdir}/*.so.*

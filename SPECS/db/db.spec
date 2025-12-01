@@ -102,7 +102,6 @@ popd
 %make_install STRIP=/bin/true -C build_unix
 # These sucks
 rm -f %{buildroot}%{_libdir}/{libdb.a,libdb_cxx.a,libdb_tcl.a,libdb_sql.a}
-rm -f ${RPM_BUILD_ROOT}%{_libdir}/*.la
 rm -rf docs/csharp
 rm -rf examples/csharp
 rm -rf docs/installation

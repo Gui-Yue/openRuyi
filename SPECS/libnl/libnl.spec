@@ -74,7 +74,6 @@ pushd python
 %pyproject_install
 popd
 %endif
-find %{buildroot} -type f -name "*.la" -delete
 
 %files
 %license COPYING

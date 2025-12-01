@@ -62,9 +62,6 @@ mv %{buildroot}%{_datadir}/doc/man-db/* ./
 # remove zsoelim man page - part of groff package
 rm %{buildroot}%{_datadir}/man/man1/zsoelim.1
 
-# remove libtool archives
-rm %{buildroot}%{_libdir}/man-db/*.la
-
 # install cache directory
 install -d -m 0755  %{buildroot}%{_localstatedir}/cache/man
 

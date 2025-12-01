@@ -66,7 +66,6 @@ cd py
 %pyproject_wheel
 
 %install -a
-find %{buildroot} -name '*.la' -delete
 rm -f %{buildroot}/%{_libdir}/libnftables.a
 
 install -d -m 755 %{buildroot}%{_unitdir}

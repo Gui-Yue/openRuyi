@@ -36,7 +36,6 @@ This package contains the header files, libraries, and documentation
 needed to develop applications that use libconfuse.
 
 %install -a
-rm -f %{buildroot}%{_libdir}/*.la
 mkdir -p %{buildroot}%{_mandir}/man3/
 cp -p doc/man/man3/*.3 %{buildroot}%{_mandir}/man3/
 mkdir -p ex2/examples

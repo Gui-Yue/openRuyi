@@ -60,8 +60,6 @@ for easy password quality checking and generation of random
 pronounceable passwords from Python applications.
 
 %install -a
-rm -f %{buildroot}%{_libdir}/*.la
-rm -f %{buildroot}%{_pam_moduledir}/*.la
 mkdir %{buildroot}%{_pam_secconfdir}/pwquality.conf.d
 # Avoid illegal package names
 rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/*@*

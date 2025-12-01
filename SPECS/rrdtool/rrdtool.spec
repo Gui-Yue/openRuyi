@@ -200,7 +200,6 @@ rm -rf %{buildroot}%{perl_vendorlib}/leaktest.pl \
     %{buildroot}%{perl_archlib}/perllocal.pod \
     %{buildroot}%{_datadir}/%{name}/examples \
     %{buildroot}%{perl_vendorarch}/auto/*/{.packlist,*.bs}
-    # \ %{buildroot}%{_libdir}/lua/%{luaver}/*.la
 
 %find_lang %{name} --generate-subpackages
 

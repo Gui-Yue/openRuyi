@@ -38,9 +38,6 @@ to develop applications that use libmspack.
 cd libmspack
 autoreconf -fi
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 %files
 %{_libdir}/libmspack.so.*
 

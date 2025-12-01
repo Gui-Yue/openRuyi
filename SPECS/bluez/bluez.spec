@@ -105,8 +105,6 @@ install -m0755 tools/avinfo %{buildroot}%{_bindir}
 # MAC address configured
 install -m0755 tools/btmgmt %{buildroot}%{_bindir}
 
-find %{buildroot} -name '*.la' -delete
-
 # Remove the cups backend from libdir, and install it in /usr/lib whatever the install
 if test -d %{buildroot}/usr/lib64/cups ; then
    install -D -m0755 %{buildroot}/usr/lib64/cups/backend/bluetooth %{buildroot}%_cups_serverbin/backend/bluetooth

@@ -85,8 +85,6 @@ rm -f sudo.conf
 chmod +x %{buildroot}%{_libexecdir}/sudo/*.so
 # Clean up unwanted files
 rm -f %{buildroot}%{_datadir}/examples/sudo
-# Replace the broken %delete_la macro with its correct implementation
-find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_sysconfdir}/sudoers.dist
 # Add ld.so.conf.d entry for plugins
 mkdir -p %{buildroot}/etc/ld.so.conf.d

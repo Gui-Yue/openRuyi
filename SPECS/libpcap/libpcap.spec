@@ -44,9 +44,6 @@ This package contains supplementary documentation files for libpcap.
 %conf -p
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 
-%install -a
-find %{buildroot} -type f -name "*.la" -delete -print
-
 # no test
 %check
 
