@@ -105,7 +105,7 @@ compiles systemtap scripts to kernel objects on their demand.
 %package        devel
 Summary:        Programmable system-wide instrumentation system - development headers, tools
 License:        GPL-2.0-or-later AND GPL-2.0-only AND BSD-3-Clause AND LGPL-2.1-only AND BSD-2-Clause
-Requires:       elfutils-devel
+Requires:       libdw-devel
 Requires:       make
 
 %description    devel
