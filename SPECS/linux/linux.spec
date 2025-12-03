@@ -10,6 +10,13 @@
 #!BuildConstraint: hardware:jobs 32
 %endif
 
+# Whether dtbs needed for arch
+%ifarch riscv64
+%global need_dtbs 1
+%else
+%global need_dtbs 0
+%endif
+
 %global signmodules 1
 %global kver %{version}-%{release}
 %global kernel_make_flags LD=ld.bfd KBUILD_BUILD_VERSION=%{release}
@@ -44,6 +51,9 @@ BuildRequires:    rpm-config-openruyi
 
 Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 Requires:       %{name}-modules%{?_isa} = %{version}-%{release}
+%if %{need_dtbs}
+Requires:       %{name}-dtbs%{?_isa} = %{version}-%{release}
+%endif
 Requires(post):   kmod
 Requires(post):   kernel-install
 Requires(postun): kernel-install
@@ -77,6 +87,17 @@ external kernel modules against the installed kernel. The development files are
 located at %{_usrsrc}/kernels/%{kver}, with symlinks provided under
 %{_prefix}/lib/modules/%{kver}/ for compatibility.
 
+%if %{need_dtbs}
+
+%package dtbs
+Summary:          Devicetree blob files from Linux sources
+
+%description dtbs
+This package provides the DTB files built from Linux sources that may be used
+for booting.
+
+%endif
+
 %prep
 %autosetup -p1
 cp %{SOURCE1} .config
@@ -88,11 +109,19 @@ echo "-%{release}" > localversion
 
 %make_build %{kernel_make_flags}
 
+%if %{need_dtbs}
+%make_build %{kernel_make_flags} dtbs
+%endif
+
 %install
 %define ksrcpath %{buildroot}%{_usrsrc}/kernels/%{kver}
 install -d %{buildroot}%{modpath} %{ksrcpath}
 
 %make_build %{kernel_make_flags} INSTALL_MOD_PATH=%{buildroot}%{_prefix} INSTALL_MOD_STRIP=1 DEPMOD=true modules_install
+
+%if %{need_dtbs}
+%make_build %{kernel_make_flags} INSTALL_DTBS_PATH=%{buildroot}%{modpath}/dtb dtbs_install
+%endif
 
 %make_build run-command %{kernel_make_flags} KBUILD_RUN_COMMAND="$(pwd)/scripts/package/install-extmod-build %{ksrcpath}"
 
@@ -130,6 +159,11 @@ fi
 %{_usrsrc}/kernels/%{kver}/
 %{modpath}/build
 %{modpath}/source
+
+%if %{need_dtbs}
+%files dtbs
+%{modpath}/dtb
+%endif
 
 %changelog
 %{?autochangelog}
