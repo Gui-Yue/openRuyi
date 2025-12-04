@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
+# SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
+# SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+#
+# SPDX-License-Identifier: MulanPSL-2.0
+
+%global srcname fastjsonschema
+
+Name:           python-%{srcname}
+Version:        2.21.2
+Release:        %autorelease
+Summary:        Fastest Python implementation of JSON schema
+License:        BSD-3-Clause
+URL:            https://github.com/horejsek/python-fastjsonschema
+#!RemoteAsset
+Source:         https://files.pythonhosted.org/packages/source/f/%{srcname}/%{srcname}-%{version}.tar.gz
+BuildSystem:    pyproject
+
+BuildOption(install):  -l %{srcname}
+
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3-pip
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
+BuildRequires:  python3-pytest
+
+Provides:       python3-%{srcname}
+%python_provide python3-%{srcname}
+
+%description
+fastjsonschema implements validation of JSON documents by JSON schema.
+The library implements JSON schema drafts 04, 06 and 07.
+The main purpose is to have a really fast implementation.
+
+%generate_buildrequires
+%pyproject_buildrequires
+
+%check
+%pytest -m "not benchmark"
+
+%files -f %{pyproject_files}
+%license LICENSE
+%doc README.rst
+
+%changelog
+%{?autochangelog}
