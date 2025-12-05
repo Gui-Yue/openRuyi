@@ -5,30 +5,26 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-Name:           pytest
+%global srcname pytest
+
+Name:           %{srcname}
 Version:        8.3.5
 Release:        %autorelease
 Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://pytest.org
-# TODO: Use %%{pypi_source %%{srcname} %%{version}} in the future - 251
-#       Otherwise https://files.pythonhosted.org/packages/source/a/abc/%%{srcname}-%%{version}.tar.gz
+VCS:            git:https://github.com/pytest-dev/pytest
 #!RemoteAsset
-Source0:        https://files.pythonhosted.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
 BuildRequires:  pyproject-rpm-macros
 
+Provides:       python3-%{srcname}
+%python_provide python3-%{srcname}
+
 %description
-The pytest framework makes it easy to write small tests, yet scales to support
-complex functional testing for applications and libraries.
-
-%package     -n python3-%{name}
-Summary:        Simple powerful testing with Python
-Provides:       pytest = %{version}-%{release}
-
-%description -n python3-%{name}
 The pytest framework makes it easy to write small tests, yet scales to support
 complex functional testing for applications and libraries.
 
@@ -59,7 +55,7 @@ find %{buildroot}%{python3_sitelib} \
      -name '*.py' \
      -exec sed -i -e '1{/^#!/d}' {} \;
 
-%files -n python3-%{name} -f %{pyproject_files}
+%files -f %{pyproject_files}
 %{_bindir}/pytest
 %{_bindir}/pytest-3
 %{_bindir}/pytest-%{python3_version}
