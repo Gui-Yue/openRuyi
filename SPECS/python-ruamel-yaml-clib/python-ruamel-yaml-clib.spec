@@ -12,8 +12,8 @@ Release:        %autorelease
 Summary:        C version of reader, parser and emitter for ruamel.yaml derived from libyaml
 License:        MIT
 URL:            https://sourceforge.net/projects/ruamel-yaml-clib/
-#!RemoteAsset
 #Source0:        https://files.pythonhosted.org/packages/source/r/%%{srcname}/%%{srcname}-%{version}.tar.gz
+#!RemoteAsset
 Source0:        https://yaml.dev/ruamel-dl-tagged-releases/%{srcname}-%{version}.tar.xz
 BuildSystem:    pyproject
 

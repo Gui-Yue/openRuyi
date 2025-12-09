@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: lzyprime <2383518170@qq.com>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -24,6 +25,12 @@ repos:
        entry: '%changelog\s+%\{\?autochangelog\}'
        args: ["--negate", "--multiline"]
        files: \.spec$
+    -  id: sourcewithRemoteAsset
+       name: "check Source with #!RemoteAsset"
+       language: python
+       entry: scripts/pre-commit-hooks/check_source_with_remoteasset.py
+       files: \.spec$
+       pass_filenames: true
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:

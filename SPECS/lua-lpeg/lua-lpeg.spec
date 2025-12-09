@@ -11,8 +11,8 @@ Version:        1.1.0
 Release:        %autorelease
 Summary:        Parsing Expression Grammars for Lua
 License:        MIT
-#!RemoteAsset
 URL:            http://www.inf.puc-rio.br/~roberto/lpeg/
+#!RemoteAsset
 Source0:        http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
 BuildSystem:    autotools
 

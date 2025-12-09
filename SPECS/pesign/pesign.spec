@@ -11,8 +11,8 @@ Version:        116
 Release:        %autorelease
 Summary:        Signing utility for UEFI binaries
 License:        GPL-2.0-only
-#!RemoteAsset
 URL:            https://github.com/rhboot/pesign
+#!RemoteAsset
 Source0:        https://github.com/rhboot/pesign/releases/download/%{version}/pesign-%{version}.tar.bz2
 Source1:        pesign.py
 Patch0:         0001-cms_common-Fixed-Segmentation-fault.patch

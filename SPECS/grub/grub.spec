@@ -46,8 +46,8 @@ Source0:        https://ftpmirror.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 #!CreateArchive
 Source0:        grub.tar.gz
 %endif
-#!RemoteAsset
 %if %{without releasecandidate}
+#!RemoteAsset
 Source1:        https://ftpmirror.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 %endif
 # Find this commit hash from bootstrap.conf

@@ -38,10 +38,12 @@ Source3:        macros.pybytecompile
 Source4:        python.lua
 # Python code
 %global compileall2_version 0.8.0
-Source5:        https://github.com/fedora-python/compileall2/raw/v%{compileall2_version}/compileall2.py
+# From https://github.com/fedora-python/compileall2/raw/v%{compileall2_version}/compileall2.py
+Source5:        compileall2.py
 Source6:        import_all_modules.py
 %global pathfix_version 1.0.0
-Source7:        https://github.com/fedora-python/pathfix/raw/v%{pathfix_version}/pathfix.py
+# From https://github.com/fedora-python/pathfix/raw/v%{pathfix_version}/pathfix.py
+Source7:        pathfix.py
 Source8:        clamp_source_mtime.py
 # BuildRoot Policy scripts
 Source9:        brp-python-bytecompile
