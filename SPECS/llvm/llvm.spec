@@ -274,8 +274,6 @@ BuildRequires:	swig
 BuildRequires:	libxml2-devel
 BuildRequires:	doxygen
 %if %{with offload}
-# For clang-offload-packager
-BuildRequires: libelf-devel
 BuildRequires: perl
 BuildRequires: perl-Data-Dumper
 BuildRequires: perl-Encode
@@ -521,7 +519,6 @@ instrumentation, and Blocks C language extension.
 Summary: OpenMP runtime for clang
 URL: http://openmp.llvm.org
 Requires: %{pkg_name_llvm}-libs%{?_isa} = %{version}-%{release}
-Requires: elfutils-libelf%{?_isa}
 Provides: libomp(major) = %{maj_ver}
 %description -n %{pkg_name_libomp}
 OpenMP runtime for clang.
