@@ -11,13 +11,14 @@ Release:        %autorelease
 Summary:        Find duplicate files utility
 License:        GPL-2.0-or-later
 URL:            https://rdfind.pauldreik.se/
-#!RemoteAsset
-Source0:        https://rdfind.pauldreik.se/%{name}-%{version}.tar.gz
-#!RemoteAsset
-Source1:        https://rdfind.pauldreik.se/%{name}-%{version}.tar.gz.asc
+#!RemoteAsset:  sha256:bd17dbd9c6c9fc0c0b016b3e77ecf5cd718eee428172c767f429ba30405816d8
+Source0:        https://github.com/pauldreik/rdfind/archive/refs/tags/releases/%{version}.tar.gz
 
 BuildSystem:    autotools
 
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  m4
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  make
@@ -27,6 +28,9 @@ BuildRequires:  nettle-devel
 Rdfind is a program that finds duplicate files. It is useful for compressing
 backup directories or just finding duplicate files. It compares files based on
 their content, NOT on their file names.
+
+%conf -p
+autoreconf -vif
 
 %files
 %license COPYING LICENSE
