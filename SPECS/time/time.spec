@@ -4,6 +4,8 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
+%global optflags %optflags -Wno-error=incompatible-pointer-types
+
 Name:           time
 Version:        1.9
 Release:        %autorelease
@@ -15,7 +17,6 @@ Source:         https://ftpmirror.gnu.org/gnu/time/%{name}-%{version}.tar.gz
 #!RemoteAsset
 Source2:        https://ftpmirror.gnu.org/gnu/time/%{name}-%{version}.tar.gz.sig
 BuildSystem:    autotools
-BuildOption(conf): CFLAGS="%{build_cflags} -Wno-error=incompatible-pointer-types"
 
 %description
 The "time" command runs another program, then displays information
