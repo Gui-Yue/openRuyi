@@ -5,6 +5,8 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
+%global _test_target test
+
 Name:           newt
 Version:        0.52.25
 Release:        %autorelease
