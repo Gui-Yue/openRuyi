@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
-# SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: yyjeqhc <jialin.oerv@isrc.iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -12,11 +12,15 @@ Summary:        Library for manipulating tar files from within C programs
 License:        BSD-3-Clause
 URL:            http://repo.or.cz/libtar.git
 #!RemoteAsset
-Source:         http://repo.or.cz/libtar.git/snapshot/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://repo.or.cz/libtar.git/snapshot/v%{version}.tar.gz
 BuildSystem:    autotools
 
-BuildOption(conf): --disable-static
-BuildRequires:  libtool autoconf automake gcc
+BuildOption(conf):  --disable-static
+
+BuildRequires:  libtool
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  gcc
 
 %description
 Libtar is a C library for manipulating POSIX tar files. It handles adding
@@ -42,7 +46,7 @@ autoreconf -fi
 %files
 %doc TODO README ChangeLog*
 %license COPYRIGHT
-%{_bindir}/%{name}
+%{_bindir}/libtar
 %{_libdir}/lib*.so.*
 
 %files devel
