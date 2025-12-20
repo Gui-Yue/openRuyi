@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
-# SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: yyjeqhc <jialin.oerv@isrc.iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -16,10 +16,10 @@ Source0:        http://ibiblio.org/pub/Linux/utils/file/%{name}-%{version}.tar.g
 BuildSystem:    autotools
 Patch0:         0001-fix-makefile.patch
 
-BuildOption(build): CFLAGS="%{optflags} %{build_ldflags}"
-BuildOption(install): PREFIX=%{_prefix}
-BuildOption(install): BINDIR=%{_bindir}
-BuildOption(install): MANDIR=%{_mandir}
+BuildOption(build):  CFLAGS="%{optflags} %{build_ldflags}"
+BuildOption(install):  PREFIX=%{_prefix}
+BuildOption(install):  BINDIR=%{_bindir}
+BuildOption(install):  MANDIR=%{_mandir}
 
 BuildRequires:  gcc
 
