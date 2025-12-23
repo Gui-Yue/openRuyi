@@ -16,6 +16,8 @@ Source0:        https://ftpmirror.gnu.org/gnu/parted/parted-%{version}.tar.xz
 BuildSystem:    autotools
 
 Patch0:         0001-fix-do_version-parameters.patch
+# skip some tests need superuser.
+Patch1:         0002-skip-some-tests.patch
 
 BuildOption(conf):  --enable-shared
 BuildOption(conf):  --disable-device-mapper
