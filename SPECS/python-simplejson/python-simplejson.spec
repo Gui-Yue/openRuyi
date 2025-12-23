@@ -19,8 +19,13 @@ Source0:        https://files.pythonhosted.org/packages/source/s/%{srcname}/%{sr
 BuildSystem:    pyproject
 
 BuildOption(install):  -l %{srcname}
+# skip the tests which use python2.
+BuildOption(check):  -e simplejson.ordered_dict
 
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}
