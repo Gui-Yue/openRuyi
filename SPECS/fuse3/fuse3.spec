@@ -88,6 +88,9 @@ install -p -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}
 # Delete pointless udev rules
 rm -f %{buildroot}%{_udevrulesdir}/99-fuse3.rules
 
+# Seems no check
+%check
+
 %files
 %license LICENSE GPL2.txt
 %doc AUTHORS ChangeLog.rst README.md
