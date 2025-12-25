@@ -86,9 +86,16 @@ sed -e 's/-Werror\b//g' -i Makefile Make.defaults
 
 %files debuginfo
 %defattr(-,root,root,-)
+%ifarch x86_64
+%{_prefix}/lib/debug/boot/efi/EFI/%{_vendor}/fbx64.efi.debug
+%{_prefix}/lib/debug/boot/efi/EFI/%{_vendor}/mmx64.efi.debug
+%{_prefix}/lib/debug/boot/efi/EFI/%{_vendor}/shimx64.efi.debug
+%endif
+%ifarch riscv64
 %{_prefix}/lib/debug/boot/efi/EFI/%{_vendor}/fbriscv64.efi.debug
 %{_prefix}/lib/debug/boot/efi/EFI/%{_vendor}/mmriscv64.efi.debug
 %{_prefix}/lib/debug/boot/efi/EFI/%{_vendor}/shimriscv64.efi.debug
+%endif
 # Uh... What the hell - 251
 %dir %{_prefix}/lib/debug/.build-id
 %{_prefix}/lib/debug/.build-id/*/*
