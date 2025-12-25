@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-%bcond x11 0
+%bcond x11 1
 
 Name:           libxkbcommon
 Version:        1.13.0
