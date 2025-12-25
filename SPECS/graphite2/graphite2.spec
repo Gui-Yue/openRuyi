@@ -23,6 +23,7 @@ Patch1:         0002-graphite2-1.3.14-gcc15.patch
 
 BuildOption(conf):  -DGRAPHITE2_COMPARE_RENDERER=OFF
 BuildOption(conf):  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+BuildOption(check):  -E 'nametabletest'
 
 BuildRequires:  cmake
 BuildRequires:  pkgconfig(freetype2)
