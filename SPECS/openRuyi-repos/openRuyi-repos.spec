@@ -6,7 +6,7 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 %if %{undefined _vendor_repo_url}
-%global _vendor_repo_url https://vine.oerv.ac.cn/OpenRuyi:/Factory:/Bootstrap/\\$basearch/
+%global _vendor_repo_url https://diamond.oerv.ac.cn/openruyi/\\$basearch/
 %endif
 
 Name:           openRuyi-repos
