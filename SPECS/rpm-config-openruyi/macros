@@ -282,9 +282,10 @@ Provides translations for the \"%{-n:%{-n*}}%{!-n:%{name}}\" package.
 %__global_cxxflags %{__global_cflags} %{openruyi_security_cxxflags}
 %__global_ldflags  %{openruyi_security_ldflags}
 
-%build_cflags      %{expand:%{__global_cflags}}
-%build_cxxflags    %{expand:%{__global_cxxflags}}
-%build_ldflags     %{expand:%{__global_ldflags}}
+%build_cflags      %{__global_cflags}
+%build_cxxflags    %{__global_cxxflags}
+%build_ldflags     %{__global_ldflags}
+
 
 # avoid overwriting files that didn't actually change on disk
 %_minimize_writes	1
