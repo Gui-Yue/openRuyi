@@ -1,0 +1,46 @@
+From ac352f68ed17926ec8bff9f9f0eba680dc4a32e1 Mon Sep 17 00:00:00 2001
+From: misaka00251 <liuxin@iscas.ac.cn>
+Date: Thu, 8 Jan 2026 17:27:56 +0800
+Subject: [PATCH] Fix import path
+
+---
+ internal/execution/e.go    | 2 +-
+ internal/storage/header.go | 2 +-
+ tensor.go                  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/internal/execution/e.go b/internal/execution/e.go
+index 979e7c7..d024792 100644
+--- a/internal/execution/e.go
++++ b/internal/execution/e.go
+@@ -1,4 +1,4 @@
+-package execution // import "gorgonia.org/tensor/internal/execution"
++package execution
+ 
+ import (
+ 	"fmt"
+diff --git a/internal/storage/header.go b/internal/storage/header.go
+index a2894ba..f807c6a 100644
+--- a/internal/storage/header.go
++++ b/internal/storage/header.go
+@@ -1,4 +1,4 @@
+-package storage // import "gorgonia.org/tensor/internal/storage"
++package storage
+ 
+ import (
+ 	"reflect"
+diff --git a/tensor.go b/tensor.go
+index 071ca67..47e6343 100644
+--- a/tensor.go
++++ b/tensor.go
+@@ -1,6 +1,6 @@
+ // Package tensor is a package that provides efficient, generic n-dimensional arrays in Go.
+ // Also in this package are functions and methods that are used commonly in arithmetic, comparison and linear algebra operations.
+-package tensor // import "gorgonia.org/tensor"
++package tensor
+ 
+ import (
+ 	"encoding/gob"
+-- 
+2.52.0
+
