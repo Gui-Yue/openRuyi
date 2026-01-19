@@ -1,10 +1,16 @@
-# SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
-# SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
+# SPDX-FileCopyrightText: (C) 2025, 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
+# SPDX-FileCopyrightText: (C) 2025, 2026 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
 %global _lto_cflags %{nil}
+%ifarch riscv64
+%global build_cflags -march=rva23u64
+%else
+%global build_cflags %nil
+%endif
+%global build_ldflags %nil
 
 Name:           valgrind
 Version:        3.26.0
