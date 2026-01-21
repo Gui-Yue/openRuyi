@@ -3,6 +3,7 @@
 # SPDX-FileContributor: Suyun114 <ziyu.oerv@isrc.iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -12,6 +13,7 @@ Release:        %autorelease
 Summary:        A Collection of macros for GNU autoconf
 License:        GPL-3.0-or-later WITH Autoconf-exception-3.0
 URL:            https://www.gnu.org/software/autoconf-archive/
+VCS:            git:https://git.savannah.gnu.org/git/autoconf-archive.git
 #!RemoteAsset
 Source0:        https://ftpmirror.gnu.org/gnu/autoconf-archive/autoconf-archive-%{version}.tar.xz
 #!RemoteAsset
