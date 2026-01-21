@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: haswell <haswell@haswells-MacBook-Air.local>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -15,9 +16,14 @@ Version:        1.89.0
 Release:        %autorelease
 License:        BSL-1.0 AND MIT AND Python-2.0.1
 URL:            http://www.boost.org
+VCS:            git:https://github.com/boostorg/boost
 #!RemoteAsset
 Source0:        https://archives.boost.io/release/%{version}/source/%{name}_%{version_enc}.tar.gz
 Source1:        b2.1
+# use autotools to reduce abundant % procedures
+# boost uses its own build system called b2, however
+BuildSystem:    autotools
+
 # Adjusting build optimization flags for rpm build
 Patch0:         0001-boost-1.81.0-build-optflags.patch
 # Remove rpath from builds
@@ -29,16 +35,13 @@ Patch2:         0003-boost-1.78.0-b2-build-flags.patch
 # boost-mpich is not built
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
-BuildRequires:  bzip2-devel
-BuildRequires:  zlib-devel
-BuildRequires:  xz-devel
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  icu4c-devel
 BuildRequires:  bison
-BuildRequires:  zstd-devel
-# use autotools to reduce abundant % procedures
-# boost uses its own build system called b2, however
-BuildSystem:    autotools
+BuildRequires:  pkgconfig(libzstd)
 
 %description
 Boost provides free peer-reviewed portable C++ source libraries.  The
@@ -50,10 +53,10 @@ libraries have already been included in the C++ 2011 standard and
 others have been proposed to the C++ Standards Committee for inclusion
 in future standards.)
 
-%package build
+%package        build
 Summary:        Cross platform build system for C++ projects
 
-%description build
+%description    build
 Boost.Build is an easy way to build C++ projects, everywhere. You name
 your pieces of executable and libraries and list their sources.  Boost.Build
 takes care about compiling your sources with the right options,
@@ -61,12 +64,12 @@ creating static and shared libraries, making pieces of executable, and other
 chores -- whether you are using GCC, MSVC, or a dozen more supported
 C++ compilers -- on Windows, OSX, Linux and commercial UNIX systems.
 
-%package devel
+%package        devel
 Summary:        The Boost C++ headers and shared development libraries
-Requires:       %{name}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       icu4c-devel
 
-%description devel
+%description    devel
 Headers and shared object symbolic links for the Boost C++ libraries.
 
 %conf
