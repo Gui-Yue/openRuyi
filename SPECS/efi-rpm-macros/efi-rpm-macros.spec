@@ -22,8 +22,12 @@ BuildSystem:    autotools
 # https://github.com/rhboot/efi-rpm-macros/pull/3
 Patch0:         0001-Add-riscv64-support.patch
 
-BuildOption(build):  EFI_ESP_ROOT="/boot/efi" EFI_ARCHES="riscv64" EFI_VENDOR="%{_efi_vendor_}"
-BuildOption(install):  EFI_ESP_ROOT="/boot/efi" EFI_ARCHES="riscv64" EFI_VENDOR="%{_efi_vendor_}"
+BuildOption(build):  EFI_ESP_ROOT="/boot/efi"
+BuildOption(build):  EFI_ARCHES="riscv64"
+BuildOption(build):  EFI_VENDOR="%{_efi_vendor_}"
+BuildOption(install):  EFI_ESP_ROOT="/boot/efi"
+BuildOption(install):  EFI_ARCHES="riscv64"
+BuildOption(install):  EFI_VENDOR="%{_efi_vendor_}"
 
 BuildRequires:  make
 
