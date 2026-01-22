@@ -2,21 +2,29 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: jchzhou <zhoujiacheng@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
+
+%global LOADER grub.efi
 
 Name:           efibootmgr
 Version:        18
 Release:        %autorelease
 Summary:        EFI Boot Manager
 License:        GPL-2.0-or-later
-URL:            https://github.com/rhinstaller/efibootmgr
+URL:            https://github.com/rhboot/efibootmgr
 #!RemoteAsset
 Source:         https://github.com/rhboot/efibootmgr/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.bz2
 BuildSystem:    autotools
-%global LOADER grub.efi
-BuildOption(build):    CFLAGS="%{optflags} -flto -fPIE -pie" OS_VENDOR="%{_vendor}" EFI_LOADER="%{LOADER}" EFIDIR="%{_vendor}"
-BuildOption(install):  DESTDIR=%{buildroot} sbindir=%{_sbindir} EFIDIR="%{_vendor}"
+
+BuildOption(build):  CFLAGS="%{optflags} -flto -fPIE -pie"
+BuildOption(build):  OS_VENDOR="%{_vendor}"
+BuildOption(build):  EFI_LOADER="%{LOADER}"
+BuildOption(build):  EFIDIR="%{_vendor}"
+BuildOption(install):  DESTDIR=%{buildroot}
+BuildOption(install):  sbindir=%{_sbindir}
+BuildOption(install):  EFIDIR="%{_vendor}"
 
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(efiboot) >= 31
