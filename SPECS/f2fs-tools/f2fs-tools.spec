@@ -2,45 +2,47 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-Name:               f2fs-tools
-Version:            1.16.0
-Release:            %autorelease
-Summary:            Tools for the Flash-Friendly File System (F2FS)
-License:            GPL-2.0-or-later
+Name:           f2fs-tools
+Version:        1.16.0
+Release:        %autorelease
+Summary:        Tools for the Flash-Friendly File System (F2FS)
+License:        GPL-2.0-or-later
 URL:            https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git
 #!RemoteAsset
 Source:         https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-%{version}.tar.gz
-Patch0:         0001-f2fs-tools-1.16.0-c23.patch
 BuildSystem:    autotools
 
-BuildOption(conf): --disable-static
+Patch0:         0001-f2fs-tools-1.16.0-c23.patch
+
+BuildOption(conf):  --disable-static
 
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  m4
 BuildRequires:  util-linux-devel
 BuildRequires:  libtool
-BuildRequires:  libselinux-devel
-BuildRequires:  make gcc
+BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  make
+BuildRequires:  gcc
 
 %description
 This package provides tools for the Flash-Friendly File System (F2FS),
 a filesystem designed for NAND flash memory-based storage devices.
 
-%package devel
+%package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description    devel
 This package contains the libraries and header files needed to develop
 applications that use the F2FS library.
 
 %conf -p
 autoreconf -fiv
-
 
 %install -a
 install -m 644 mkfs/f2fs_format_utils.h %{buildroot}%{_includedir}
