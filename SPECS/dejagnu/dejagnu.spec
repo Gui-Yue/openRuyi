@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -10,6 +11,7 @@ Release:        %autorelease
 Summary:        Framework for Running Test Suites on Software Tools
 License:        GPL-3.0-or-later
 URL:            https://www.gnu.org/software/dejagnu/
+VCS:            git:https://https.git.savannah.gnu.org/git/dejagnu.git
 #!RemoteAsset
 Source0:        https://ftpmirror.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 #!RemoteAsset
@@ -17,19 +19,23 @@ Source1:        https://ftpmirror.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.
 #!RemoteAsset
 Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=dejagnu&download=1#/%{name}.keyring
 Source3:        site.exp
-Patch0:         testsuite-legacy.patch
+BuildArch:      noarch
 Buildsystem:    autotools
+
+Patch0:         testsuite-legacy.patch
+
+BuildOption(build):  -C build
+BuildOption(install):  -C build DESTDIR=%{buildroot}
+BuildOption(check):  -C build
+
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+
 Requires:       expect
 Requires:       texinfo
 Requires:       tcl
-BuildArch:      noarch
 
-BuildOption(build):   -C build
-BuildOption(install): -C build DESTDIR=%{buildroot}
-BuildOption(check):   -C build
 %description
 DejaGnu is a framework for testing other programs.  Its purpose is to
 provide a single front-end for all tests.  Beyond this, DejaGnu offers
