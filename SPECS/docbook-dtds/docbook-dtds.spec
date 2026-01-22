@@ -16,6 +16,7 @@ Release:        %autorelease
 Summary:        SGML and XML document type definitions for DocBook
 License:        DocBook-DTD
 URL:            https://www.oasis-open.org/docbook/
+# VCS: No VCS link available
 #!RemoteAsset
 Source0:        https://www.oasis-open.org/docbook/sgml/3.0/docbk30.zip
 #!RemoteAsset
