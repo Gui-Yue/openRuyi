@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -13,9 +14,10 @@ URL:            https://github.com/google/fscryptctl
 #!RemoteAsset
 Source:         https://github.com/google/fscryptctl/archive/refs/tags/v%{version}.tar.gz
 BuildSystem:    autotools
+
 Patch:          0001-disable-doc.patch
 
-BuildOption(install): PREFIX=%{_prefix}
+BuildOption(install):  PREFIX=%{_prefix}
 
 BuildRequires:  gcc
 BuildRequires:  make
