@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -10,26 +11,28 @@ Release:        %autorelease
 Summary:        GNU Zip Compression Utilities
 License:        GPL-3.0-or-later
 URL:            https://www.gnu.org/software/gzip/
+VCS:            git:https://https.git.savannah.gnu.org/git/gzip.git
 #!RemoteAsset
 Source:         https://ftpmirror.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 #!RemoteAsset
 Source2:        https://ftpmirror.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
-Patch1:         manpage-no-date.patch
+BuildSystem:    autotools
+
+Patch0:         manpage-no-date.patch
+
+# avoid build require "less"
+BuildOption(conf):  ac_cv_prog_LESS="less"
+BuildOption(check):  XFAIL_TESTS=help-version
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  texinfo
-
-BuildSystem:    autotools
-# avoid build require "less"
-BuildOption(conf): ac_cv_prog_LESS="less"
-BuildOption(check): XFAIL_TESTS=help-version
 
 %description
 Gzip reduces the size of the named files using Lempel-Ziv coding LZ77.
 Whenever possible, each file is replaced by one with the extension .gz,
 while keeping the same ownership modes and access and modification
 times.
-
 
 %files
 %license COPYING
