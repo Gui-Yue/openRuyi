@@ -3,6 +3,7 @@
 # SPDX-FileContributor: Jingwiw <wangjingwei@iscas.ac.cn>
 # SPDX-FileContributor: Suyun114 <ziyu.oerv@isrc.iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -16,13 +17,13 @@ URL:            https://github.com/libbpf/libbpf
 Source:         https://github.com/libbpf/libbpf/archive/v%{version}.tar.gz
 BuildSystem:    autotools
 
-BuildOption(build): LIBDIR=%{_libdir}
-BuildOption(build): -C src
-BuildOption(install): LIBDIR=%{_libdir}
-BuildOption(install): -C src
+BuildOption(build):  LIBDIR=%{_libdir}
+BuildOption(build):  -C src
+BuildOption(install):  LIBDIR=%{_libdir}
+BuildOption(install):  -C src
 
-BuildRequires:  libelf-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libelf)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 libbpf is a C library which provides API for managing eBPF programs and maps.
