@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <jialin.oerv@isrc.iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,6 +12,7 @@ Release:        %autorelease
 Summary:        Library for manipulating tar files from within C programs
 License:        BSD-3-Clause
 URL:            http://repo.or.cz/libtar.git
+VCS:            git:https://repo.or.cz/libtar.git
 #!RemoteAsset
 Source:         https://repo.or.cz/libtar.git/snapshot/v%{version}.tar.gz
 BuildSystem:    autotools
@@ -28,7 +30,7 @@ and extracting files to/from a tar archive. Requires gcc, make, and zlib.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 This package contains the header files, documentation, and other development
