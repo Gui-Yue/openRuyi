@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,27 +12,28 @@ Release:       %autorelease
 Summary:       A tool for listing open files
 License:       Sendmail and LGPL-2.1-or-later and Zlib
 URL:           https://lsof.readthedocs.io/en/latest/
+VCS:           git:https://github.com/lsof-org/lsof
 #!RemoteAsset
 Source0:       https://github.com/lsof-org/lsof/releases/download/%{version}/lsof-%{version}.tar.gz
+BuildSystem:   autotools
 
-BuildSystem:    autotools
+BuildOption(conf):  --disable-static
+BuildOption(conf):  --enable-security
+BuildOption(conf):  --enable-no-sock-security
 
-BuildOption(conf): --disable-static
-BuildOption(conf): --enable-security
-BuildOption(conf): --enable-no-sock-security
-
-BuildRequires: gcc make
-BuildRequires: pkgconfig(libtirpc)
-BuildRequires: libselinux-devel
-BuildRequires: groff
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  pkgconfig(libtirpc)
+BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  groff
 
 %description
 lsof is a Unix administrative tool that displays information about files
 open to processes. It runs on many Unix dialects.
 
-%package devel
+%package        devel
 Summary:        Development files for the lsof library
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 This package contains the header files and development library for lsof.
