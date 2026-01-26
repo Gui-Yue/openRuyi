@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Dingli Zhang <dingli@iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,6 +12,7 @@ Release:        %autorelease
 Summary:        X.Org X11 ICE runtime library
 License:        MIT-open-group
 URL:            http://www.x.org
+VCS:            git:https://gitlab.freedesktop.org/xorg/lib/libice.git
 #!RemoteAsset
 Source0:        https://www.x.org/pub/individual/lib/%{name}-%{version}.tar.xz
 BuildSystem:    autotools
@@ -32,7 +34,7 @@ The X.Org X11 ICE (Inter-Client Exchange) runtime library.
 
 %package        devel
 Summary:        X.Org X11 ICE development package
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 The X.Org X11 ICE (Inter-Client Exchange) development package.
@@ -41,7 +43,7 @@ The X.Org X11 ICE (Inter-Client Exchange) development package.
 %{_libdir}/libICE.so.*
 %doc AUTHORS ChangeLog COPYING
 
-%files          devel
+%files devel
 %{_includedir}/X11/ICE
 %{_libdir}/libICE.so
 %{_libdir}/pkgconfig/ice.pc
