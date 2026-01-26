@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Suyun114 <ziyu.oerv@isrc.iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,13 +12,14 @@ Release:        %autorelease
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 URL:            https://gnupg.org/software/libgcrypt
+VCS:            git:https://git.gnupg.org/libgcrypt.git
 #!RemoteAsset
 Source:         https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2
 #!RemoteAsset
 Source1:        https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2.sig
 BuildSystem:    autotools
 
-BuildRequires:  libgpg-error-devel
+BuildRequires:  pkgconfig(gpg-error)
 
 %description
 Libgcrypt is a general purpose library of cryptographic building
@@ -27,7 +29,7 @@ understanding of applied cryptography is required to use Libgcrypt.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 Libgcrypt is a general purpose library of cryptographic building
