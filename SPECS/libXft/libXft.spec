@@ -35,7 +35,7 @@ X.Org X11 libXft runtime library
 
 %package        devel
 Summary:        X.Org X11 libXft development package
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 X.Org X11 libXft development package
