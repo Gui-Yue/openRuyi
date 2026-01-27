@@ -3,6 +3,7 @@
 # SPDX-FileContributor: Dingli Zhang <dingli@iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -15,11 +16,12 @@ URL:            https://github.com/ngtcp2/nghttp3
 #!RemoteAsset
 Source:         https://github.com/ngtcp2/nghttp3/releases/download/v%{version}/nghttp3-%{version}.tar.xz
 BuildSystem:    cmake
+
 Patch:          0001-fix-install-path.patch
 
-BuildOption(conf): -DENABLE_STATIC_LIB:BOOL=OFF
+BuildOption(conf):  -DENABLE_STATIC_LIB:BOOL=OFF
 
-BuildRequires:  cmake >= 3.20
+BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  make
@@ -29,11 +31,11 @@ BuildRequires:  pkgconfig(check)
 %description
 nghttp3 is a C library that implements QUIC and HTTP/3 framing layer.
 
-%package devel
+%package        devel
 Summary:        Development files for the HTTP/3 library
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description    devel
 This package contains the header files and development libraries for nghttp3.
 
 %files
