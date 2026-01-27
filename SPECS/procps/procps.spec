@@ -3,6 +3,7 @@
 # SPDX-FileContributor: Jingkun Zheng <zhengjingkun@iscas.ac.cn>
 # SPDX-FileContributor: Jingwiw <wangjingwei@iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -13,34 +14,38 @@ Name:          procps-ng
 Version:       4.0.5
 Release:       %autorelease
 Summary:       System and process monitoring utilities
-Provides:      procps
 License:       GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:           https://gitlab.com/procps-ng/procps
 #!RemoteAsset
 Source0:       https://downloads.sourceforge.net/project/%{name}/Production/%{name}-%{version}.tar.xz
-
 BuildSystem:   autotools
-BuildOption(conf): --disable-kill
-BuildOption(conf): --enable-watch8bit
-BuildOption(conf): --with-systemd
-BuildOption(conf): --sbindir=%{_bindir}
-BuildOption(check): LD_LIBRARY_PATH=$PWD/proc/.libs
 
-BuildRequires:  make, gcc
-BuildRequires:  autoconf, automake, libtool
-BuildRequires:  ncurses-devel, gettext-devel
+BuildOption(conf):  --disable-kill
+BuildOption(conf):  --enable-watch8bit
+BuildOption(conf):  --with-systemd
+BuildOption(conf):  --sbindir=%{_bindir}
+BuildOption(check):  LD_LIBRARY_PATH=$PWD/proc/.libs
+
+BuildRequires:  make
+BuildRequires:  gcc
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  gettext-devel
 BuildRequires:  pkgconfig(libsystemd)
+
+Provides:       procps
 
 %description
 The procps-ng package contains a set of system utilities that provide
 system information, such as ps, top, free, vmstat, and watch.
 
-%package devel
-Summary:       Development files for procps-ng
-License:       GPL-2.0-or-later AND LGPL-2.1-or-later
-Requires:      %{name}%{?_isa} = %{version}-%{release}
+%package        devel
+Summary:        Development files for procps-ng
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description    devel
 This package contains the header files and development libraries for procps-ng.
 
 %conf -p
