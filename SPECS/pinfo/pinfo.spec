@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -13,6 +14,8 @@ License:        GPL-2.0-only
 URL:            https://github.com/baszoetekouw/pinfo
 #!RemoteAsset
 Source:         https://github.com/baszoetekouw/pinfo/archive/refs/tags/v%{version}.tar.gz
+BuildSystem:    autotools
+
 Patch0:         0001-pinfo-0.6.9-infopath.patch
 Patch1:         0002-pinfo-0.6.9-xdg.patch
 Patch2:         0003-pinfo-0.6.10-man.patch
@@ -21,19 +24,18 @@ Patch4:         0005-pinfo-0.6.13-gccwarn.patch
 Patch5:         0006-pinfo-0.6.13-nogroup.patch
 Patch6:         0007-pinfo-0.6.13-stringop-overflow.patch
 Patch7:         0008-pinfo-configure-c99.patch
-BuildSystem:    autotools
 
-BuildOption(conf): --without-readline
+BuildOption(conf):  --without-readline
 
-BuildRequires: automake
-BuildRequires: gcc
-BuildRequires: gettext-devel
-BuildRequires: libtool
-BuildRequires: make
-BuildRequires: ncurses-devel
-BuildRequires: texinfo
+BuildRequires:  automake
+BuildRequires:  gcc
+BuildRequires:  gettext-devel
+BuildRequires:  libtool
+BuildRequires:  make
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  texinfo
 
-Requires: xdg-utils
+Requires:       xdg-utils
 
 %description
 Pinfo is an info file (or man page) viewer with a user interface
