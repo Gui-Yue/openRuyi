@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -8,16 +9,19 @@ Name:           plzip
 Version:        1.12
 Release:        %autorelease
 Summary:        Parallel lossless data compressor for the lzip format
-License:        GPLv2+ AND BSD-2-Clause
+License:        GPL-2.0-or-later AND BSD-2-Clause
 URL:            https://www.nongnu.org/lzip/plzip.html
+# VCS: No VCS link available
 #!RemoteAsset
-Source0:         https://download.savannah.nongnu.org/releases/lzip/plzip/plzip-%{version}.tar.gz
+Source0:        https://download.savannah.nongnu.org/releases/lzip/plzip/plzip-%{version}.tar.gz
 #!RemoteAsset
-Source1:         https://download.savannah.nongnu.org/releases/lzip/plzip/plzip-%{version}.tar.gz.sig
+Source1:        https://download.savannah.nongnu.org/releases/lzip/plzip/plzip-%{version}.tar.gz.sig
 BuildSystem:    autotools
+
 BuildRequires:  gcc-c++
 BuildRequires:  texinfo
 BuildRequires:  lzlib-devel
+
 %description
 Plzip is a massively parallel (multi-threaded) lossless data compressor
 and decompressor that uses the lzip file format (.lz).  Files produced by plzip
