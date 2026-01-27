@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <jialin.oerv@isrc.iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,6 +12,7 @@ Release:        %autorelease
 Summary:        Network Security Services
 License:        MPL-2.0
 URL:            https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
+VCS:            hg:https://hg.mozilla.org/projects/nss
 #!RemoteAsset
 Source:         https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_115_RTM/src/nss-3.115-with-nspr-4.37.tar.gz
 BuildSystem:    autotools
