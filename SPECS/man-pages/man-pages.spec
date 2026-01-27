@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: ayostl <yao_xp@yeah.net>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -10,16 +11,16 @@ Release:        %autorelease
 Summary:        Linux kernel and user-space C library interfaces documentation
 License:        GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause-UC AND LGPL-3.0-or-later AND LGPL-3.0-only AND LGPL-3.0-linking-exception AND MIT AND Spencer-94
 URL:            https://www.kernel.org/doc/man-pages/
+VCS:            git:https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git
 #!RemoteAsset
 Source0:        https://www.kernel.org/pub/linux/docs/man-pages/%{name}-%{version}.tar.xz
 BuildArch:      noarch
 
 BuildRequires:  make
+
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Requires(preun): update-alternatives
-
-Obsoletes:      %{name}-help < 6.10
 
 %description
 The Linux man-pages project documents the Linux kernel and C library interface that
