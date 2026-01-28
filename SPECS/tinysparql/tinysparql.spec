@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <jialin.oerv@isrc.iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -12,7 +13,7 @@ Version:        3.10.1
 Release:        %autorelease
 Summary:        Desktop-neutral metadata database and search tool
 License:        GPL-2.0-or-later
-URL:            https://gitlab.gnome.org/GNOME/tinysparql/
+URL:            https://gitlab.gnome.org/GNOME/tinysparql
 #!RemoteAsset
 Source0:        https://download.gnome.org/sources/tinysparql/3.10/tinysparql-%{version}.tar.xz
 BuildSystem:    meson
@@ -23,7 +24,6 @@ BuildOption(conf):  -Davahi=disabled
 %if %{without libstemmer}
 BuildOption(conf):  -Dstemmer=disabled
 %endif
-
 %if %{with doc}
 BuildOption(conf):  -Ddocs=true
 BuildOption(conf):  -Dman=true
@@ -31,7 +31,6 @@ BuildOption(conf):  -Dman=true
 BuildOption(conf):  -Ddocs=false
 BuildOption(conf):  -Dman=false
 %endif
-
 %if %{with tests}
 BuildOption(conf):  -Dtests=true
 %else
@@ -51,11 +50,9 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
-
 %if %{with libstemmer}
 BuildRequires:  libstemmer-devel
 %endif
-
 %if %{with doc}
 BuildRequires:  asciidoc
 BuildRequires:  gi-docgen
