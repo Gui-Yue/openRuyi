@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Xuhai Chang <xuhai.oerv@isrc.iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -12,11 +13,13 @@ License:        BSL-1.0
 URL:            https://github.com/nemtrif/utfcpp
 #!RemoteAsset
 Source0:        https://github.com/nemtrif/utfcpp/archive/v%{version}/utfcpp-%{version}.tar.gz
+BuildSystem:    cmake
+
 # put cmake import file in correct directory
 Patch0:         utf8cpp-cmake.patch
+
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildSystem:    cmake
 
 %description
 %{summary}.
