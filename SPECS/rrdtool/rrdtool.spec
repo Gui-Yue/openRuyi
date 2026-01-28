@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Yafen Fang <yafen@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -12,28 +13,30 @@ Release:        %autorelease
 Summary:        Round Robin Database Tool to store and display time-series data
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://oss.oetiker.ch/rrdtool
+VCS:            git:https://github.com/oetiker/rrdtool-1.x
 #!RemoteAsset
 Source0:        https://github.com/oetiker/rrdtool-1.x/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  gcc-c++
-BuildRequires:  openssl-devel
-BuildRequires:  freetype-devel
-BuildRequires:  libpng-devel
-BuildRequires:  zlib-devel
-BuildRequires:  intltool >= 0.35.0
-BuildRequires:  cairo-devel >= 1.4.6
-BuildRequires:  pango-devel >= 1.17
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  intltool
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(pango)
 BuildRequires:  libtool
 BuildRequires:  groff
 BuildRequires:  gettext
-BuildRequires:  libxml2-devel
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  systemd
 BuildRequires:  sed
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl-devel
 BuildRequires:  perl-macros
 BuildRequires:  perl
+
 Requires:       fonts-dejavu
 %{?systemd_requires}
 
@@ -56,7 +59,7 @@ put a friendly user interface on it.
 
 %package        devel
 Summary:        RRDtool header files
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       pkgconfig
 
 %description    devel
@@ -77,7 +80,7 @@ server load average). This package contains documentation on using RRD.
 
 %package        perl
 Summary:        Perl RRDtool bindings
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 Provides:       perl-%{name} = %{version}-%{release}
 Obsoletes:      perl-%{name} < %{version}-%{release}
@@ -91,15 +94,16 @@ Summary:        Python RRDtool bindings
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 %{?__python3:Requires: %{__python3}}
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description -n python3-rrdtool
 Python RRDtool bindings.
 
 %package        tcl
 Summary:        Tcl RRDtool bindings module
-BuildRequires:  tcl-devel >= 8.0
-Requires:       tcl >= 8.0 %{name} = %{version}-%{release}
+BuildRequires:  pkgconfig(tcl)
+Requires:       tcl
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Provides:       tcl-%{name} = %{version}-%{release}
 Obsoletes:      tcl-%{name} < %{version}-%{release}
 
@@ -112,8 +116,8 @@ The %{name}-tcl package includes RRDtool bindings for Tcl.
 %package        ruby
 Summary:        Ruby RRDtool bindings module
 BuildRequires:  ruby
-BuildRequires:  ruby-devel
-Requires:       %{name} = %{version}-%{release}
+BuildRequires:  pkgconfig(ruby)
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    ruby
 The %{name}-ruby package includes RRDtool bindings for Ruby.
@@ -125,8 +129,8 @@ The %{name}-ruby package includes RRDtool bindings for Ruby.
 %package        lua
 Summary:        Lua RRDtool bindings module
 BuildRequires:  lua
-BuildRequires:  lua-devel
-Requires:       %{name} = %{version}-%{release}
+BuildRequires:  pkgconfig(lua)
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    lua
 The %{name}-lua package includes RRDtool bindings for Lua.
