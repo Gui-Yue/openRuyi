@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -10,11 +11,12 @@ Release:        %autorelease
 Summary:        Hybrid Lossless Audio Compression Format
 License:        BSD-3-Clause
 URL:            https://www.wavpack.com/
+VCS:            git:https://github.com/dbry/WavPack
 #!RemoteAsset
 Source:         https://github.com/dbry/WavPack/archive/refs/tags/%{version}.tar.gz
 BuildSystem:    cmake
 
-BuildOption(conf): -DBUILD_SHARED_LIBS=ON
+BuildOption(conf):  -DBUILD_SHARED_LIBS=ON
 
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -27,7 +29,7 @@ command-line tools.
 
 %package        devel
 Summary:        Development files for wavpack, an audio compression format
-Requires:       %{name}%{?_isa} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       glibc-devel
 
 %description    devel
