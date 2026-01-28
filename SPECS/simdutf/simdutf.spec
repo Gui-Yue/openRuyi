@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -15,8 +16,8 @@ URL:            https://github.com/simdutf/simdutf
 Source0:        https://github.com/simdutf/simdutf/archive/refs/tags/v%{version}.tar.gz
 BuildSystem:    cmake
 
-BuildOption(conf): -DSIMDUTF_BENCHMARKS:BOOL=OFF
-BuildOption(conf): -DSIMDUTF_TOOLS:BOOL=OFF
+BuildOption(conf):  -DSIMDUTF_BENCHMARKS:BOOL=OFF
+BuildOption(conf):  -DSIMDUTF_TOOLS:BOOL=OFF
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -25,11 +26,11 @@ BuildRequires:  gcc-c++
 A C++ library for validating and transcoding Unicode (UTF-8, UTF-16, UTF-32)
 at high speeds using SIMD instructions.
 
-%package devel
+%package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description    devel
 This package contains the header files, pkg-config, and CMake files needed
 to develop applications that use the simdutf library.
 
