@@ -1,44 +1,49 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-Name:           tcl
-URL:            http://www.tcl.tk
-Version:        8.6.16
-Release:        %autorelease
-%define         rrc %{nil}
+%define rrc %{nil}
 %define TCL_MINOR %(echo %version | cut -c1-3)
 %define itclver 4.3.2
+%define scriptdir %{_libdir}/tcl
+
+Name:           tcl
+Version:        8.6.16
+Release:        %autorelease
 Summary:        The Tcl Programming Language
 License:        TCL
-Provides:       itcl = %itclver
+URL:            http://www.tcl.tk
+VCS:            git:https://github.com/tcltk/tcl.git
+#!RemoteAsset
+Source0:        http://prdownloads.sourceforge.net/tcl/%{name}%{version}%{rrc}-src.tar.gz
+Source1:        macros.tcl
+BuildSystem:    autotools
+
+BuildOption(conf): --enable-man-symlinks
+BuildOption(conf): --enable-man-compression=gzip
+BuildOption(conf): --without-tzdata
+BuildOption(build):  -C unix
+BuildOption(build):  PACKAGE_DIR="%{scriptdir}"
+
+BuildRequires:  autoconf
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(zlib)
+# Required for test suite:
+BuildRequires:  tzdata
+
+Provides:       itcl = %{itclver}
+Obsoletes:      itcl < %{itclver}
+
 Provides:       tclsh
 Provides:       tclsh%{TCL_MINOR}
-Obsoletes:      itcl < %itclver
+
 # Require the extension from the SQLite package instead of shipping
 # the embedded copy, which might be outdated.
 Requires:       (sqlite-tcl if sqlite)
 PreReq:         /bin/rm
-#!RemoteAsset
-Source0:        http://prdownloads.sourceforge.net/tcl/%{name}%{version}%{rrc}-src.tar.gz
-Source3:        macros.tcl
-BuildRequires:  autoconf
-BuildRequires:  pkg-config
-BuildRequires:  zlib-devel
-# Required for test suite:
-BuildRequires:  tzdata
-
-
-BuildSystem:    autotools
-BuildOption(conf): --enable-man-symlinks
-BuildOption(conf): --enable-man-compression=gzip
-BuildOption(conf): --without-tzdata
-BuildOption(build): -C unix
-
-%define scriptdir %_libdir/tcl
-BuildOption(build): PACKAGE_DIR="%scriptdir"
 
 %description
 Tcl (Tool Command Language) is a very powerful but easy to learn
@@ -51,11 +56,11 @@ deployed and highly extensible.
 For more information on Tcl see http://www.tcl.tk and
 http://wiki.tcl.tk .
 
-%package devel
+%package        devel
 Summary:        Header Files and C API Documentation for Tcl
-Requires:       tcl = %version
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description    devel
 This package contains header files and documentation needed for writing
 Tcl extensions in compiled languages like C, C++, etc., or for
 embedding the Tcl interpreter in programs written in such languages.
@@ -132,7 +137,7 @@ rm -f %buildroot%scriptdir/tcl%TCL_MINOR/ldAix
 ln -sf tclsh%TCL_MINOR %buildroot%_prefix/bin/tclsh
 ln -sf tclsh.1.gz %buildroot%_mandir/man1/tclsh%TCL_MINOR.1.gz
 mkdir -p %buildroot%_datadir/tcl
-install -D %{S:3} -m 644 %buildroot%_rpmmacrodir/macros.tcl
+install -D %{S:1} -m 644 %buildroot%_rpmmacrodir/macros.tcl
 
 # The information in TCL_LIBS is not needed for shared libraries
 # and we don't support static linking.
