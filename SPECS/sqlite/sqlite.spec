@@ -19,6 +19,7 @@ Release:        %autorelease
 Summary:        Library that implements an embeddable SQL database engine
 License:        GPL-3.0-or-later
 URL:            https://www.sqlite.org/
+VCS:            git:https://github.com/sqlite/sqlite.git
 #!RemoteAsset
 Source0:        http://www.sqlite.org/%{year}/%{name}-src-%{download_version}.zip
 #!RemoteAsset
@@ -114,14 +115,14 @@ embedded controllers.
 
 %package        tcl
 Summary:        Tcl module for the sqlite3 embeddable SQL database engine
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    tcl
 This package contains the tcl modules for %{name}.
 
 %package        analyzer
 Summary:        An analysis program for sqlite3 database files
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    analyzer
 This package contains the analysis program for %{name}.
