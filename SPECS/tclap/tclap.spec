@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,6 +12,7 @@ Release:        %autorelease
 Summary:        Templatized C++ Command Line Parser
 License:        MIT
 URL:            http://tclap.sourceforge.net
+VCS:            git:https://git.code.sf.net/p/tclap/code
 #!RemoteAsset
 Source:         https://downloads.sourceforge.net/tclap/tclap-%{version}.tar.gz
 BuildSystem:    autotools
