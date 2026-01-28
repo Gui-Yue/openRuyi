@@ -33,6 +33,8 @@ Patch6:         0003-mh_sha256-add-an-mh_sha256-assembly-implementation-w.patch
 Patch7:         0002-mh_sha256-prevent-potential-unaligned-accesses-on-ve.patch
 # https://github.com/intel/isa-l_crypto/pull/168
 Patch8:         0001-mh_sha1-add-an-mh_sha1-assembly-implementation-with-.patch
+# https://github.com/intel/isa-l_crypto/pull/172
+Patch9:         0001-mh_sha1_murmur3_x64_128-add-an-mh_sha1_murmur3_x64_1.patch
 
 BuildOption(conf):  --disable-static
 
