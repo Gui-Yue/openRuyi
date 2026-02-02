@@ -320,9 +320,18 @@ sed -i \
 %{_qt6_includedir}/QtConcurrent/
 %{_qt6_includedir}/QtCore/
 %{_qt6_includedir}/QtDBus/
+%{_qt6_includedir}/QtGui/
 %{_qt6_includedir}/QtNetwork/
+%{_qt6_includedir}/QtOpenGL/
+%{_qt6_includedir}/QtOpenGLWidgets
+%{_qt6_includedir}/QtPrintSupport/
 %{_qt6_includedir}/QtSql/
 %{_qt6_includedir}/QtTest/
+%{_qt6_includedir}/QtWaylandClient/
+%{_qt6_includedir}/QtWaylandGlobal/
+%{_qt6_includedir}/QtWlShellIntegration/
+%{_qt6_includedir}/QtWidgets/
+%{_qt6_includedir}/QtXcb/
 %{_qt6_includedir}/QtXml/
 %{_qt6_libdir}/libQt6*.prl
 %{_qt6_libdir}/libQt6*.so
@@ -358,9 +367,17 @@ sed -i \
 %{_qt6_metatypesdir}/*.json
 %{_qt6_libdir}/pkgconfig/*.pc
 %{_qt6_mkspecsdir}/*
+%{_qt6_includedir}/QtInputSupport
+%{_qt6_includedir}/QtFbSupport
+%{_qt6_includedir}/QtExampleIcons
+%{_qt6_includedir}/QtDeviceDiscoverySupport
 
 %files private-devel
-%{_qt6_includedir}/*
+%{_qt6_includedir}/QtEglFSDeviceIntegration/QtEglFSDeviceIntegration
+%{_qt6_includedir}/QtEglFSDeviceIntegration/QtEglFSDeviceIntegrationDepends
+%{_qt6_includedir}/QtEglFSDeviceIntegration/QtEglFSDeviceIntegrationVersion
+%{_qt6_includedir}/QtEglFSDeviceIntegration/qteglfsdeviceintegrationversion.h
+%{_qt6_includedir}/*/%{real_version}/
 %{_qt6_libdir}/cmake/Qt6CorePrivate/*.cmake
 %{_qt6_libdir}/cmake/Qt6DBusPrivate/*.cmake
 %{_qt6_libdir}/cmake/Qt6GuiPrivate/*.cmake
