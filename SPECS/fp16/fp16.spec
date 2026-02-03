@@ -1,16 +1,16 @@
 # SPDX-FileCopyrightText: (C) 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2026 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <jialin.oerv@isrc.iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-%global commit_date  20250817
 # there is no release version, so we use the letest commit.
 %global commit       3d2de1816307bac63c16a297e8c4dc501b4076df
 %global shortcommit  %(c=%{commit}; echo ${c:0:7})
 
 Name:           fp16
-Version:        %{commit_date}+git%{shortcommit}
+Version:        0+git20260202.%{shortcommit}
 Release:        %autorelease
 Summary:        Conversion to/from half-precision floating point format
 License:        MIT
