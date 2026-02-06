@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 27552f2..ef183e6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -437,7 +437,8 @@ target_include_directories(${qhull_STATIC} PUBLIC
+ add_library(${qhull_STATICR} STATIC ${libqhullr_SOURCES})
+ set_target_properties(${qhull_STATICR} PROPERTIES
+     VERSION ${qhull_VERSION}
+-    OUTPUT_NAME "${qhull_STATICR}$<$<CONFIG:Debug>:d>")
++    OUTPUT_NAME "${qhull_STATICR}$<$<CONFIG:Debug>:d>"
++    POSITION_INDEPENDENT_CODE "TRUE")
+ target_include_directories(${qhull_STATICR} PUBLIC
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
