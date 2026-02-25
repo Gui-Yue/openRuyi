@@ -47,7 +47,7 @@ BuildRequires:  gcc
 BuildRequires:  make
 # for tests.
 BuildRequires:  kyua
-BuildRequires:  atf-tests
+BuildRequires:  atf
 
 # pkgconf uses libpkgconf internally
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
