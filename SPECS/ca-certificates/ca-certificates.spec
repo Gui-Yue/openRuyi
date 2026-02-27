@@ -33,7 +33,7 @@ Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
 
-Recommends:     ca-certificates-mozilla
+Requires:       ca-certificates-mozilla
 
 %description
 Update-ca-certificates is intended to keep the certificate stores of
