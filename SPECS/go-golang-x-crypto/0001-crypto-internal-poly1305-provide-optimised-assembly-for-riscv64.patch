@@ -1,0 +1,227 @@
+From e3ff5544d4067e39ce5760bbf5fad9b97d4e8c64 Mon Sep 17 00:00:00 2001
+From: Julian Zhu <julian.oerv@isrc.iscas.ac.cn>
+Date: Sat, 24 Jan 2026 00:11:28 +0800
+Subject: [PATCH] crypto/internal/poly1305: provide optimised assembly for riscv64
+
+goos: linux
+goarch: riscv64
+pkg: golang.org/x/crypto/internal/poly1305
+                   │ sum1305-old  │            sum1305-new              │
+                   │    sec/op    │   sec/op     vs base                │
+64-4                  195.9n ± 1%   144.8n ± 0%  -26.07% (p=0.000 n=10)
+1K-4                  1.853µ ± 0%   1.012µ ± 0%  -45.39% (p=0.000 n=10)
+2M-4                  3.627m ± 0%   1.880m ± 0%  -48.17% (p=0.000 n=10)
+64Unaligned-4         196.4n ± 1%   174.7n ± 0%  -11.05% (p=0.000 n=10)
+1KUnaligned-4         1.853µ ± 0%   1.491µ ± 0%  -19.54% (p=0.000 n=10)
+2MUnaligned-4         3.643m ± 0%   2.850m ± 0%  -21.78% (p=0.000 n=10)
+Write64-4            126.85n ± 0%   77.40n ± 0%  -38.98% (p=0.000 n=10)
+Write1K-4            1784.5n ± 1%   937.2n ± 0%  -47.48% (p=0.000 n=10)
+Write2M-4             3.654m ± 2%   1.880m ± 0%  -48.55% (p=0.000 n=10)
+Write64Unaligned-4    125.7n ± 0%   107.5n ± 0%  -14.48% (p=0.000 n=10)
+Write1KUnaligned-4    1.782µ ± 0%   1.424µ ± 0%  -20.09% (p=0.000 n=10)
+Write2MUnaligned-4    3.637m ± 0%   2.850m ± 0%  -21.64% (p=0.000 n=10)
+geomean               10.14µ        6.925µ       -31.68%
+
+                   │ sum1305-old  │             sum1305-new-3             │
+                   │     B/s      │      B/s       vs base                │
+64-4                 311.7Mi ± 1%    421.5Mi ± 0%  +35.25% (p=0.000 n=10)
+1K-4                 527.0Mi ± 0%    965.0Mi ± 0%  +83.10% (p=0.000 n=10)
+2M-4                 551.4Mi ± 0%   1063.8Mi ± 0%  +92.94% (p=0.000 n=10)
+64Unaligned-4        310.8Mi ± 1%    349.3Mi ± 0%  +12.38% (p=0.000 n=10)
+1KUnaligned-4        526.9Mi ± 0%    654.9Mi ± 0%  +24.30% (p=0.000 n=10)
+2MUnaligned-4        548.9Mi ± 0%    701.8Mi ± 0%  +27.85% (p=0.000 n=10)
+Write64-4            481.2Mi ± 0%    788.6Mi ± 0%  +63.89% (p=0.000 n=10)
+Write1K-4            547.2Mi ± 1%   1042.0Mi ± 0%  +90.42% (p=0.000 n=10)
+Write2M-4            547.4Mi ± 2%   1064.0Mi ± 0%  +94.38% (p=0.000 n=10)
+Write64Unaligned-4   485.5Mi ± 0%    567.7Mi ± 0%  +16.94% (p=0.000 n=10)
+Write1KUnaligned-4   547.9Mi ± 0%    685.8Mi ± 0%  +25.17% (p=0.000 n=10)
+Write2MUnaligned-4   550.0Mi ± 0%    701.9Mi ± 0%  +27.62% (p=0.000 n=10)
+geomean              485.5Mi         710.7Mi       +46.37%
+
+Change-Id: I33a3df03382eb42ef062b0366521f02559290482
+---
+
+diff --git a/internal/poly1305/mac_noasm.go b/internal/poly1305/mac_noasm.go
+index 8d99551..b1da456 100644
+--- a/internal/poly1305/mac_noasm.go
++++ b/internal/poly1305/mac_noasm.go
+@@ -2,7 +2,7 @@
+ // Use of this source code is governed by a BSD-style
+ // license that can be found in the LICENSE file.
+ 
+-//go:build (!amd64 && !loong64 && !ppc64le && !ppc64 && !s390x) || !gc || purego
++//go:build (!amd64 && !loong64 && !ppc64le && !ppc64 && !riscv64 && !s390x) || !gc || purego
+ 
+ package poly1305
+ 
+diff --git a/internal/poly1305/sum_asm.go b/internal/poly1305/sum_asm.go
+index 315b84a..55041bf 100644
+--- a/internal/poly1305/sum_asm.go
++++ b/internal/poly1305/sum_asm.go
+@@ -2,7 +2,7 @@
+ // Use of this source code is governed by a BSD-style
+ // license that can be found in the LICENSE file.
+ 
+-//go:build gc && !purego && (amd64 || loong64 || ppc64 || ppc64le)
++//go:build gc && !purego && (amd64 || loong64 || ppc64 || ppc64le || riscv64)
+ 
+ package poly1305
+ 
+diff --git a/internal/poly1305/sum_riscv64.s b/internal/poly1305/sum_riscv64.s
+new file mode 100644
+index 0000000..ec73e6b
+--- /dev/null
++++ b/internal/poly1305/sum_riscv64.s
+@@ -0,0 +1,152 @@
++// Copyright 2026 The Go Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style
++// license that can be found in the LICENSE file.
++
++//go:build gc && !purego
++
++#define LOAD32U(base, offset, tmp, dest) \
++	MOVBU	(offset+0*1)(base), dest; \
++	MOVBU	(offset+1*1)(base), tmp; \
++	SLL	$8, tmp; \
++	OR	tmp, dest; \
++	MOVBU	(offset+2*1)(base), tmp; \
++	SLL	$16, tmp; \
++	OR	tmp, dest; \
++	MOVBU	(offset+3*1)(base), tmp; \
++	SLL	$24, tmp; \
++	OR	tmp, dest
++
++#define LOAD64U(base, offset, tmp1, tmp2, dst) \
++	LOAD32U(base, offset, tmp1, dst); \
++	LOAD32U(base, offset+4, tmp1, tmp2); \
++	SLL	$32, tmp2; \
++	OR	tmp2, dst
++
++// func update(state *macState, msg []byte)
++TEXT ·update(SB), $0-32
++	MOV	state+0(FP), X5
++	MOV	msg_base+8(FP), X6
++	MOV	msg_len+16(FP), X7
++
++	MOV	$0x10, X8
++
++	AND	$7, X6, X28
++
++	MOV	(0*8)(X5), X9		// h0
++	MOV	(1*8)(X5), X10		// h1
++	MOV	(2*8)(X5), X11		// h2
++	MOV	(3*8)(X5), X12		// r0
++	MOV	(4*8)(X5), X13		// r1
++
++	BLT	X7, X8, bytes_between_0_and_15
++
++loop:
++	BEQZ	X28, aligned_load
++
++	LOAD64U(X6,0*8, X16, X18, X15)
++	LOAD64U(X6,1*8, X19, X20, X17)
++	JMP	block
++
++aligned_load:
++	MOV	(0*8)(X6), X15		// msg[0:8]
++	MOV	(1*8)(X6), X17		// msg[8:16]
++
++block:
++	ADD	X15, X9, X9			// h0 (x1 + y1 = z1', if z1' < x1 then z1' overflow)
++	ADD	X17, X10, X22
++	SLTU	X15, X9, X19	// h0.carry
++	SLTU	X10, X22, X23
++	ADD	X22, X19, X10		// h1
++	SLTU	X22, X10, X19
++	OR	X19, X23, X19		// h1.carry
++	ADD	$0x01, X19, X19
++	ADD	X11, X19, X11		// h2
++
++	ADD	$16, X6, X6			// msg = msg[16:]
++
++multiply:
++	MUL	X9, X12, X15		// h0r0.lo
++	MULHU	X9, X12, X16	// h0r0.hi
++	MUL	X10, X12, X14		// h1r0.lo
++	MULHU	X10, X12, X17	// h1r0.hi
++	ADD	X14, X16, X16
++	SLTU	X14, X16, X19
++	ADD	X19, X17, X17
++	MUL	X11, X12, X20
++	ADD	X17, X20, X20
++	MUL	X9, X13, X14		// h0r1.lo
++	MULHU	X9, X13, X17	// h0r1.hi
++	ADD	X14, X16, X16
++	SLTU	X14, X16, X19
++	ADD	X19, X17, X17
++	MOV	X17, X9
++	MUL	X11, X13, X21		// h2r1
++	MUL	X10, X13, X14		// h1r1.lo
++	MULHU	X10, X13, X17	// h1r1.hi
++	ADD	X14, X20, X20
++	ADD	X17, X21, X22
++	SLTU	X14, X20, X19
++	ADD	X22, X19, X21
++	ADD	X9, X20, X20
++	SLTU	X9, X20, X19
++	ADD	X19, X21, X21
++	AND	$3, X20, X11
++	AND	$-4, X20, X18
++	ADD	X18, X15, X9
++	ADD	X21, X16, X22
++	SLTU	X18, X9, X19
++	SLTU	X21, X22, X23
++	ADD	X22, X19, X10
++	SLTU	X22, X10, X19
++	OR	X19, X23, X19
++	ADD	X19, X11, X11
++	SLL	$62, X21, X22
++	SRL	$2, X20, X23
++	SRL	$2, X21, X21
++	OR	X22, X23, X20
++	ADD	X20, X9, X9
++	ADD	X21, X10, X22
++	SLTU	X20, X9, X19
++	SLTU	X21, X22, X23
++	ADD	X22, X19, X10
++	SLTU	X22, X10, X19
++	OR	X19, X23, X19
++	ADD	X19, X11, X11
++
++	SUB	$16, X7, X7
++	BGE	X7, X8, loop
++
++bytes_between_0_and_15:
++	BEQ	X7, X0, done
++	MOV	$1, X15
++	XOR	X16, X16
++	ADD	X7, X6, X6
++
++flush_buffer:
++	MOVBU	-1(X6), X20
++	SRL	$56, X15, X19
++	SLL	$8, X16, X23
++	SLL	$8, X15, X15
++	OR	X19, X23, X16
++	XOR	X20, X15, X15
++	SUB	$1, X7, X7
++	SUB	$1, X6, X6
++	BNE	X7, X0, flush_buffer
++
++	ADD	X15, X9, X9
++	SLTU	X15, X9, X19
++	ADD	X16, X10, X22
++	SLTU	X16, X22, X23
++	ADD	X22, X19, X10
++	SLTU	X22, X10, X19
++	OR	X19, X23, X19
++	ADD	X11, X19, X11
++
++	MOV	$16, X7
++	JMP	multiply
++
++done:
++	MOV	X9, (0*8)(X5)
++	MOV	X10, (1*8)(X5)
++	MOV	X11, (2*8)(X5)
++	RET

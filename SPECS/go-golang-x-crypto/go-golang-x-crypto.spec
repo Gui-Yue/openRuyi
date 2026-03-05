@@ -29,6 +29,9 @@ BuildSystem:    golangmodules
 # https://sources.debian.org/src/golang-go.crypto/1%3A0.45.0-1/debian/patches/0001-skip-wycheproof_test.patch
 Patch0:         2000-skip-wycheproof_test.patch
 
+# https://go-review.googlesource.com/c/crypto/+/738760
+Patch1:         0001-crypto-internal-poly1305-provide-optimised-assembly-for-riscv64.patch
+
 BuildOption(prep):  -n %{_name}-%{version}
 BuildOption(check):  -skip TestWithPebble
 
