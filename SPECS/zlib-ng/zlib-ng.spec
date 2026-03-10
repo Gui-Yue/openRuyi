@@ -8,6 +8,9 @@
 
 %bcond systemtap 0
 
+# defining BUILD_SHARED_LIBS disables the static library
+%undefine _cmake_shared_libs
+
 Name:           zlib-ng
 Version:        2.3.2
 Release:        %autorelease
@@ -43,20 +46,26 @@ Summary:        Zlib replacement with optimizations (compat version)
 Provides:       zlib = %{version}-%{release}
 Provides:       zlib%{?_isa} = %{version}-%{release}
 
+%description    compat
+zlib-ng is a zlib replacement with support for CPU intrinsics.
+This package provides a drop-in zlib-compatible library.
+
 %package        compat-devel
 Summary:        Development files for zlib-ng-compat
 Requires:       %{name}-compat%{?_isa} = %{version}-%{release}
 Provides:       zlib-devel = %{version}-%{release}
 Provides:       zlib-devel%{?_isa} = %{version}-%{release}
 
-%description    compat
-zlib-ng is a zlib replacement with support for CPU intrinsics.
-This package provides a drop-in zlib-compatible library.
-
-
 %description    compat-devel
 The zlib-ng-compat-devel package contains header files and development libraries for zlib-ng-compat.
 This package provides a drop-in zlib-compatible header files and development libraries.
+
+%package        compat-static
+Summary:        Static library for zlib-ng-compat
+Requires:       %{name}-compat-devel%{?_isa} = %{version}-%{release}
+
+%description    compat-static
+The %{name}-static package contains static libraries for zlib-ng-compat.
 
 %files compat
 %license LICENSE.md
@@ -70,6 +79,9 @@ This package provides a drop-in zlib-compatible header files and development lib
 %{_libdir}/libz.so
 %{_libdir}/pkgconfig/zlib.pc
 %{_libdir}/cmake/ZLIB/
+
+%files compat-static
+%{_libdir}/libz.a
 
 %changelog
 %{?autochangelog}
