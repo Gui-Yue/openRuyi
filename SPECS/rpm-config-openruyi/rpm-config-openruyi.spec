@@ -13,7 +13,7 @@ Version:        20251216
 Release:        %autorelease
 Summary:        specific RPM configuration files
 License:        GPL-2.0-or-later
-URL:            https://git.oerv.ac.cn/openruyi/openruyi-repo
+URL:            https://git.openruyi.cn/openruyi/openruyi-repo
 BuildArch:      noarch
 
 BuildRequires:  gzip
