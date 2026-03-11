@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
+# SPDX-FileContributor: purofle <yuguo.or@isrc.iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -37,14 +38,14 @@ containing test data for conformance to several important Unicode algorithms.
 # No build
 
 %install
-mkdir -p %{buildroot}%{_datadir}/unicode
-cp -ar . %{buildroot}%{_datadir}/unicode
+mkdir -p %{buildroot}%{_datadir}/unicode/ucd
+cp -ar . %{buildroot}%{_datadir}/unicode/ucd
 cp %{SOURCE2} .
 
 %files
 %license license.txt
-%dir %{_datadir}/unicode
-%{_datadir}/unicode/*
+%dir %{_datadir}/unicode/
+%{_datadir}/unicode/ucd
 
 %changelog
 %{?autochangelog}
