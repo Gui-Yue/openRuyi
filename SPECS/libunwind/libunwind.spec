@@ -27,6 +27,7 @@ BuildRequires:  libtool
 BuildRequires:  autoconf
 BuildRequires:  make
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Libunwind provides a C ABI to determine the call-chain of a program.
