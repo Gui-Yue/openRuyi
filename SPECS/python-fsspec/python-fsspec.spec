@@ -33,6 +33,33 @@ Provides:       python3-%{srcname}
 Fsspec provides a unified Python interface for local, remote, and embedded
 filesystems.
 
+%pyproject_extras_subpkg -n python3-%{srcname} abfs
+%pyproject_extras_subpkg -n python3-%{srcname} adl
+%pyproject_extras_subpkg -n python3-%{srcname} arrow
+%pyproject_extras_subpkg -n python3-%{srcname} dask
+%pyproject_extras_subpkg -n python3-%{srcname} dev
+%pyproject_extras_subpkg -n python3-%{srcname} doc
+%pyproject_extras_subpkg -n python3-%{srcname} dropbox
+%pyproject_extras_subpkg -n python3-%{srcname} full
+%pyproject_extras_subpkg -n python3-%{srcname} fuse
+%pyproject_extras_subpkg -n python3-%{srcname} gcs
+%pyproject_extras_subpkg -n python3-%{srcname} git
+%pyproject_extras_subpkg -n python3-%{srcname} github
+%pyproject_extras_subpkg -n python3-%{srcname} gs
+%pyproject_extras_subpkg -n python3-%{srcname} gui
+%pyproject_extras_subpkg -n python3-%{srcname} hdfs
+%pyproject_extras_subpkg -n python3-%{srcname} http
+%pyproject_extras_subpkg -n python3-%{srcname} libarchive
+%pyproject_extras_subpkg -n python3-%{srcname} oci
+%pyproject_extras_subpkg -n python3-%{srcname} s3
+%pyproject_extras_subpkg -n python3-%{srcname} sftp
+%pyproject_extras_subpkg -n python3-%{srcname} smb
+%pyproject_extras_subpkg -n python3-%{srcname} ssh
+%pyproject_extras_subpkg -n python3-%{srcname} test
+%pyproject_extras_subpkg -n python3-%{srcname} test-downstream
+%pyproject_extras_subpkg -n python3-%{srcname} test-full
+%pyproject_extras_subpkg -n python3-%{srcname} tqdm
+
 %generate_buildrequires
 %pyproject_buildrequires
 
