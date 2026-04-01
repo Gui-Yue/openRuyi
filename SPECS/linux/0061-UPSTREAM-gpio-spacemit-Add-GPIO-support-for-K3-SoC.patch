@@ -1,7 +1,7 @@
-From 17accf261debbcfb0cfa83f543350fc6792589ca Mon Sep 17 00:00:00 2001
+From e6f49b0bdc51e6dc39b36575da184dfe919be726 Mon Sep 17 00:00:00 2001
 From: Yixun Lan <dlan@gentoo.org>
 Date: Tue, 6 Jan 2026 11:09:33 +0800
-Subject: [PATCH 061/192] UPSTREAM: gpio: spacemit: Add GPIO support for K3 SoC
+Subject: [PATCH 061/197] UPSTREAM: gpio: spacemit: Add GPIO support for K3 SoC
 
 SpacemiT K3 SoC has changed gpio register layout while comparing
 with previous generation, the register offset and bank offset

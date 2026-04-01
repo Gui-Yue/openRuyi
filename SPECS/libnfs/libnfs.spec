@@ -20,6 +20,9 @@ BuildSystem:    autotools
 Patch0:         0001-libnfs-6.0.2-fix_gnutls_undefined_symbols.patch
 # https://github.com/sahlberg/libnfs/commit/2cdfedaba379cbb512d3c203a1b9eae795f4fb23
 Patch1:         0002-libnfs-6.0.2-fix_missing_include.patch
+# https://github.com/sahlberg/libnfs/pull/558
+# https://github.com/sahlberg/libnfs/pull/582
+Patch2:         0003-libnfs-6.0.2-fix_getlogin_null_segfault.patch
 
 BuildOption(conf):  --disable-static
 BuildOption(conf):  --disable-examples

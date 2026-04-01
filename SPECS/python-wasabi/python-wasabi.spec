@@ -14,6 +14,7 @@ License:        LGPL-3.0-only
 URL:            https://github.com/explosion/wasabi
 #!RemoteAsset:  sha256:4bb3008f003809db0c3e28b4daf20906ea871a2bb43f9914197d540f4f2e0878
 Source:         https://files.pythonhosted.org/packages/source/w/%{srcname}/%{srcname}-%{version}.tar.gz
+BuildArch:      noarch
 BuildSystem:    pyproject
 
 BuildOption(install):  -l %{srcname}

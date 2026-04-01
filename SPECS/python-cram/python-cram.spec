@@ -21,8 +21,8 @@ BuildOption(install):  -l %{srcname}
 
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
+BuildRequires:  python3dist(setuptools)
+BuildRequires:  python3dist(wheel)
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}

@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Jingwiw <wangjingwei@iscas.ac.cn>
+# SPDX-FileContributor: Xuhai Chang <xuhai.oerv@isrc.iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
@@ -15,6 +16,9 @@ URL:            https://github.com/microsoft/mimalloc
 #!RemoteAsset
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildSystem:    cmake
+
+# unmerged patch enabling native RISC-V pause support
+Patch0:         riscv-atomic-yield-fastpath.patch
 
 BuildOption(conf):  -DMI_INSTALL_TOPLEVEL=ON
 # if you want to override malloc/free globally, set this to ON

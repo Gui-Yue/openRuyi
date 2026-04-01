@@ -1,7 +1,7 @@
-From 45b6e14590feab97c06ca2d768310b1533128dd9 Mon Sep 17 00:00:00 2001
+From 9e429f8a8fb83d876c31a9137f46f8bbfaaa4e3f Mon Sep 17 00:00:00 2001
 From: Ze Huang <huang.ze@linux.dev>
 Date: Sun, 11 Jan 2026 14:41:03 +0800
-Subject: [PATCH 023/192] UPSTREAM: riscv: dts: spacemit: Add DWC3 USB 3.0
+Subject: [PATCH 023/197] UPSTREAM: riscv: dts: spacemit: Add DWC3 USB 3.0
  controller node for K1
 
 Add node for the Synopsys DWC3 USB 3.0 host controller on the K1 SoC.

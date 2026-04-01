@@ -1,7 +1,7 @@
-From a2caa56f01870acc8917fd90db5b4d7cc2e13f43 Mon Sep 17 00:00:00 2001
+From b14cc99422fb620e7c20afd2aeb4076597523b65 Mon Sep 17 00:00:00 2001
 From: Guodong Xu <guodong@riscstar.com>
 Date: Thu, 15 Jan 2026 07:19:00 +0800
-Subject: [PATCH 038/192] UPSTREAM: riscv: dts: spacemit: k1: Add "b" ISA
+Subject: [PATCH 038/197] UPSTREAM: riscv: dts: spacemit: k1: Add "b" ISA
  extension
 
 "b" is ratified (Apr/2024) much later than its components zba/zbb/zbs

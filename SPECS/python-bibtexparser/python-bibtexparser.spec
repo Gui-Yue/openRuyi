@@ -14,6 +14,7 @@ License:        BSD-3-Clause OR LGPL-3.0-or-later
 URL:            https://github.com/sciunto-org/python-bibtexparser
 #!RemoteAsset:  sha256:093b6c824f7a71d3a748867c4057b71f77c55b8dbc07efc993b781771520d8fb
 Source0:        https://files.pythonhosted.org/packages/source/b/%{srcname}/%{srcname}-%{version}.tar.gz
+BuildArch:      noarch
 BuildSystem:    pyproject
 
 BuildOption(install):  -l %{srcname}

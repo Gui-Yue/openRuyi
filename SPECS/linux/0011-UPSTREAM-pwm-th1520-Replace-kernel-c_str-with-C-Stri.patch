@@ -1,7 +1,7 @@
-From 481b4d9591c549f3bb6cce5dcf58951c1585b0a7 Mon Sep 17 00:00:00 2001
+From d50a49f9a081070f2eff66f4a4f992e8fd983a3d Mon Sep 17 00:00:00 2001
 From: Tamir Duberstein <tamird@gmail.com>
 Date: Mon, 22 Dec 2025 13:24:46 +0100
-Subject: [PATCH 011/192] UPSTREAM: pwm: th1520: Replace `kernel::c_str!` with
+Subject: [PATCH 011/197] UPSTREAM: pwm: th1520: Replace `kernel::c_str!` with
  C-Strings
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

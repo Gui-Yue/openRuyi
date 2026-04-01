@@ -17,10 +17,10 @@ Source0:        https://files.pythonhosted.org/packages/source/r/%{srcname}/%{sr
 BuildArch:      noarch
 BuildSystem:    pyproject
 
-BuildOption(install): %{srcname}
+BuildOption(install):  %{srcname}
 
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python)
 
 Provides:       python3-requests-file
 %python_provide python3-requests-file

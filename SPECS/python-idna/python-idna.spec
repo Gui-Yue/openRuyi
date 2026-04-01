@@ -15,14 +15,16 @@ URL:            https://github.com/kjd/idna
 #!RemoteAsset
 Source0:        https://files.pythonhosted.org/packages/source/i/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
-
-BuildRequires:  python3-devel
-BuildRequires:  pyproject-rpm-macros
 BuildSystem:    pyproject
-BuildOption(install): -l %{srcname}
+
+BuildOption(install):  -l %{srcname}
+
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  pkgconfig(python3)
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}
+
 %description
 This is a library to support the Internationalised Domain Names in
 Applications (IDNA) protocol as specified in RFC 5891.  This version of the

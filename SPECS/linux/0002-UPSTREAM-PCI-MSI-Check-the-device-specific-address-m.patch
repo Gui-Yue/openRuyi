@@ -1,7 +1,7 @@
-From 93cf3d0c529f2fe7964e63426bef45a2f1821afb Mon Sep 17 00:00:00 2001
+From 01b75e553f66626f3d18ae77223de6edfcbd4c23 Mon Sep 17 00:00:00 2001
 From: Vivian Wang <wangruikang@iscas.ac.cn>
 Date: Thu, 29 Jan 2026 09:56:07 +0800
-Subject: [PATCH 002/192] UPSTREAM: PCI/MSI: Check the device specific address
+Subject: [PATCH 002/197] UPSTREAM: PCI/MSI: Check the device specific address
  mask in msi_verify_entries()
 
 Instead of a 32-bit/64-bit dichotomy, check the MSI address against

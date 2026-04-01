@@ -20,16 +20,16 @@ BuildSystem:    pyproject
 # Use system wheels instead of bundled ones
 Patch2000:      2000-use-system-wheels.patch
 
-BuildOption(install): -l %{srcname}
+BuildOption(install):  -l %{srcname}
 
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  python-setuptools-wheel
 BuildRequires:  python-pip-wheel
 # Tests
-BuildRequires:  python3-pytest
-BuildRequires:  python3-flaky
-BuildRequires:  python3-pytest-mock
+BuildRequires:  python3dist(pytest)
+BuildRequires:  python3dist(flaky)
+BuildRequires:  python3dist(pytest-mock)
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}

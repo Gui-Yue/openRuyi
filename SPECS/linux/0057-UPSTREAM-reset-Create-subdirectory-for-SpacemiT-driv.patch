@@ -1,7 +1,7 @@
-From 6957a0d1bec0de703518a033a31343d473344818 Mon Sep 17 00:00:00 2001
+From f4d72c3f4e86a0ca77b97fab9c13f9b32907761a Mon Sep 17 00:00:00 2001
 From: Guodong Xu <guodong@riscstar.com>
 Date: Tue, 20 Jan 2026 19:10:50 +0800
-Subject: [PATCH 057/192] UPSTREAM: reset: Create subdirectory for SpacemiT
+Subject: [PATCH 057/197] UPSTREAM: reset: Create subdirectory for SpacemiT
  drivers
 
 Create a dedicated subdirectory for SpacemiT reset drivers to allow

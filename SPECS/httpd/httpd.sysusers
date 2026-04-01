@@ -1,0 +1,2 @@
+g apache -
+u apache - "Apache" /usr/share/httpd /sbin/nologin

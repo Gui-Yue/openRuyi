@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
-# SPDX-FileContributor: Mahno <bestwow2014@gmail.com>
+# SPDX-FileContributor: Xuhai Chang <xuhai.oerv@isrc.iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
@@ -17,8 +17,9 @@ URL:            https://wiki.gnome.org/Projects/PyGObject
 #!RemoteAsset
 Source0:        https://download.gnome.org/sources/pygobject/%{major_version}.%{minor_version}/pygobject-%{version}.tar.gz
 BuildSystem:    meson
-BuildOption(conf): -Dpython=%{__python3}
-BuildOption(conf): -Dpycairo=disabled
+
+BuildOption(conf):  -Dpython=%{__python3}
+BuildOption(conf):  -Dpycairo=disabled
 
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)

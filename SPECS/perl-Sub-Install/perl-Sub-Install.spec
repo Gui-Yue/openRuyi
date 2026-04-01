@@ -11,7 +11,7 @@ Summary:        Install subroutines into packages easily
 License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/dist/Sub-Install
 #!RemoteAsset
-Source0:        https://mirrors.tuna.tsinghua.edu.cn/CPAN/authors/id/R/RJ/RJBS/Sub-Install-%{version}.tar.gz
+Source0:        http://www.cpan.org/authors/id/R/RJ/RJBS/Sub-Install-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  make

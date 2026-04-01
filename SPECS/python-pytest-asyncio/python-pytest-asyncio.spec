@@ -15,12 +15,16 @@ Summary:        Pytest support for asyncio
 #!RemoteAsset
 Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
-
-BuildRequires:  python3-devel
 BuildSystem:    pyproject
-BuildOption(install): -l %{srcname} +auto
+
+BuildOption(install):  -l %{srcname} +auto
+
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  pkgconfig(python3)
+
 Provides:       python3-pytest-asyncio
 %python_provide python3-pytest-asyncio
+
 %description
 Python asyncio code is usually written in the form of
 coroutines, which makes it slightly more difficult to test using normal

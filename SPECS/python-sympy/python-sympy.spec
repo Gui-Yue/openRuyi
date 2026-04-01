@@ -19,7 +19,8 @@ BuildSystem:    pyproject
 
 BuildOption(install):  isympy sympy
 
-BuildRequires:  python3-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  python3dist(mpmath)
 BuildRequires:  python3dist(hypothesis)
 BuildRequires:  python3dist(pip)

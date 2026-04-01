@@ -17,15 +17,15 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/pyas
 BuildArch:      noarch
 BuildSystem:    pyproject
 
-BuildOption(install): pyasn1_modules
+BuildOption(install):  pyasn1_modules
 
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-devel
-
-Requires:       python3-pyasn1
+BuildRequires:  pkgconfig(python3)
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}
+
+Requires:       python3dist(pyasn1)
 
 %description
 This is an implementation of ASN.1 types and codecs in Python programming

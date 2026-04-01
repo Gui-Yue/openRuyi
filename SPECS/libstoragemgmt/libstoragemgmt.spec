@@ -44,7 +44,7 @@ BuildRequires:  libconfig-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  procps
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  python-six
+BuildRequires:  python3dist(six)
 # Python packaging requirement per Python.md
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(ledmon)
@@ -78,6 +78,7 @@ developing applications that use %{name}.
 %package     -n python-%{name}
 Summary:        Python client libraries and plug-in support for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       python3dist(six)
 
 # Python packaging requirement per Python.md
 Provides:       python3-%{name} = %{version}-%{release}

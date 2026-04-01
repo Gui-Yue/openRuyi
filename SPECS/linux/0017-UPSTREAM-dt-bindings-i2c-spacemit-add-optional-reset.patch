@@ -1,7 +1,7 @@
-From 68495b5f452469db602457aaa12c1b9dd2487c6a Mon Sep 17 00:00:00 2001
+From 755be63d1169933bded11bc11962ebeaca162ae9 Mon Sep 17 00:00:00 2001
 From: Encrow Thorne <jyc0019@gmail.com>
 Date: Tue, 30 Dec 2025 23:06:51 +0800
-Subject: [PATCH 017/192] UPSTREAM: dt-bindings: i2c: spacemit: add optional
+Subject: [PATCH 017/197] UPSTREAM: dt-bindings: i2c: spacemit: add optional
  resets
 
 The I2C controller requires a reset to ensure it starts from a clean state.

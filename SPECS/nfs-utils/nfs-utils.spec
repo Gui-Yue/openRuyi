@@ -101,6 +101,7 @@ install -d %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE3} %{buildroot}%{_sysusersdir}/statd-user.conf
 
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/nfs.conf
+install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/sysconfig/nfs
 mkdir -p -m 755 %{buildroot}%{_sysconfdir}/nfs.conf.d
 install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/lib/tmpfiles.d/nfs-kernel-server.conf
 install -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/idmapd.conf
@@ -166,6 +167,7 @@ fi
 %dir %{_sysconfdir}/idmapd.conf.d
 %dir %{_sysconfdir}/nfsmount.conf.d
 %config(noreplace) %{_sysconfdir}/nfs.conf
+%config(noreplace) %{_sysconfdir}/sysconfig/nfs
 %dir %{_sysconfdir}/nfs.conf.d
 %doc utils/mount/nfsmount.conf
 %verify(not mode) %attr(0755,root,root) %{_sbindir}/mount.nfs

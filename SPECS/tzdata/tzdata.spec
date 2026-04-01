@@ -8,7 +8,7 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           tzdata
-Version:        2025b
+Version:        2026a
 Release:        %autorelease
 Summary:        Timezone data
 # I'm not sure about this... but I checked from below - 251
@@ -30,6 +30,8 @@ BuildSystem:    autotools
 BuildOption(prep):  -a 2
 BuildOption(build):  VERSION=%{version} ZFLAGS="-b fat" DATAFORM=vanguard tzdata.zi
 BuildOption(check):  CC=%__cc
+# Disable use of the Internet.
+BuildOption(check):  CURL=:
 
 BuildRequires:  make
 BuildRequires:  perl
@@ -64,9 +66,6 @@ install -p -m 644 zone.tab zone1970.tab iso3166.tab leap-seconds.list leapsecond
 install -D -m 755 tzselect %{buildroot}%{_bindir}/tzselect
 install -D -m 755 zdump    %{buildroot}%{_bindir}/zdump
 install -D -m 755 zic      %{buildroot}%{_bindir}/zic
-
-# Disable checks for now
-%check
 
 %files
 %license LICENSE

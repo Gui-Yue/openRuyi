@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:          lsof
-Version:       4.99.5
+Version:       4.99.6
 Release:       %autorelease
 Summary:       A tool for listing open files
 License:       Sendmail and LGPL-2.1-or-later and Zlib
@@ -20,9 +20,10 @@ BuildSystem:   autotools
 BuildOption(conf):  --disable-static
 BuildOption(conf):  --enable-security
 BuildOption(conf):  --enable-no-sock-security
+BuildOption(conf):  --with-libtirpc
+BuildOption(conf):  --with-selinux
+BuildOption(conf):  --disable-liblsof
 
-BuildRequires:  gcc
-BuildRequires:  make
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  groff
@@ -30,13 +31,6 @@ BuildRequires:  groff
 %description
 lsof is a Unix administrative tool that displays information about files
 open to processes. It runs on many Unix dialects.
-
-%package        devel
-Summary:        Development files for the lsof library
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-
-%description    devel
-This package contains the header files and development library for lsof.
 
 %build -a
 soelim -r Lsof.8 > lsof.1
@@ -49,12 +43,7 @@ rm -rf %{buildroot}%{_mandir}/man8/lsof.8*
 %license COPYING
 %doc 00CREDITS 00README 00FAQ 00LSOF-L 00QUICKSTART
 %{_bindir}/lsof
-%{_libdir}/liblsof.so.*
 %{_mandir}/man1/lsof.1*
-
-%files devel
-%{_libdir}/liblsof.so
-%{_includedir}/*.h
 
 %changelog
 %{?autochangelog}

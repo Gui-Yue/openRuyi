@@ -18,17 +18,18 @@ License:        MIT
 URL:            https://github.com/pytest-dev/pytest-randomly
 #!RemoteAsset
 Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+BuildArch:      noarch
 BuildSystem:    pyproject
 
 BuildOption(install):  -l %{pypi_name}
 
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
+BuildRequires:  python3dist(pip)
+BuildRequires:  python3dist(setuptools)
+BuildRequires:  python3dist(wheel)
 %if %{with tests}
-BuildRequires:  python3-pytest
+BuildRequires:  python3dist(pytest)
 BuildRequires:  python3dist(factory-boy)
 BuildRequires:  python3dist(numpy)
 BuildRequires:  python3dist(pytest-xdist)

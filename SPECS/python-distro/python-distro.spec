@@ -16,14 +16,17 @@ URL:            https://github.com/nir0s/distro
 #       Otherwise https://files.pythonhosted.org/packages/source/a/abc/%%{srcname}-%%{version}.tar.gz
 #!RemoteAsset
 Source0:        https://files.pythonhosted.org/packages/source/d/%{srcname}/%{srcname}-%{version}.tar.gz
+BuildArch:      noarch
+BuildSystem:    pyproject
+
+BuildOption(install):  -l distro +auto
+
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  pkgconfig(python3)
+
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}
 
-BuildArch:      noarch
-
-BuildRequires:  python3-devel
-BuildSystem:    pyproject
-BuildOption(install):  -l distro +auto
 %description
 distro provides information about the OS distribution it runs on,
 such as a reliable machine-readable ID, or version information.

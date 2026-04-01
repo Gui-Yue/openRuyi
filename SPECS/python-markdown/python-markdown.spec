@@ -13,48 +13,34 @@ Release:        %autorelease
 Summary:        Markdown implementation in Python
 License:        BSD-3-Clause
 URL:            https://python-markdown.github.io/
-# TODO: Use %%{pypi_source %%{srcname} %%{version}} in the future - 251
-#       Otherwise https://files.pythonhosted.org/packages/source/a/abc/%%{srcname}-%%{version}.tar.gz
 #!RemoteAsset
 Source0:        https://files.pythonhosted.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
+BuildSystem:    pyproject
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-PyYAML
-BuildRequires:  expat
+BuildOption(install):  %{srcname}
+
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3dist(pyyaml)
+
+Provides:       python3-%{srcname}
+%python_provide python3-%{srcname}
 
 %description
 This is a Python implementation of John Gruberâ€™s Markdown. It is
 almost completely compliant with the reference implementation, though
 there are a few very minor differences.
 
-%package     -n python3-%{srcname}
-Summary:        %{summary}
-
-%description -n python3-%{srcname}
-This is a Python implementation of John Gruberâ€™s Markdown. It is
-almost completely compliant with the reference implementation, though
-there are a few very minor differences.
-
-%prep
-%autosetup -p1 -n %{srcname}-%{version}
-
 %generate_buildrequires
 %pyproject_buildrequires
 
-%build
-%pyproject_wheel
-
-%install
-%pyproject_install
-%pyproject_save_files %{srcname}
-
+%install -a
 # process license file
 PYTHONPATH=%{buildroot}%{python3_sitelib} \
   %{buildroot}%{_bindir}/markdown_py \
   LICENSE.md > LICENSE.html
 
-%files -n python3-%{srcname} -f %{pyproject_files}
+%files -f %{pyproject_files}
 # temporarily skip packaging docs - see also
 # https://github.com/Python-Markdown/markdown/issues/621
 #doc python3/build/docs/*

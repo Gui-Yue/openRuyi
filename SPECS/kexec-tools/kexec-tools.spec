@@ -7,20 +7,15 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           kexec-tools
-Version:        2.0.31
+Version:        2.0.32
 Release:        %autorelease
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later
 URL:            https://projects.horms.net/projects/kexec/
 VCS:            git:https://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git
-#!RemoteAsset
-Source:         https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.xz
-#!RemoteAsset
-Source1:        https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.sign
+#!RemoteAsset:  sha256:8f81422a5fd2362cf6cb001b511e535565ed0f32c2f4451fb5eb68fed6710a5d
+Source:         https://kernel.org/pub/linux/utils/kernel/kexec/kexec-tools-%{version}.tar.xz
 BuildSystem:    autotools
-
-Patch1:         add-riscv64-support.patch
-Patch2:         riscv-hotplug.patch
 
 BuildOption(conf):  --without-lzma LD=ld.bfd
 

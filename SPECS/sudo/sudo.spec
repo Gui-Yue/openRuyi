@@ -115,13 +115,12 @@ install -p -c -m 0644 %{S:3} %{buildroot}/etc/pam.d/sudo-i
 
 %files
 %license LICENSE.md
-%doc README.md ChangeLog NEWS
-%doc plugins/sample/sample_plugin.c
-/usr/share/doc/sudo/
+%doc %{_docdir}/%{name}
 %attr(0440,root,root) %config(noreplace) /etc/sudoers
 %attr(0750,root,root) %dir /etc/sudoers.d/
 %config(noreplace) /etc/dnf/protected.d/sudo.conf
 %config(noreplace) /etc/sudo.conf
+%{_tmpfilesdir}/sudo.conf
 %attr(4111,root,root) %{_bindir}/sudo
 %attr(0111,root,root) %{_bindir}/sudoreplay
 %{_bindir}/sudoedit

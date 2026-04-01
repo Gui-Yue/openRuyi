@@ -15,7 +15,6 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/libfuse/libfuse
 #!RemoteAsset
 Source0:        https://github.com/libfuse/libfuse/releases/download/fuse-%{version}/fuse-%{version}.tar.gz
-Source1:        fuse.conf
 BuildSystem:    autotools
 
 Patch0:         0001-fuse-install-fix.patch
@@ -35,6 +34,7 @@ BuildRequires:  pkgconfig
 
 Requires(pre):  group(trusted)
 Requires:       util-linux
+Requires:       fuse-common
 
 Supplements:    filesystem(fuse)
 
@@ -58,7 +58,6 @@ autoreconf -fi -I%{_datadir}/gettext/m4
 
 %install -a
 rm -rf %{buildroot}/%{_sysconfdir}/init.d
-install -m644 -D %{SOURCE1} %{buildroot}/%{_sysconfdir}/fuse.conf
 rm -f %{buildroot}/%{_libdir}/libfuse.a
 rm -f %{buildroot}/%{_libdir}/libulockmgr.a
 
@@ -74,7 +73,6 @@ rm -rf doc/Makefile.am doc/Makefile.in doc/Makefile
 %doc AUTHORS ChangeLog NEWS README* example doc
 %verify(not mode) %attr(4750,root,trusted) %{_bindir}/fusermount
 %{_sbindir}/mount.fuse
-%config %{_sysconfdir}/fuse.conf
 %{_bindir}/ulockmgr_server
 %{_mandir}/man1/fusermount.1%{?ext_man}
 %{_mandir}/man1/ulockmgr_server.1%{?ext_man}

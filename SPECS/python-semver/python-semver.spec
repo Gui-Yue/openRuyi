@@ -14,18 +14,20 @@ License:        BSD-3-Clause
 URL:            https://github.com/python-semver/python-semver
 #!RemoteAsset
 Source0:        https://files.pythonhosted.org/packages/source/s/%{srcname}/%{srcname}-%{version}.tar.gz
+BuildArch:      noarch
+BuildSystem:    pyproject
+
 # Don't do coverage tests.
 Patch0:         0001-Remove-cov-related-options.patch
-BuildSystem:    pyproject
 
 BuildOption(install):  -l %{srcname}
 
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
-BuildRequires:  python3-pytest
+BuildRequires:  python3dist(pip)
+BuildRequires:  python3dist(setuptools)
+BuildRequires:  python3dist(wheel)
+BuildRequires:  python3dist(pytest)
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}

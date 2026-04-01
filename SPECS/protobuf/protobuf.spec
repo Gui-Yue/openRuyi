@@ -1,6 +1,5 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
-# SPDX-FileContributor: Mahno <bestwow2014@gmail.com>
 # SPDX-FileContributor: Xuhai Chang <xuhai.oerv@isrc.iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
@@ -17,8 +16,8 @@ URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://github.com/protocolbuffers/protobuf/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildSystem:    cmake
 
-BuildOption(conf): -Dprotobuf_BUILD_TESTS=OFF
-BuildOption(conf): -Dprotobuf_ABSL_PROVIDER=package
+BuildOption(conf):  -Dprotobuf_BUILD_TESTS=OFF
+BuildOption(conf):  -Dprotobuf_ABSL_PROVIDER=package
 
 BuildRequires:  cmake
 BuildRequires:  fdupes

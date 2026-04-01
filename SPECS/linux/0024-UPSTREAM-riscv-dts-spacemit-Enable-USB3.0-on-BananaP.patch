@@ -1,7 +1,7 @@
-From 5c674c66cd37f0234668b145b1f11010f322d3d5 Mon Sep 17 00:00:00 2001
+From 0d9cc73f214e3a8302b0aab23092df22dda6d69d Mon Sep 17 00:00:00 2001
 From: Ze Huang <huang.ze@linux.dev>
 Date: Sun, 11 Jan 2026 14:41:04 +0800
-Subject: [PATCH 024/192] UPSTREAM: riscv: dts: spacemit: Enable USB3.0 on
+Subject: [PATCH 024/197] UPSTREAM: riscv: dts: spacemit: Enable USB3.0 on
  BananaPi-F3
 
 Enable the DWC3 USB 3.0 controller and its associated usbphy2 on the

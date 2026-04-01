@@ -32,69 +32,69 @@ Source5:        https://www.oasis-open.org/docbook/sgml/4.2/docbook-4.2.zip
 #!RemoteAsset
 Source6:        https://www.oasis-open.org/docbook/xml/4.2/docbook-xml-4.2.zip
 #!RemoteAsset
-Source7:        https://www.docbook.org/sgml/4.3/docbook-4.3.zip
+Source7:        https://archive.docbook.org/sgml/4.3/docbook-4.3.zip
 #!RemoteAsset
-Source8:        https://www.docbook.org/xml/4.3/docbook-xml-4.3.zip
+Source8:        https://archive.docbook.org/xml/4.3/docbook-xml-4.3.zip
 #!RemoteAsset
-Source9:        https://www.docbook.org/sgml/4.4/docbook-4.4.zip
+Source9:        https://archive.docbook.org/sgml/4.4/docbook-4.4.zip
 #!RemoteAsset
-Source10:       https://www.docbook.org/xml/4.4/docbook-xml-4.4.zip
+Source10:       https://archive.docbook.org/xml/4.4/docbook-xml-4.4.zip
 #!RemoteAsset
-Source11:       https://www.docbook.org/sgml/4.5/docbook-4.5.zip
+Source11:       https://archive.docbook.org/sgml/4.5/docbook-4.5.zip
 #!RemoteAsset
-Source12:       https://www.docbook.org/xml/4.5/docbook-xml-4.5.zip
+Source12:       https://archive.docbook.org/xml/4.5/docbook-xml-4.5.zip
 #!RemoteAsset
-Source13:       https://www.docbook.org/rng/4.2/docbook-rng-4.2.zip
+Source13:       https://archive.docbook.org/rng/4.2/docbook-rng-4.2.zip
 #!RemoteAsset
-Source14:       https://www.docbook.org/rng/4.3/docbook-rng-4.3.zip
+Source14:       https://archive.docbook.org/rng/4.3/docbook-rng-4.3.zip
 #!RemoteAsset
-Source15:       https://www.docbook.org/rng/4.4/docbook-rng-4.4.zip
+Source15:       https://archive.docbook.org/rng/4.4/docbook-rng-4.4.zip
 #!RemoteAsset
-Source16:       https://www.docbook.org/xsd/4.2/docbook-xsd-4.2.zip
+Source16:       https://archive.docbook.org/xsd/4.2/docbook-xsd-4.2.zip
 #!RemoteAsset
-Source17:       https://www.docbook.org/xsd/4.3/docbook-xsd-4.3.zip
+Source17:       https://archive.docbook.org/xsd/4.3/docbook-xsd-4.3.zip
 #!RemoteAsset
-Source18:       https://www.docbook.org/xsd/4.4/docbook-xsd-4.4.zip
+Source18:       https://archive.docbook.org/xsd/4.4/docbook-xsd-4.4.zip
 # http://www.docbook.org/rng/4.5/ upstream archive unavailable
 #!RemoteAsset
-Source100:      https://www.docbook.org/rng/4.5/calstblx.rnc
+Source100:      https://archive.docbook.org/rng/4.5/calstblx.rnc
 #!RemoteAsset
-Source101:      https://www.docbook.org/rng/4.5/calstblx.rng
+Source101:      https://archive.docbook.org/rng/4.5/calstblx.rng
 #!RemoteAsset
-Source102:      https://www.docbook.org/rng/4.5/dbhierx.rnc
+Source102:      https://archive.docbook.org/rng/4.5/dbhierx.rnc
 #!RemoteAsset
-Source103:      https://www.docbook.org/rng/4.5/dbhierx.rng
+Source103:      https://archive.docbook.org/rng/4.5/dbhierx.rng
 #!RemoteAsset
-Source104:      https://www.docbook.org/rng/4.5/dbnotnx.rnc
+Source104:      https://archive.docbook.org/rng/4.5/dbnotnx.rnc
 #!RemoteAsset
-Source105:      https://www.docbook.org/rng/4.5/dbnotnx.rng
+Source105:      https://archive.docbook.org/rng/4.5/dbnotnx.rng
 #!RemoteAsset
-Source106:      https://www.docbook.org/rng/4.5/dbpoolx.rnc
+Source106:      https://archive.docbook.org/rng/4.5/dbpoolx.rnc
 #!RemoteAsset
-Source107:      https://www.docbook.org/rng/4.5/dbpoolx.rng
+Source107:      https://archive.docbook.org/rng/4.5/dbpoolx.rng
 #!RemoteAsset
-Source108:      https://www.docbook.org/rng/4.5/docbook.rnc
+Source108:      https://archive.docbook.org/rng/4.5/docbook.rnc
 #!RemoteAsset
-Source109:      https://www.docbook.org/rng/4.5/docbook.rng
+Source109:      https://archive.docbook.org/rng/4.5/docbook.rng
 #!RemoteAsset
-Source110:      https://www.docbook.org/rng/4.5/htmltblx.rnc
+Source110:      https://archive.docbook.org/rng/4.5/htmltblx.rnc
 #!RemoteAsset
-Source111:      https://www.docbook.org/rng/4.5/htmltblx.rng
+Source111:      https://archive.docbook.org/rng/4.5/htmltblx.rng
 # http://www.docbook.org/xsd/4.5/ upstream archive unavailable
 #!RemoteAsset
-Source200:      https://www.docbook.org/xsd/4.5/calstblx.xsd
+Source200:      https://archive.docbook.org/xsd/4.5/calstblx.xsd
 #!RemoteAsset
-Source201:      https://www.docbook.org/xsd/4.5/dbhierx.xsd
+Source201:      https://archive.docbook.org/xsd/4.5/dbhierx.xsd
 #!RemoteAsset
-Source202:      https://www.docbook.org/xsd/4.5/dbnotnx.xsd
+Source202:      https://archive.docbook.org/xsd/4.5/dbnotnx.xsd
 #!RemoteAsset
-Source203:      https://www.docbook.org/xsd/4.5/dbpoolx.xsd
+Source203:      https://archive.docbook.org/xsd/4.5/dbpoolx.xsd
 #!RemoteAsset
-Source204:      https://www.docbook.org/xsd/4.5/docbook.xsd
+Source204:      https://archive.docbook.org/xsd/4.5/docbook.xsd
 #!RemoteAsset
-Source205:      https://www.docbook.org/xsd/4.5/htmltblx.xsd
+Source205:      https://archive.docbook.org/xsd/4.5/htmltblx.xsd
 #!RemoteAsset
-Source206:      https://www.docbook.org/xsd/4.5/xml.xsd
+Source206:      https://archive.docbook.org/xsd/4.5/xml.xsd
 BuildArch:      noarch
 
 BuildRequires:  unzip

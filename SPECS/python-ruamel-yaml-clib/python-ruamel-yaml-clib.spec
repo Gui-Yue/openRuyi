@@ -17,18 +17,19 @@ URL:            https://sourceforge.net/projects/ruamel-yaml-clib/
 Source0:        https://yaml.dev/ruamel-dl-tagged-releases/%{srcname}-%{version}.tar.xz
 BuildSystem:    pyproject
 
-BuildOption(install): -l _ruamel_yaml
-BuildOption(check):   _ruamel_yaml
+BuildOption(install):  -l _ruamel_yaml
+BuildOption(check):  _ruamel_yaml
 
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-devel
-BuildRequires:  python3-Cython
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3dist(cython)
 # For %check
-BuildRequires:  python-ruamel-yaml
+BuildRequires:  python3dist(ruamel-yaml)
 
-Requires:       python-ruamel-yaml
 Provides:       python3-ruamel-yaml-clib
 %python_provide python3-ruamel-yaml-clib
+
+Requires:       python3dist(ruamel-yaml)
 
 %description
 ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of

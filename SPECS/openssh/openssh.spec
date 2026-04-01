@@ -33,7 +33,15 @@ Source9:        sshd-keygen
 Source10:       sshd-keygen@.service
 Source11:       sshd-keygen.target
 Source12:       openssh-server-systemd-sysusers.conf
+Source13:       50-openruyi-sshd.conf
 BuildSystem:    autotools
+
+# Fix seccomp failure termination because of zlib-ng calling hwprobe
+# See: https://github.com/openssh/openssh-portable/pull/644
+Patch0:         0001-seccomp-sandbox-allow-riscv_hwprobe-syscall-if-prese.patch
+
+# Lets us ship distro config in /etc/ssh/{ssh,sshd}_config.d/*.conf
+Patch1:         2000-ssh-sshd-_config-Include-_config.d-.conf.patch
 
 BuildOption(conf):  --sysconfdir=%{_sysconfdir}/ssh
 BuildOption(conf):  --libexecdir=%{_libexecdir}/openssh
@@ -157,6 +165,7 @@ an X11 passphrase dialog for OpenSSH.
 %prep
 # Our %%prep won't work so this - 251
 %setup -q -n %{name}-%{version}
+%autopatch -p1 -q
 
 %conf -p
 autoreconf -fiv
@@ -213,6 +222,8 @@ install -m755 contrib/ssh-copy-id $RPM_BUILD_ROOT%{_bindir}/
 install contrib/ssh-copy-id.1 $RPM_BUILD_ROOT%{_mandir}/man1/
 install -d -m711 ${RPM_BUILD_ROOT}/%{_datadir}/empty.sshd
 install -p -D -m 0644 %{SOURCE12} %{buildroot}%{_sysusersdir}/openssh-server.conf
+
+install -m644 %{SOURCE13} %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/50-openruyi.conf
 
 # TODO: We don't need these now but maybe in the future
 rm -f $RPM_BUILD_ROOT/etc/profile.d/gnome-ssh-askpass.*
@@ -297,6 +308,7 @@ popd
 %attr(0644,root,root) %{_mandir}/man8/sftp-server.8*
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config
 %dir %attr(0700,root,root) %{_sysconfdir}/ssh/sshd_config.d/
+%attr(0600,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config.d/50-openruyi.conf
 %attr(0644,root,root) %config(noreplace) /etc/pam.d/sshd
 %attr(0640,root,root) %config(noreplace) /etc/sysconfig/sshd
 %attr(0644,root,root) %{_unitdir}/sshd.service

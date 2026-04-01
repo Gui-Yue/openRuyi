@@ -9,13 +9,13 @@
 %bcond test 0
 
 Name:           ccache
-Version:        4.12
+Version:        4.13.1
 Release:        %autorelease
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
 URL:            https://ccache.dev/
 VCS:            git:https://github.com/ccache/ccache
-#!RemoteAsset
+#!RemoteAsset:  sha256:5923c712764b80dd45ed261da4bd8d3908a553615fb5d7ec2512c0c46ed1e9c3
 Source:         https://github.com/ccache/ccache/archive/refs/tags/v%{version}.tar.gz
 BuildSystem:    cmake
 
@@ -61,7 +61,7 @@ ln -sf ../../bin/ccache nvcc
 
 %files
 %license LICENSE.* GPL-3.0.txt
-%doc doc/AUTHORS.* doc/NEWS.* README.*
+%doc README.*
 %{_bindir}/ccache
 %{_libdir}/ccache
 

@@ -1,7 +1,7 @@
-From 2ed93bd882df00a34d797d6f54cf0d69c6dc3e6f Mon Sep 17 00:00:00 2001
+From f6fce6c9b52f3606b9c9072e435d90b61da41bb4 Mon Sep 17 00:00:00 2001
 From: Inochi Amaoto <inochiama@gmail.com>
 Date: Fri, 19 Dec 2025 09:28:18 +0800
-Subject: [PATCH 046/192] UPSTREAM: clk: spacemit: Hide common clock driver
+Subject: [PATCH 046/197] UPSTREAM: clk: spacemit: Hide common clock driver
  from user controller
 
 Since the common clock driver is only a dependency for other spacemit

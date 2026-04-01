@@ -1,7 +1,7 @@
-From e1f51ecf8d993eee9c9345bec247ddd1f52a4ca2 Mon Sep 17 00:00:00 2001
+From 2bc92cfc661e4978bc1b472573ea816c06a161e5 Mon Sep 17 00:00:00 2001
 From: Ze Huang <huang.ze@linux.dev>
 Date: Fri, 17 Oct 2025 22:49:52 +0800
-Subject: [PATCH 020/192] UPSTREAM: dt-bindings: phy: spacemit: add K1 USB2 PHY
+Subject: [PATCH 020/197] UPSTREAM: dt-bindings: phy: spacemit: add K1 USB2 PHY
 
 Add support for USB2 PHY found on SpacemiT K1 SoC.
 

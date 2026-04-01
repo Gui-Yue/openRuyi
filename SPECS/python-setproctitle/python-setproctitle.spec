@@ -16,12 +16,11 @@ URL:            http://pypi.python.org/pypi/setproctitle
 Source0:        https://files.pythonhosted.org/packages/source/s/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildSystem:    pyproject
 
-BuildOption(install): %{srcname}
+BuildOption(install):  %{srcname}
 
-BuildRequires:  gcc
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  python3-setuptools
-BuildRequires:  python-rpm-macros
+BuildRequires:  python3dist(setuptools)
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}

@@ -20,8 +20,6 @@ BuildSystem:    autotools
 BuildRequires:  make
 BuildRequires:  perl
 BuildRequires:  perl-GD
-BuildRequires:  bdftopcf
-BuildRequires:  bdf2psf
 BuildRequires:  fontforge
 BuildRequires:  texinfo
 
@@ -49,15 +47,40 @@ sed -i -E '/^compiled-files:/ s/[[:space:]]+thumbnails([[:space:]]+|$)/\1/g' fon
 # No conf
 
 %build -a
-make -C font all ttf upperttf
+make -C font ttf opentype upperttf bigpic
 
-%install -a
-install -Dm 0644 font/compiled/unifont-%{version}.ttf %{buildroot}%{_datadir}/fonts/truetype/unifont/unifont.ttf
+%install
+# We need to do manually install the font, since we disabled psf generation during installation
+# Install tools & manpages
+make -C src install PREFIX=%{buildroot}%{_prefix}
+make -C man install PREFIX=%{buildroot}%{_prefix} COMPRESS=1
+
+# Install hex and bmp data
+install -d %{buildroot}%{_datadir}/unifont
+install -m0644 font/compiled/unifont-%{version}.hex %{buildroot}%{_datadir}/unifont/unifont.hex
+install -m0644 font/compiled/unifont_jp-%{version}.hex %{buildroot}%{_datadir}/unifont/unifont_jp.hex
+# TODO: we need this or not?
+#install -m0644 font/compiled/unifont_all-%{version}.hex %{buildroot}%{_datadir}/unifont/unifont_all.hex
+install -m0644 font/compiled/unifont-%{version}.bmp %{buildroot}%{_datadir}/unifont/unifont.bmp
+gzip -n -9 %{buildroot}%{_datadir}/unifont/unifont.bmp
+
+# Install truetype/opentype fonts
+install -d %{buildroot}%{_datadir}/fonts/truetype/unifont
+install -m0644 font/compiled/unifont-%{version}.ttf \
+    %{buildroot}%{_datadir}/fonts/truetype/unifont/unifont.ttf
+
+install -d %{buildroot}%{_datadir}/fonts/opentype/unifont
+install -m0644 font/compiled/unifont-%{version}.otf \
+    %{buildroot}%{_datadir}/fonts/opentype/unifont/unifont.otf
+install -m0644 font/compiled/unifont_jp-%{version}.otf \
+    %{buildroot}%{_datadir}/fonts/opentype/unifont/unifont_jp.otf
+install -m0644 font/compiled/unifont_csur-%{version}.otf \
+    %{buildroot}%{_datadir}/fonts/opentype/unifont/unifont_csur.otf
+install -m0644 font/compiled/unifont_upper-%{version}.otf \
+    %{buildroot}%{_datadir}/fonts/opentype/unifont/unifont_upper.otf
 
 # Don't want these
 find %{buildroot}/usr/share/unifont/ -type f \! -name %{name}.hex -delete
-rm -rv %{buildroot}/usr/share/fonts/X11
-rm %{buildroot}/usr/share/consolefonts/Unifont-APL8x16.psf.gz
 
 # no tests.
 %check

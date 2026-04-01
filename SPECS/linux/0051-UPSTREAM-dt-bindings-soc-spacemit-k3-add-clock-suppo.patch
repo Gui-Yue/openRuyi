@@ -1,7 +1,7 @@
-From 4f01b8bf74ac3a3714f04ce9e4cbd9c5c2f887bb Mon Sep 17 00:00:00 2001
+From 240869ded06d9959f93c0684273b8777a71f629e Mon Sep 17 00:00:00 2001
 From: Yixun Lan <dlan@gentoo.org>
 Date: Sat, 1 Nov 2025 20:56:42 +0800
-Subject: [PATCH 051/192] UPSTREAM: dt-bindings: soc: spacemit: k3: add clock
+Subject: [PATCH 051/197] UPSTREAM: dt-bindings: soc: spacemit: k3: add clock
  support
 
 Add compatible strings for clock drivers to support Spacemit K3 SoC,

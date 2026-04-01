@@ -1,7 +1,7 @@
-From d1d786b354823029a965887e69bb43211d57d518 Mon Sep 17 00:00:00 2001
+From ca49ab9249912c3f42b1751b5c6d2c7b2dbca646 Mon Sep 17 00:00:00 2001
 From: Guodong Xu <guodong@riscstar.com>
 Date: Tue, 20 Jan 2026 19:10:52 +0800
-Subject: [PATCH 059/192] UPSTREAM: reset: spacemit: Add SpacemiT K3 reset
+Subject: [PATCH 059/197] UPSTREAM: reset: spacemit: Add SpacemiT K3 reset
  driver
 
 Add support for the SpacemiT K3 SoC reset controller. The K3 reset

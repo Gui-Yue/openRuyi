@@ -25,7 +25,6 @@ BuildRequires:  python3dist(pip)
 BuildRequires:  python3dist(setuptools)
 BuildRequires:  python3dist(wheel)
 BuildRequires:  python3dist(numpy)
-BuildRequires:  gcc
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}

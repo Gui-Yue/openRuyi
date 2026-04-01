@@ -1,0 +1,61 @@
+From 966b020361727a52ee4036f29bb26c44667249ad Mon Sep 17 00:00:00 2001
+From: Glen Walker <glen@walker.gen.nz>
+Date: Thu, 22 May 2025 09:52:06 +1000
+Subject: [PATCH] Do not segfault in process with no controlling terminal
+
+The getlogin() function can return NULL in some cases, one example is
+when the calling process has no controlling terminal, such as a service
+process running under systemd. If getlogin() returns NULL this will
+cause a segfault in libnfs as a NULL string is passed to
+rpc_set_username, which is then passed to strdup.
+
+Backported from upstream PR #558 and PR #582.
+
+https://github.com/sahlberg/libnfs/pull/558
+https://github.com/sahlberg/libnfs/pull/582
+---
+ lib/libnfs.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/lib/libnfs.c b/lib/libnfs.c
+index 48b190c..f8053fc 100755
+--- a/lib/libnfs.c
++++ b/lib/libnfs.c
+@@ -34,6 +34,8 @@
+ #include <unistd.h>
+ #endif
+ 
++#include <pwd.h>
++
+ #ifdef HAVE_SYS_VFS_H
+ #include <sys/vfs.h>
+ #endif
+@@ -575,6 +577,10 @@ nfs_init_context(void)
+ {
+ 	struct nfs_context *nfs;
+ 	struct nfs_context_internal *nfsi;
++#ifdef HAVE_LIBKRB5
++	char *login;
++	struct passwd *euid_passwd;
++#endif
+         int i;
+         uint64_t v;
+         verifier4 verifier;
+@@ -599,7 +605,16 @@ nfs_init_context(void)
+ 		return NULL;
+ 	}
+ #ifdef HAVE_LIBKRB5
+-        rpc_set_username(nfs->rpc, getlogin());
++	login = getenv("USER");
++#if defined(HAVE_UNISTD_H)
++	if (login == NULL) {
++		euid_passwd = getpwuid(geteuid());
++		if (euid_passwd) {
++			login = euid_passwd->pw_name;
++		}
++	}
++#endif
++	rpc_set_username(nfs->rpc, login ? login : "");
+ #endif
+ 	nfs->nfsi->cwd = strdup("/");
+ 	nfs->nfsi->mask = 022;

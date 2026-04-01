@@ -31,7 +31,7 @@ BuildRequires:  python3dist(maturin)
 BuildRequires:  rust
 BuildRequires:  cargo
 
-Provides:       python3-hf-xet
+Provides:       python3-hf-xet = %{version}-%{release}
 %python_provide python3-hf-xet
 
 %description

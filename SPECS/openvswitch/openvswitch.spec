@@ -18,6 +18,7 @@ Source0:        https://www.openvswitch.org/releases/%{name}-%{version}.tar.gz
 Source1:        openvswitch.sysusers
 Source2:        ovsdb-server.service
 Source3:        ovs-vswitchd.service
+Source4:        openvswitch.tmpfiles
 BuildSystem:    autotools
 
 BuildOption(conf):  --prefix=%{_prefix}
@@ -60,6 +61,7 @@ export CFLAGS="%{optflags} -ffat-lto-objects"
 install -Dm644 %{SOURCE1} %{buildroot}%{_sysusersdir}/openvswitch.conf
 install -Dm644 %{SOURCE2} %{buildroot}%{_unitdir}/ovsdb-server.service
 install -Dm644 %{SOURCE3} %{buildroot}%{_unitdir}/ovs-vswitchd.service
+install -Dm644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/openvswitch.conf
 
 # Create config directory
 install -dm755 %{buildroot}%{_sysconfdir}/openvswitch
@@ -105,6 +107,7 @@ fi
 %{_mandir}/man?/*
 %{_unitdir}/*.service
 %{_sysusersdir}/openvswitch.conf
+%{_tmpfilesdir}/openvswitch.conf
 
 %changelog
 %{?autochangelog}

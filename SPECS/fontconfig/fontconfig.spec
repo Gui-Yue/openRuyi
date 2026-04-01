@@ -25,7 +25,7 @@ BuildOption(conf):  --default-library=shared
 BuildOption(conf):  -Dtemplate-dir=%{_datadir}/%{name}/conf.avail
 BuildOption(conf):  -Dconfig-dir=%{_sysconfdir}/fonts/conf.d
 BuildOption(conf):  -Dbaseconfig-dir=%{_datadir}/fonts
-BuildOption(conf):  -Dcache-dir=/usr/lib/fontconfig/cache
+BuildOption(conf):  -Dcache-dir=/var/cache/fontconfig
 
 BuildRequires:  gcc
 BuildRequires:  gperf

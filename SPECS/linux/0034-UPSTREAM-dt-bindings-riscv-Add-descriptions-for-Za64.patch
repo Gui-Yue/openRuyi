@@ -1,7 +1,7 @@
-From 16de2c46c24e1a8e2a5ca38e3a17708babff3014 Mon Sep 17 00:00:00 2001
+From 9333a4985b91bef42dccb8f001c2a2bc9d521145 Mon Sep 17 00:00:00 2001
 From: Guodong Xu <guodong@riscstar.com>
 Date: Sat, 10 Jan 2026 13:18:19 +0800
-Subject: [PATCH 034/192] UPSTREAM: dt-bindings: riscv: Add descriptions for
+Subject: [PATCH 034/197] UPSTREAM: dt-bindings: riscv: Add descriptions for
  Za64rs, Ziccamoa, Ziccif, and Zicclsm
 
 Add descriptions for four extensions: Za64rs, Ziccamoa, Ziccif, and

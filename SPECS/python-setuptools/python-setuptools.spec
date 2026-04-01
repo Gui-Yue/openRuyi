@@ -39,7 +39,7 @@ BuildArch:      noarch
 # brp-mangle-shebang script cannot mangle this and fails for many pkgs.
 Patch0:         0001-Revert-Always-rewrite-a-Python-shebang-to-python.patch
 
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  expat
 
 %if %{with bootstrap}

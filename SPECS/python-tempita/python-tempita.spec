@@ -18,10 +18,10 @@ Source0:        https://files.pythonhosted.org/packages/source/t/%{srcname}/temp
 BuildArch:      noarch
 BuildSystem:    pyproject
 
-BuildOption(install): tempita
+BuildOption(install):  tempita
 
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 
 Provides:       python3-tempita
 %python_provide python3-tempita

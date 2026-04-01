@@ -1,0 +1,7 @@
+#%PAM-1.0
+# Autologin stack; authentication is already permitted by sddm
+auth       include      system-auth
+account    include      system-auth
+password   include      system-auth
+session    optional     pam_keyinit.so revoke force
+session    include      system-auth

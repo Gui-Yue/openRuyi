@@ -17,13 +17,13 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{sr
 BuildArch:      noarch
 BuildSystem:    pyproject
 
-BuildOption(install): -l progressbar
-BuildOption(check): -e progressbar.terminal.os_specific.windows
+BuildOption(install):  -l progressbar
+BuildOption(check):  -e progressbar.terminal.os_specific.windows
 
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-devel
-BuildRequires:  python3-pytest
-BuildRequires:  python3-freezegun
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3dist(pytest)
+BuildRequires:  python3dist(freezegun)
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}

@@ -21,13 +21,13 @@ BuildSystem:    pyproject
 BuildOption(install):  -l %{srcname}
 
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
+BuildRequires:  python3dist(pip)
+BuildRequires:  python3dist(setuptools)
 BuildRequires:  pyproject-rpm-macros
 # the follow is for test.
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-asyncio
-BuildRequires:  python3-typing-extensions
+BuildRequires:  python3dist(pytest)
+BuildRequires:  python3dist(pytest-asyncio)
+BuildRequires:  python3dist(typing-extensions)
 
 Provides:       python3-utils
 %python_provide python3-utils

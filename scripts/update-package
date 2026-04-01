@@ -19,7 +19,7 @@ $OSC api -X PUT /source/$REPO/$PKG/_service -d \
 "<services>
     <service name=\"obs_scm\" mode=\"trylocal\">
       <param name=\"scm\">git</param>
-      <param name=\"url\">ssh://git@git.openruyi.cn:54865/openRuyi/openruyi-repo.git</param>
+      <param name=\"url\">https://github.com/openRuyi-project/openruyi/</param>
       <param name=\"revision\">main</param>
       <param name=\"exclude\">*</param>
       <param name=\"extract\">$P/*</param>

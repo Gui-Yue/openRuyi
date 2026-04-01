@@ -27,7 +27,7 @@ BuildOption(install):  %{srcname}
 BuildOption(check):  -e 'jieba.lac_small.*'
 
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  python3dist(numpy)
 BuildRequires:  python3dist(whoosh)
 

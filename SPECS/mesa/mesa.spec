@@ -67,10 +67,10 @@ BuildOption(conf):  -Dvulkan-layers=device-select,overlay,screenshot,anti-lag,vr
 BuildOption(conf):  -Dxlib-lease=enabled
 
 BuildRequires:  meson
-BuildRequires:  python3-devel
-BuildRequires:  python3-mako
-BuildRequires:  python3-PyYAML
-BuildRequires:  python3-pycparser
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3dist(mako)
+BuildRequires:  python3dist(pyyaml)
+BuildRequires:  python3dist(pycparser)
 BuildRequires:  flex
 BuildRequires:  bison
 BuildRequires:  glslang

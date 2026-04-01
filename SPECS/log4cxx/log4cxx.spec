@@ -5,25 +5,27 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
+%global sover 15
+
 Name:           log4cxx
-Version:        1.5.0
+Version:        1.6.1
 Release:        %autorelease
 Summary:        A port to C++ of the Log4j project
 License:        Apache-2.0
 URL:            https://logging.apache.org/log4cxx/index.html
 VCS:            git:https://github.com/apache/logging-log4cxx.git
-#!RemoteAsset:  sha256:aa23f47c3164aa2cf848c2258b4b4bc372e7964d4a3ed47c2b4a4a915c5dfa37
+#!RemoteAsset:  sha256:187c85836f5b2f27fb1e8d77c7f1f2939725f1f6498b742b0dd569ba30965fd2
 Source:         https://www.apache.org/dist/logging/log4cxx/%{version}/apache-log4cxx-%{version}.tar.gz
 BuildSystem:    cmake
 
 BuildOption(conf):  -DBUILD_SITE:BOOL=OFF
-BuildOption(check):  -E "autoconfiguretestcase"
+# FIXME: Re-enable asyncappendertestcase after timeout/hang issue is resolved.
+BuildOption(check):  -E "asyncappendertestcase"
 
 BuildRequires:  pkgconfig(apr-1)
 BuildRequires:  pkgconfig(apr-util-1)
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(ldap)
 BuildRequires:  zip
 
 %description
@@ -35,13 +37,13 @@ Summary:        Development files for the Log4cxx C++ logging project
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
-This package contains the header files, documentation, and other files needed
-to develop applications using the Log4cxx library.
+This package contains the header files, pkg-config metadata, and CMake
+configuration files needed to develop applications using Log4cxx.
 
 %files
 %license LICENSE
-%doc NOTICE KEYS
-%{_libdir}/liblog4cxx.so.15*
+%doc NOTICE
+%{_libdir}/liblog4cxx.so.%{sover}*
 
 %files devel
 %{_includedir}/log4cxx

@@ -24,19 +24,15 @@ Patch0:         0001-relax-setuptools_scm-requires.patch
 # Fix sphinx import path
 Patch1:         0002-fix-sphinx-import.patch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-PyYAML
-BuildRequires:  expat
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3dist(pyyaml)
 
-%description
-The dateutil module provides powerful extensions to the standard datetime
-module available in Python.
+Provides:       python3-%{srcname}
+%python_provide python3-%{srcname}
 
-%package     -n python3-%{srcname}
-Summary:        Powerful extensions to the standard datetime module
 Requires:       tzdata
 
-%description -n python3-%{srcname}
+%description
 The dateutil module provides powerful extensions to the standard datetime
 module available in Python.
 
@@ -57,7 +53,7 @@ mv NEWS.new NEWS
 %pyproject_install
 %pyproject_save_files %{srcname} -l
 
-%files -n python3-%{srcname} -f %{pyproject_files}
+%files -f %{pyproject_files}
 %doc NEWS README.rst
 #doc docs/_build/html
 %license LICENSE

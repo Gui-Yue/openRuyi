@@ -1,7 +1,7 @@
-From 46d373d66413ebff3565a4d4c175a6e96902458d Mon Sep 17 00:00:00 2001
+From 9deeeee92ad400668935e7e1deb6bdca051693ec Mon Sep 17 00:00:00 2001
 From: Alex Elder <elder@riscstar.com>
 Date: Fri, 26 Dec 2025 11:32:27 -0600
-Subject: [PATCH 070/192] UPSTREAM: phy: Kconfig: spacemit: add COMMON_CLK
+Subject: [PATCH 070/197] UPSTREAM: phy: Kconfig: spacemit: add COMMON_CLK
  dependency
 
 The SpacemiT PCIe PHY driver depends on the common clock framework.

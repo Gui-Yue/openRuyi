@@ -11,11 +11,15 @@ permissions:
   pull-requests: read
 on:
   pull_request:
-    branches: [main]
+    branches: [main, ci-test]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   pre-commit:
-    runs-on: openruyi
+    runs-on: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v3
       with:

@@ -1,7 +1,7 @@
-From 78cb1edd029a1340991fb21606d1701b8a17dbc5 Mon Sep 17 00:00:00 2001
+From 87c3902260746c90df4a25117178e7d6c63dd0c8 Mon Sep 17 00:00:00 2001
 From: Yixun Lan <dlan@gentoo.org>
 Date: Sat, 20 Dec 2025 21:28:15 +0800
-Subject: [PATCH 054/192] UPSTREAM: clk: spacemit: k3: extract common header
+Subject: [PATCH 054/197] UPSTREAM: clk: spacemit: k3: extract common header
 
 Extracting common header file, which will be shared by clock and reset
 drivers. So will make it easy to add reset driver for K3 SoC later.

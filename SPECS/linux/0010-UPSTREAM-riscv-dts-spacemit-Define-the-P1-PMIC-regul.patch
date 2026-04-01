@@ -1,7 +1,7 @@
-From ee6e4519cbbb361d781f456a7a9dabfb4192912b Mon Sep 17 00:00:00 2001
+From 95ac92a72da3beee4583a20ba8126bd4c46b7d74 Mon Sep 17 00:00:00 2001
 From: Javier Martinez Canillas <javierm@redhat.com>
 Date: Sat, 6 Dec 2025 14:44:55 +0100
-Subject: [PATCH 010/192] UPSTREAM: riscv: dts: spacemit: Define the P1 PMIC
+Subject: [PATCH 010/197] UPSTREAM: riscv: dts: spacemit: Define the P1 PMIC
  regulators for Milk-V Jupiter
 
 Define the SpacemiT P1 PMIC voltage regulators and their constraints.

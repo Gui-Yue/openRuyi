@@ -18,8 +18,8 @@ URL:            https://github.com/xsuchy/templated-dictionary
 Source0:        %{url}/archive/refs/tags/python-%{srcname}-%{version}-1.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3dist(setuptools)
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}

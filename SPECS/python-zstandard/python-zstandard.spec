@@ -16,17 +16,16 @@ URL:            https://github.com/indygreg/python-zstandard
 Source0:        https://files.pythonhosted.org/packages/source/z/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildSystem:    pyproject
 
-BuildOption(install): %{srcname} +auto
+BuildOption(install):  %{srcname} +auto
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3dist(pip)
+BuildRequires:  python3dist(setuptools)
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  zstd-devel
+BuildRequires:  pkgconfig(libzstd)
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}
-Provides:       bundled(zstd) = 1.5.7
 
 %description
 This project provides Python bindings for interfacing with

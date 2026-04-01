@@ -1,7 +1,7 @@
-From 9eda5527e8619628e11ce2a6a0651c2e251271df Mon Sep 17 00:00:00 2001
+From af79026a91c3fc7f3e0d56336a3179bd83d70c50 Mon Sep 17 00:00:00 2001
 From: Yao Zi <ziyao@disroot.org>
 Date: Thu, 20 Nov 2025 13:14:14 +0000
-Subject: [PATCH 066/192] UPSTREAM: clk: thead: th1520-ap: Add macro to define
+Subject: [PATCH 066/197] UPSTREAM: clk: thead: th1520-ap: Add macro to define
  multiplexers with flags
 
 The new macro, TH_CCU_MUX_FLAGS, extends TH_CCU_MUX macro by adding two

@@ -130,7 +130,7 @@ BuildRequires:  fxdiv-devel
 BuildRequires:  psimd-devel
 BuildRequires:  sleef-devel
 BuildRequires:  xnnpack-devel = 0+git20260211.312eb7e
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  python3dist(filelock)
 # TODO: enable on openRuyi
 # BuildRequires:  python3dist(fsspec)

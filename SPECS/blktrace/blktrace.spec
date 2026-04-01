@@ -13,9 +13,9 @@ Version:        1.3.0+git20251126.%{shortcommit}
 Release:        %autorelease
 Summary:        Block IO tracer
 License:        GPL-2.0-or-later
-URL:            https://git.kernel.dk/cgit/blktrace
+URL:            https://brick.kernel.dk/snaps
 #!RemoteAsset
-Source0:        https://git.kernel.dk/cgit/blktrace/snapshot/%{name}-%{commit}.tar.gz
+Source0:        https://brick.kernel.dk/snaps/%{name}-git-20251211002502.tar.gz
 BuildSystem:    autotools
 
 BuildOption(build):  CFLAGS="%{optflags} %{?build_ldflags}"

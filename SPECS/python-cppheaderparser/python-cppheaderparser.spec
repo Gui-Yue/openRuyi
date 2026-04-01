@@ -23,11 +23,11 @@ BuildSystem:    pyproject
 
 Patch0:         0001-cppheaderparser-silence-invalid-escape-sequence.patch
 
-BuildOption(install): -l %{pkg_name}
+BuildOption(install):  -l %{pkg_name}
 
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3dist(setuptools)
 BuildRequires:  python3dist(pip) >= 19
 BuildRequires:  python3dist(ply)
 

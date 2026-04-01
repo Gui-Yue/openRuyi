@@ -1,7 +1,7 @@
-From 7a7a96d4d8da31b5b094a43b8744d4c5a32a2a34 Mon Sep 17 00:00:00 2001
+From 0410a046d7fd68d72da684efbc3aaa3dc0e8522b Mon Sep 17 00:00:00 2001
 From: Yao Zi <ziyao@disroot.org>
 Date: Thu, 20 Nov 2025 13:14:13 +0000
-Subject: [PATCH 065/192] UPSTREAM: clk: thead: th1520-ap: Support setting PLL
+Subject: [PATCH 065/197] UPSTREAM: clk: thead: th1520-ap: Support setting PLL
  rates
 
 TH1520 ships several PLLs that could operate in either integer or

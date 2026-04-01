@@ -1,7 +1,7 @@
-From c1912658eb09bb494558e5f07b6c85797ba45ba2 Mon Sep 17 00:00:00 2001
+From b370f56e8ac2b2539c292ecf284eee4e7ee84684 Mon Sep 17 00:00:00 2001
 From: Guodong Xu <guodong@riscstar.com>
 Date: Tue, 20 Jan 2026 19:10:51 +0800
-Subject: [PATCH 058/192] UPSTREAM: reset: spacemit: Extract common K1 reset
+Subject: [PATCH 058/197] UPSTREAM: reset: spacemit: Extract common K1 reset
  code
 
 Extract the common reset controller code from the K1 driver into

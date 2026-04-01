@@ -21,7 +21,6 @@ URL:            https://dbus.freedesktop.org/
 VCS:            git:https://gitlab.freedesktop.org/dbus/dbus.git
 #!RemoteAsset
 Source0:        https://dbus.freedesktop.org/releases/dbus/dbus-%{version}.tar.xz
-Source1:        messagebus.conf
 BuildSystem:    meson
 
 BuildOption(conf):  -Dasserts=false
@@ -64,6 +63,7 @@ BuildRequires:  pkgconfig(libselinux)
 
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
+Requires(pre):  dbus-common
 Requires:       dbus-common
 Requires:       dbus-tools
 Requires:       dbus-broker
@@ -76,8 +76,6 @@ This package contains the core D-Bus components and runtime libraries.
 Summary:        D-BUS message bus configuration
 BuildArch:      noarch
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Provides:       user(messagebus)
-Provides:       group(messagebus)
 %if %{with systemd}
 %{?systemd_requires}
 %endif
@@ -102,11 +100,6 @@ Requires:       glibc-devel
 %description    devel
 This package contains the header files and libraries needed for D-Bus development.
 
-%if %{with systemd}
-%build -p
-install -p -D -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/dbus.conf
-%endif
-
 %install -a
 mv -f %{buildroot}%{_bindir}/dbus-launch %{buildroot}%{_bindir}/dbus-launch.nox11
 install -d %{buildroot}/run/dbus
@@ -122,10 +115,6 @@ if [ "$1" = 0 ] ; then
   %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.nox11
 fi
 
-%if %{with systemd}
-%pre common
-%sysusers_create_package dbus %{SOURCE1}
-%endif
 %post common
 if [ ! -L %{_localstatedir}/lib/dbus/machine-id ]; then
   mkdir -p %{_localstatedir}/lib/dbus/

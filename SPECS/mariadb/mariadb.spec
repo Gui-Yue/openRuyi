@@ -5,9 +5,6 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-# libmariadbd soname (embedded library)
-%define soname 19
-
 # Mroonga and RocksDB are available only for x86_64 architecture
 # see https://mariadb.com/kb/en/mariadb/about-mroonga/ and
 # https://mariadb.com/kb/en/library/myrocks-supported-platforms/
@@ -25,7 +22,7 @@
 %define srcdir %{_builddir}/%{name}-%{version}
 
 Name:           mariadb
-Version:        11.8.3
+Version:        11.8.6
 Release:        %autorelease
 Summary:        Server part of MariaDB
 License:        GPL-2.0-only
@@ -39,6 +36,7 @@ Source3:        mariadb.service.in
 Source4:        mariadb.target
 Source5:        mysql-systemd-helper
 Source6:        mariadb@.service.in
+Source7:        mariadb.tmpfiles
 BuildSystem:    cmake
 
 Patch0:         fix-pamdir.patch
@@ -51,6 +49,7 @@ BuildOption(conf):  -DWITH_ZLIB=system
 BuildOption(conf):  -DWITH_JEMALLOC=no
 BuildOption(conf):  -DWITH_READLINE=OFF
 BuildOption(conf):  -DINSTALL_LAYOUT=RPM
+BuildOption(conf):  -DINSTALL_SBINDIR="$(basename %{_sbindir})"
 BuildOption(conf):  -DWITH_LZ4=system
 BuildOption(conf):  -DMYSQL_UNIX_ADDR="%{_rundir}/mysql/mysql.sock"
 BuildOption(conf):  -DINSTALL_UNIX_ADDRDIR="%{_rundir}/mysql/mysql.sock"
@@ -408,11 +407,8 @@ install -D -m 644 %{_sourcedir}/mariadb.target '%{buildroot}'%{_unitdir}/mariadb
 # mysql-systemd-helper
 sed -e 's:mysql.sock-%I:mysql.%I.sock:' -i %{buildroot}%{_unitdir}/mariadb@.socket
 
-# Tmpfiles file to exclude mysql tempfiles that are auto-cleaned up
-mkdir -p %{buildroot}%{_tmpfilesdir}
-cat >> %{buildroot}%{_tmpfilesdir}/mariadb.conf <<EOF
-x %{_localstatedir}/tmp/mysql.*
-EOF
+# Tmpfiles config for /run/mysql socket directory and temp file exclusion
+install -m0644 -D %{SOURCE7} %{buildroot}%{_tmpfilesdir}/mariadb.conf
 
 # Testsuite
 install -d -m 755 '%{buildroot}'%{_datadir}/%{name}-test/

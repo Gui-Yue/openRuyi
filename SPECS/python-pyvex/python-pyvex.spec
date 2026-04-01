@@ -33,11 +33,11 @@ BuildRequires:  python3dist(cffi) >= 1.0.3
 BuildRequires:  python3dist(bitstring)
 BuildRequires:  python3dist(pytest)
 
-%description
-A Python interface to libVEX and the VEX intermediate representation.
-
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}
+
+%description
+A Python interface to libVEX and the VEX intermediate representation.
 
 %prep -a
 # on riscv64 test_pyvex.py need more mem for test

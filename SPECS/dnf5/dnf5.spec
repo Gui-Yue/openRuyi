@@ -16,6 +16,9 @@ URL:            https://github.com/rpm-software-management/dnf5
 Source0:        https://github.com/rpm-software-management/dnf5/archive/%{version}/dnf5-%{version}.tar.gz
 BuildSystem:    cmake
 
+# Adjust from https://github.com/rpm-software-management/dnf5/pull/2638
+Patch0:         libdnf5-cli-handle-C-or-POSIX-locale-gracefully.patch
+
 BuildOption(conf):  -DVERSION_PRIME:STRING=5
 BuildOption(conf):  -DVERSION_MAJOR:STRING=3
 BuildOption(conf):  -DVERSION_MINOR:STRING=0

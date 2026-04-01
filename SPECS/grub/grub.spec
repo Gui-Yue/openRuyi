@@ -25,6 +25,12 @@ VCS:            git:https://https.git.savannah.gnu.org/git/grub.git
 Source0:        https://ftpmirror.gnu.org/gnu/grub/grub-%{version}.tar.xz
 Source1:        grub.default
 
+# https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/10
+Patch0:         skip-efi_uga.patch
+
+# https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/14
+Patch1:         blsuki-append-version.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -48,7 +54,7 @@ variety of kernel formats, file systems, computer architectures and
 hardware devices.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -n %{name}-%{version} -p1
 
 %conf
 for plat in %{grub_platforms}; do

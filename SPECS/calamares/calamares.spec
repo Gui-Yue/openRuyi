@@ -1,17 +1,18 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
+# SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           calamares
-Version:        3.4.0
+Version:        3.4.2
 Release:        %autorelease
 Summary:        Installer from a live CD/DVD/USB to disk
 License:        BSD-2-Clause
 URL:            https://calamares.io/
 VCS:            git:https://codeberg.org/Calamares/calamares.git
-#!RemoteAsset
+#!RemoteAsset:  sha256:733bbbb00dc9f84874bd5c22960952f317ea2537565431179fa2152b2fbfdccc
 Source0:        https://codeberg.org/Calamares/calamares/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # TODO: Use KDE BuildSystem in the future
 

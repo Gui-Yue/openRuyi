@@ -22,6 +22,7 @@ Patch0:         0001-Fix-py3.14-test-failure-due-to-NotImplemented-change.patch
 
 BuildOption(install):  %{srcname}
 
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  pkgconfig(python)
 BuildRequires:  python3dist(pytest)
 BuildRequires:  python3dist(pip)

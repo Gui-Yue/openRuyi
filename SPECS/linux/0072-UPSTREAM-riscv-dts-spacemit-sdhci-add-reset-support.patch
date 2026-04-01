@@ -1,7 +1,7 @@
-From 1f3a6df986d33d7d606e9ea2638ca69e21a0d11c Mon Sep 17 00:00:00 2001
+From 94effe7aaac411eb38511ae2a21a0e668dbe9bf2 Mon Sep 17 00:00:00 2001
 From: Yixun Lan <dlan@gentoo.org>
 Date: Tue, 23 Dec 2025 10:24:51 +0800
-Subject: [PATCH 072/192] UPSTREAM: riscv: dts: spacemit: sdhci: add reset
+Subject: [PATCH 072/197] UPSTREAM: riscv: dts: spacemit: sdhci: add reset
  support
 
 Request two reset line explicitly for SDHCI controller.

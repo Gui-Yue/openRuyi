@@ -9,18 +9,22 @@
 Name:           python-%{srcname}
 Version:        0.32
 Release:        %autorelease
-License:        Public-Domain
-URL:            https://github.com/eliben/pyelftools
 Summary:        Analyze binary and library file information
-Provides:       python3-%{srcname}
-%python_provide python3-%{srcname}
+License:        LicenseRef-openRuyi-Public-Domain
+URL:            https://github.com/eliben/pyelftools
 #!RemoteAsset
 Source0:        https://files.pythonhosted.org/packages/source/p/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
-
-BuildRequires:  python3-devel
 BuildSystem:    pyproject
-BuildOption(install): -l elftools +auto
+
+BuildOption(install):  -l elftools +auto
+
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  pkgconfig(python3)
+
+Provides:       python3-%{srcname}
+%python_provide python3-%{srcname}
+
 %description
 This Python library provides interfaces for parsing and analyzing two
 binary and library file formats ; the Executable and Linking Format (ELF), and

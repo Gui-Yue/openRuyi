@@ -19,10 +19,10 @@ BuildSystem:    pyproject
 BuildOption(install):  -l google
 
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  python3-pip
+BuildRequires:  python3dist(pip)
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
+BuildRequires:  python3dist(setuptools)
+BuildRequires:  python3dist(wheel)
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(protobuf)
 

@@ -30,7 +30,7 @@ Patch:          0001-3028d3.patch
 # https://github.com/pypa/wheel/pull/655
 Patch:          0002-adjusts-tests-for-setuptools-78.patch
 
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  expat
 
 %description

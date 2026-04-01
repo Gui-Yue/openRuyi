@@ -25,7 +25,7 @@ BuildOption(check):  -e contourpy.util.mpl_renderer
 BuildOption(check):  -e contourpy.util.mpl_util
 
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  gcc-c++
 
 Provides:       python3-%{srcname}

@@ -1,7 +1,7 @@
-From 85dbc6f89646f3daa15a63bf9f83f8491e53820d Mon Sep 17 00:00:00 2001
+From 7a901579383a362861888e45a0a7dd1771f1ab22 Mon Sep 17 00:00:00 2001
 From: Michael Orlitzky <michael@orlitzky.com>
 Date: Wed, 7 Jan 2026 06:29:22 -0500
-Subject: [PATCH 005/192] UPSTREAM: riscv: dts: sophgo: enable hardware clock
+Subject: [PATCH 005/197] UPSTREAM: riscv: dts: sophgo: enable hardware clock
  (RTC) on the Milk-V Pioneer
 
 These boards have a working hardware clock if you put a CR-1220
