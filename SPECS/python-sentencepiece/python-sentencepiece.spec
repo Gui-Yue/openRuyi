@@ -26,18 +26,20 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3dist(pip)
+BuildRequires:  python3dist(protobuf)
 BuildRequires:  python3dist(setuptools)
 BuildRequires:  python3dist(wheel)
 
 Provides:       python3-%{srcname}
 %python_provide python3-%{srcname}
+Requires:       python3dist(protobuf)
 
 %description
 SentencePiece is an unsupervised text tokenizer and detokenizer for neural NLP.
 
 %files -f %{pyproject_files}
 %doc README.md
-%license LICENSE
+%license sentencepiece/LICENSE
 
 %changelog
 %{?autochangelog}
