@@ -42,14 +42,33 @@ jobs:
         path: |
           SPECS/.pbuild
           SPECS/_build.x86_64
-        key: ${{ runner.os }}-${{ hashFiles('.github/build/_config') }}
+        key: ${{ runner.os }}-${{ hashFiles('.github/build/_config', '.github/build/pbuild.patch', '.github/workflows/build.yaml') }}
         restore-keys: |
           ${{ runner.os }}-
     - name: Install tools
       run: |
         echo "deb http://download.opensuse.org/repositories/openSUSE:/Tools/xUbuntu_24.04/ /" | sudo tee /etc/apt/sources.list.d/obs.list
         wget -qO - http://download.opensuse.org/repositories/openSUSE:/Tools/xUbuntu_24.04/Release.key | sudo apt-key add -
-        sudo apt update && sudo apt install osc obs-build libwww-perl libxml-parser-perl -y
+        sudo apt update && sudo apt install osc obs-build libwww-perl libxml-parser-perl libtry-tiny-perl liblwp-protocol-https-perl -y
+    - name: apply pbuild patch
+      run: |
+        set -euxo pipefail
+        patch_file="$GITHUB_WORKSPACE/.github/build/pbuild.patch"
+        pbuild_libdir=""
+        for d in /usr/lib/build /usr/lib/obs-build; do
+          if [ -f "$d/pbuild" ] && [ -f "$d/PBuild/Job.pm" ] && [ -f "$d/PBuild/Expand.pm" ]; then
+            pbuild_libdir="$d"
+            break
+          fi
+        done
+        if [ -z "$pbuild_libdir" ]; then
+          echo "Unable to locate pbuild perl modules directory"
+          exit 1
+        fi
+        sudo patch --forward --batch --directory="$pbuild_libdir" --strip=1 -i "$patch_file" || true
+        grep -q "sub set_genbuildreqs" "$pbuild_libdir/PBuild/Job.pm"
+        grep -q "sub load_genbuildreqs" "$pbuild_libdir/PBuild/Job.pm"
+        grep -q "load_genbuildreqs" "$pbuild_libdir/pbuild"
     - name: Limit the number of compilations
       if: steps.changed-files.outputs.specs_any_changed == 'true'
       run: |
@@ -61,7 +80,21 @@ jobs:
          echo "BuildFlags: onlybuild:$p" >> ./.github/build/_config
         done
     - name: Build package(s)
-      run: (cp .github/build/* SPECS && cd SPECS && (sudo pbuild --vm-type=chroot --preset x86_64 --showlog --root=/tmp/b || (sudo pbuild --preset x86_64 --result && exit 1)))
+      run: |
+        set -euxo pipefail
+        cp .github/build/* SPECS
+        cd SPECS
+        stamp_file="$(mktemp)"
+        trap 'rm -f "$stamp_file"' EXIT
+        if ! sudo pbuild --vm-type=chroot --preset x86_64 --showlog --root=/tmp/b; then
+          sudo pbuild --preset x86_64 --result || true
+          if find _build.x86_64 -type f -name _generated_buildreqs -newer "$stamp_file" -print -quit | grep -q .; then
+            echo "Detected generated build requirements, retrying pbuild once"
+            sudo pbuild --vm-type=chroot --preset x86_64 --showlog --root=/tmp/b || (sudo pbuild --preset x86_64 --result && exit 1)
+          else
+            exit 1
+          fi
+        fi
     - name: get result
       id: result
       if: steps.changed-files.outputs.specs_any_changed == 'true'
