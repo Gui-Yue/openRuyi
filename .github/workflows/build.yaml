@@ -54,18 +54,12 @@ jobs:
       run: |
         set -euxo pipefail
         patch_file="$GITHUB_WORKSPACE/.github/build/pbuild.patch"
-        pbuild_libdir=""
-        for d in /usr/lib/build /usr/lib/obs-build; do
-          if [ -f "$d/pbuild" ] && [ -f "$d/PBuild/Job.pm" ] && [ -f "$d/PBuild/Expand.pm" ]; then
-            pbuild_libdir="$d"
-            break
-          fi
-        done
-        if [ -z "$pbuild_libdir" ]; then
-          echo "Unable to locate pbuild perl modules directory"
+        pbuild_libdir="/usr/lib/build"
+        if [ ! -f "$pbuild_libdir/pbuild" ] || [ ! -f "$pbuild_libdir/PBuild/Job.pm" ] || [ ! -f "$pbuild_libdir/PBuild/Expand.pm" ]; then
+          echo "Missing expected pbuild files under $pbuild_libdir"
           exit 1
         fi
-        sudo patch --forward --batch --directory="$pbuild_libdir" --strip=1 -i "$patch_file" || true
+        sudo patch --directory="$pbuild_libdir" --strip=1 -i "$patch_file"
         grep -q "sub set_genbuildreqs" "$pbuild_libdir/PBuild/Job.pm"
         grep -q "sub load_genbuildreqs" "$pbuild_libdir/PBuild/Job.pm"
         grep -q "load_genbuildreqs" "$pbuild_libdir/pbuild"
@@ -81,20 +75,9 @@ jobs:
         done
     - name: Build package(s)
       run: |
-        set -euxo pipefail
         cp .github/build/* SPECS
         cd SPECS
-        stamp_file="$(mktemp)"
-        trap 'rm -f "$stamp_file"' EXIT
-        if ! sudo pbuild --vm-type=chroot --preset x86_64 --showlog --root=/tmp/b; then
-          sudo pbuild --preset x86_64 --result || true
-          if find _build.x86_64 -type f -name _generated_buildreqs -newer "$stamp_file" -print -quit | grep -q .; then
-            echo "Detected generated build requirements, retrying pbuild once"
-            sudo pbuild --vm-type=chroot --preset x86_64 --showlog --root=/tmp/b || (sudo pbuild --preset x86_64 --result && exit 1)
-          else
-            exit 1
-          fi
-        fi
+        sudo pbuild --vm-type=chroot --preset x86_64 --showlog --root=/tmp/b || (sudo pbuild --preset x86_64 --result && exit 1)
     - name: get result
       id: result
       if: steps.changed-files.outputs.specs_any_changed == 'true'
