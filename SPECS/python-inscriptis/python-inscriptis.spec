@@ -19,6 +19,8 @@ BuildArch:      noarch
 BuildSystem:    pyproject
 
 BuildOption(install):  -l %{srcname}
+# Web service support is an optional extra and requires fastapi.
+BuildOption(check):  -e 'inscriptis.service.web'
 
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pyproject-rpm-macros

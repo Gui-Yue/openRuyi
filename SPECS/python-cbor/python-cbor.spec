@@ -17,7 +17,7 @@ VCS:            git:https://bitbucket.org/bodhisnarkva/cbor.git
 Source0:        https://files.pythonhosted.org/packages/source/c/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildSystem:    pyproject
 
-BuildOption(install):  -l %{srcname}
+BuildOption(install):  -l %{srcname} -L
 
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pyproject-rpm-macros

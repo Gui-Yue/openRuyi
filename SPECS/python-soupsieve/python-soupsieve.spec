@@ -19,6 +19,8 @@ BuildArch:      noarch
 BuildSystem:    pyproject
 
 BuildOption(install):  -l %{srcname}
+# Importing soupsieve imports bs4, but beautifulsoup4 depends on soupsieve.
+BuildOption(check):  -e 'soupsieve*'
 
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pyproject-rpm-macros

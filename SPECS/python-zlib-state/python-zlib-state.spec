@@ -18,7 +18,7 @@ VCS:            git:https://github.com/seanmacavaney/zlib-state
 Source0:        https://files.pythonhosted.org/packages/source/z/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildSystem:    pyproject
 
-BuildOption(install):  -l %{pypi_name} -l _%{pypi_name}
+BuildOption(install):  -l %{pypi_name} _%{pypi_name}
 
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pyproject-rpm-macros
