@@ -52,9 +52,14 @@ benchmark datasets, training datasets, and related data resources.
 %generate_buildrequires
 %pyproject_buildrequires
 
+%install -a
+rm -rf %{buildroot}%{python3_sitelib}/examples
+rm -rf %{buildroot}%{python3_sitelib}/test
+
 %files -f %{pyproject_files}
 %doc README.md
 %license LICENSE
+%{_bindir}/ir_datasets
 
 %changelog
 %autochangelog
