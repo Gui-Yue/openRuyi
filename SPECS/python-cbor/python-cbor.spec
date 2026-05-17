@@ -27,6 +27,7 @@ BuildRequires:  python3dist(wheel)
 
 Provides:       python3-%{srcname} = %{version}-%{release}
 Provides:       python3-%{srcname}%{?_isa} = %{version}-%{release}
+Provides:       python3dist(%{srcname}) = %{version}
 %python_provide python3-%{srcname}
 
 %description
