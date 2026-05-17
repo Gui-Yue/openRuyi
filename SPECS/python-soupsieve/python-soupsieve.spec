@@ -19,8 +19,6 @@ BuildArch:      noarch
 BuildSystem:    pyproject
 
 BuildOption(install):  -l %{srcname}
-# Importing soupsieve imports bs4, but beautifulsoup4 depends on soupsieve.
-BuildOption(check):  -e 'soupsieve*'
 
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pyproject-rpm-macros
@@ -29,6 +27,9 @@ BuildRequires:  python3dist(pip)
 
 Provides:       python3-%{srcname} = %{version}-%{release}
 %python_provide python3-%{srcname}
+
+%check
+# Importing soupsieve imports bs4, but beautifulsoup4 depends on soupsieve.
 
 %description
 Soup Sieve is a CSS selector library designed to be used with Beautiful Soup.

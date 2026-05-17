@@ -38,9 +38,14 @@ Inscriptis converts HTML documents into clean plain text.
 %generate_buildrequires
 %pyproject_buildrequires
 
+%install -a
+# The optional web service command imports fastapi, which is not packaged here.
+rm -f %{buildroot}%{_bindir}/inscriptis-api
+
 %files -f %{pyproject_files}
 %doc AUTHORS README.rst
 %license LICENSE
+%{_bindir}/inscript
 
 %changelog
 %autochangelog
