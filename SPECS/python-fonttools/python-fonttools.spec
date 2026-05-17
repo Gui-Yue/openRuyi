@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2026 openRuyi Project Contributors
 # SPDX-FileContributor: panglars <panghao.riscv@isrc.iscas.ac.cn>
+# SPDX-FileContributor: Gui-Yue <xiangwei.riscv@isrc.iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -40,6 +41,8 @@ text format, and also installs utilities for subsetting and merging fonts.
 
 %generate_buildrequires
 %pyproject_buildrequires
+
+%pyproject_extras_subpkg -n python-%{srcname} all graphite interpolatable lxml pathops plot repacker symfont type1 ufo unicode woff
 
 %files -f %{pyproject_files}
 %doc README.rst NEWS.rst
