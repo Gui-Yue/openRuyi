@@ -1,0 +1,48 @@
+# Patch purpose:
+# - Use system protobuf, build top-level Paddle2ONNX sources with a C++
+#   standard compatible with the distribution protobuf headers, and install
+#   Paddle2ONNX into the distribution libdir.
+# Why this patch exists:
+# - The bundled Paddle2ONNX CMake file forces C++11, but current system
+#   protobuf/abseil headers require newer C++ language support.
+# - The bundled ONNX CMake logic can otherwise look only under /usr/lib.
+# - openRuyi uses lib64 on 64-bit architectures.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 086618f..707f270 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,7 @@
+ PROJECT(paddle2onnx C CXX)
+ CMAKE_MINIMUM_REQUIRED (VERSION 3.16)
++include(GNUInstallDirs)
++find_package(Protobuf REQUIRED)
+ 
+ ADD_SUBDIRECTORY(paddle2onnx)
+ 
+@@ -13,8 +15,8 @@ if(PADDLE2ONNX_DEBUG)
+   add_definitions(-DPADDLE2ONNX_DEBUG)
+ endif()
+-# Set C++11 as standard for the whole project
++# Set C++17 as standard for the whole project
+ if(NOT MSVC)
+-  set(CMAKE_CXX_STANDARD 11)
++  set(CMAKE_CXX_STANDARD 17)
+ endif(NOT MSVC)
+ 
+ # setting max opset version for onnx
+@@ -109,12 +111,12 @@ if(WIN32)
+     TARGETS paddle2onnx
+     LIBRARY DESTINATION lib
+     ARCHIVE DESTINATION lib
+-    RUNTIME DESTINATION lib
++    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   )
+ else()
+   install(
+     TARGETS paddle2onnx
+-    LIBRARY DESTINATION lib
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   )
+ endif()
+ install(
