@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: (C) 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2026 openRuyi Project Contributors
-# SPDX-FileContributor: panglars <panghao.riscv@isrc.iscas.ac.cn>
+# SPDX-FileContributor: Gui-Yue <xiangwei.riscv@isrc.iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -18,37 +18,38 @@ Source0:        https://files.pythonhosted.org/packages/source/f/%{srcname}/%{sr
 BuildArch:      noarch
 BuildSystem:    pyproject
 
-BuildOption(check):  -e "fontTools.misc.symfont"
-BuildOption(check):  -e "fontTools.pens.freetypePen" -e "fontTools.pens.quartzPen" -e "fontTools.pens.reportLabPen"
-BuildOption(check):  -e "fontTools.ttLib.removeOverlaps"
-BuildOption(check):  -e "fontTools.varLib.interpolatablePlot" -e "fontTools.varLib.plot"
-BuildOption(install):  -l fontTools
+BuildOption(install):  -l fontTools +auto
+# Optional dependency freetype-py is not packaged yet.
+BuildOption(check):  -e 'fontTools.pens.freetypePen'
+# Quartz is macOS-only.
+BuildOption(check):  -e 'fontTools.pens.quartzPen'
+# Optional dependency reportlab is not packaged yet.
+BuildOption(check):  -e 'fontTools.pens.reportLabPen'
+# Optional dependency skia-pathops is not packaged yet.
+BuildOption(check):  -e 'fontTools.ttLib.removeOverlaps'
+# Optional dependency matplotlib is not packaged yet.
+BuildOption(check):  -e 'fontTools.varLib.plot'
 
-BuildRequires:  pyproject-rpm-macros
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3dist(pip)
+BuildRequires:  python3dist(pycairo)
 BuildRequires:  python3dist(setuptools)
+BuildRequires:  python3dist(sympy)
 BuildRequires:  python3dist(wheel)
 
 Provides:       python3-%{srcname} = %{version}-%{release}
 %python_provide python3-%{srcname}
 
 %description
-fontTools is a library for manipulating fonts. It provides tools such as
-TTX for converting TrueType and OpenType fonts to and from an XML-based
-text format, and also installs utilities for subsetting and merging fonts.
+FontTools is a library for manipulating fonts, written in Python.
 
-%generate_buildrequires
-%pyproject_buildrequires
+%pyproject_extras_subpkg -n python-%{srcname} all graphite interpolatable lxml pathops plot repacker symfont type1 ufo unicode woff
 
 %files -f %{pyproject_files}
-%doc README.rst NEWS.rst
-%license LICENSE LICENSE.external
-%{_bindir}/fonttools
-%{_bindir}/ttx
-%{_bindir}/pyftsubset
-%{_bindir}/pyftmerge
-%{_mandir}/man1/ttx.1*
+%doc README.rst
+%license LICENSE
+%license LICENSE.external
 
 %changelog
 %autochangelog
