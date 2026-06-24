@@ -25,6 +25,34 @@ VCS:            git:https://github.com/PaddlePaddle/Paddle
 Source0:        https://github.com/PaddlePaddle/Paddle/archive/refs/tags/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 BuildSystem:    pyproject
 
+BuildOption(install):  -l paddle
+# APY pass helper modules use non-package-local imports and are not public
+# runtime entry points for this CPU-only baseline package.
+BuildOption(check):  -e 'paddle.apy.matmul_pass.index_drr_pass_util'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.index_program_translator_util'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.kernel_arg_id_util'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.low_level_ir_code_gen_ctx_util'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.matmul_epilogue_pass'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.matmul_variadic_ptn'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.matmul_variadic_tpl'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.op_compute_translator_util'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.op_conversion_drr_pass'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.op_index_translator_util'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.program_translator_util'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.topo_drr_pass'
+BuildOption(check):  -e 'paddle.apy.matmul_pass.umprime'
+BuildOption(check):  -e 'paddle.apy.sys.ap'
+# These distributed/optional internals require unavailable optional services or
+# conflict with the system protobuf runtime during isolated import checks.
+BuildOption(check):  -e 'paddle.base.proto.distributed_strategy_pb2'
+BuildOption(check):  -e 'paddle.distributed.auto_tuner.recorder'
+BuildOption(check):  -e 'paddle.distributed.launch.utils.etcd_client'
+BuildOption(check):  -e 'paddle.distributed.transpiler.geo_sgd_transpiler'
+# paddle.libs contains native shared libraries, not Python extension modules.
+BuildOption(check):  -e 'paddle.libs.libcommon'
+BuildOption(check):  -e 'paddle.libs.libphi'
+BuildOption(check):  -e 'paddle.libs.libphi_core'
+
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pyproject-rpm-macros
@@ -227,11 +255,6 @@ fi
 %endif
 rm -f %{buildroot}%{python3_sitearch}/_foo*.so
 %pyproject_save_files -l paddle
-
-%check
-# The full Paddle test suite is hardware-dependent and too heavy for package
-# builds; keep the installed module import smoke test.
-%pyproject_check_import paddle
 
 %files -f %{pyproject_files}
 %doc README.md
